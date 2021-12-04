@@ -26,7 +26,7 @@
 ・レッスンを受けるよりもとにかくたくさん踊りたい時  
 
 ## 設計書
-<...>
+
 
 ## チャレンジ要素一覧
 <https://docs.google.com/spreadsheets/d/1WIeQAeyl5jkhoCoYzqTRxXZJZGCk6vdK32oTo65Ns3E/edit#gid=346513538>
@@ -39,3 +39,4 @@
 - IDE：Cloud9
 - 
 ## 使用素材
+未定
