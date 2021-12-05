@@ -26,12 +26,12 @@
 ・レッスンを受けるよりもとにかくたくさん踊りたい時  
 
 ## 設計書
-テーブル定義書  
-アプリケーション詳細設計
+[テーブル定義書](https://docs.google.com/spreadsheets/d/1vOiyZGdU91GZMa8hnebUEmNhbZehqW0WwV57YMhL1yY/edit?usp=sharing)  
+[アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1x9Me1DG45LvhVCZdebSQgqGKX6PdVFWRw7MliXzZY5Y/edit?usp=sharing)  
 
 
 ## チャレンジ要素一覧
-<https://docs.google.com/spreadsheets/d/1WIeQAeyl5jkhoCoYzqTRxXZJZGCk6vdK32oTo65Ns3E/edit#gid=346513538>
+[チャレンジ要素一覧](https://docs.google.com/spreadsheets/d/1WIeQAeyl5jkhoCoYzqTRxXZJZGCk6vdK32oTo65Ns3E/edit#gid=346513538)  
 
 ## 開発環境
 - OS：macOS
