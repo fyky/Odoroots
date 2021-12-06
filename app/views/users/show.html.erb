@@ -1,10 +1,10 @@
+<div class="container">
 <div class="info">
-<p>
+<div class="profile_image">
   <%= attachment_image_tag @user, :image, fallback: "/assets/noimage.png", size: "130x130" %>
-</p>
-<p>名前
-  <%= @user.name %>
-</p>
+  <p><%= @user.name %></p>
+</div>
+
 <p>居住地
   <%= @user.address %>
 </p>
@@ -12,6 +12,12 @@
   <%= @user.introduction %>
 </p>
 <p>年齢
-  <%= @user.age %>
+  <%= @user.age %>歳
 </p>
+</div>
+
+<div class="content">
+  あああ
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</div>
 </div>
