@@ -1,0 +1,17 @@
+<div class="info">
+<p>
+  <%= attachment_image_tag @user, :image, fallback: "/assets/noimage.png", size: "130x130" %>
+</p>
+<p>名前
+  <%= @user.name %>
+</p>
+<p>居住地
+  <%= @user.address %>
+</p>
+<p>紹介文
+  <%= @user.introduction %>
+</p>
+<p>年齢
+  <%= @user.age %>
+</p>
+</div>
