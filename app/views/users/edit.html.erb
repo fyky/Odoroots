@@ -1,2 +1,28 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<h1>ユーザー情報編集</h1>
+<%= form_with model:@user, local: true do |f| %>
+  <h2>名前</h2>
+  <%= f.text_field :name %>
+
+  <h2>写真</h2>
+  <%= attachment_image_tag @user, :image, :fill, 60, 60, fallback: "no_image.jpg"%>
+  <%= f.attachment_field :image, placeholder: "プロフィール画像" %>
+
+
+  <h2>ダンスジャンル</h2>
+  <%= f.text_field :genre %>
+
+  <h2>住所（市まで）</h2>
+  <%= f.text_field :address %>
+
+  <h2>住所（市以降）</h2>
+  <%= f.text_field :address_detail %>
+
+
+  <h2>電話番号</h2>
+  <%= f.text_field :phone_number %>
+
+  <h2>紹介文</h2>
+  <%= f.text_field :introduction %>
+
+  <%= f.submit 'Update Book' %>
+<% end %>

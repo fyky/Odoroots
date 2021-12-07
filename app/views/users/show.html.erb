@@ -1,8 +1,10 @@
 <div class="container">
 <div class="info">
 <div class="profile_image">
-  <%= attachment_image_tag @user, :image, fallback: "/assets/noimage.png", size: "130x130" %>
+  <%= attachment_image_tag @user, :image, :fill, 130, 130, fallback: "/assets/noimage.png" %>
   <p><%= @user.name %></p>
+  <p>follow</p>
+  <p>follow:-- follower:--</p>
 </div>
 
 <p>居住地
@@ -14,10 +16,18 @@
 <p>年齢
   <%= @user.age %>歳
 </p>
+<p>ジャンル
+  <%= @user.genre %>
+</p>
+<p>Twitter Instagram Facebook LINE</p>
+<p><%= link_to "編集",edit_user_path(@user) %></p>
 </div>
 
 <div class="content">
-  あああ
+  <h1>主催イベント（直近3件）</h1>
+  ここに主催イベントを表示
+  <h1>参加イベント（直近3件）</h1>
+  ここに参加イベントを表示
   <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </div>
 </div>
