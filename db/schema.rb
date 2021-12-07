@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2021_12_07_144728) do
     t.boolean "publish", default: false, null: false
     t.integer "user_id"
     t.integer "genre_id"
+    t.integer "number"
   end
 
   create_table "genres", force: :cascade do |t|
