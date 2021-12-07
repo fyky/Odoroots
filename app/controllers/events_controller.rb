@@ -22,18 +22,20 @@ class EventsController < ApplicationController
   end
 
   def create
+    @event = Event.find(params[:event][:id].to_i)
     # event_id を取り出してから publish を true に変更
-    Event.find(params[:event][:id].to_i).update(publish: true)
-    redirect_to event_path
+    @event.update(publish: true)
+    redirect_to event_path(@event.id)
   end
 
   def index
+    @events = Event.published
   end
 
   def show
-    if params[:id] = 'confirm'
-      redirect_to new_event_path and return
-    end
+    # if params[:id] = 'confirm'
+    #   redirect_to new_event_path and return
+    # end
     @event = Event.find(params[:id])
   end
 
