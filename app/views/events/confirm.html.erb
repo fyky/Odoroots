@@ -1,5 +1,5 @@
 <h1>Events#confirm</h1>
-  <%= form_with model:@event, local:true do |f| %>
+<%= form_with model: @event, url: events_path, method: :post, local:true do |form| %>
     <h2>写真</h2>
       <%= attachment_image_tag @event, :image, :fill, 300, 300, fallback: "/assets/noimage.png" %>
     <h2>イベントタイトル</h2>
@@ -27,17 +27,9 @@
     <h2>注意事項</h2>
       <%= @event.attention %>
 
+      <%= form.hidden_field :id, value: @event.id %>
 
+  <%= link_to 'back', new_event_path(id: @event.id) %>
 
-
-
-
-
-<%= @event.name %>
-    <%= f.submit '投稿画面に戻る', name: 'back' %>
-
-    <%= f.submit '投稿する' %>
+	<%= form.submit '送信する' %>
 <% end %>
-
-
-<p>Find me in app/views/events/confirm.html.erb</p>
