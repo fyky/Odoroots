@@ -27,7 +27,8 @@
     <h2>注意事項</h2>
       <%= @event.attention %>
 
-      <%= form.hidden_field :id, value: @event.id %>
+  <!-- event id を渡す -->
+  <%= form.hidden_field :id, value: @event.id %>
 
   <%= link_to 'back', new_event_path(id: @event.id) %>
 

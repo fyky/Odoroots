@@ -1,6 +1,7 @@
 <h1>Events#new</h1>
 
   <%= form_with model: @event, url: confirm_events_path, method: :post, local:true do |f| %>
+
     <h2>写真</h2>
       <%= f.attachment_field :image, placeholder: "プロフィール画像" %>
     <h2>イベントタイトル</h2>
@@ -28,6 +29,7 @@
     <h2>注意事項</h2>
       <%= f.text_field :attention %>
 
+    <!-- event id を渡す -->
     <% if params[:id] %>
       <%= f.hidden_field :id, value: params[:id] %>
     <% end %>
