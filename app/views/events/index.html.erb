@@ -2,7 +2,7 @@
   <table>
     <% @events.each do |event| %>
     <tr>
-      <td><%= attachment_image_tag event, :image, :fill, 200, 100, fallback: "/assets/noimage.png", size:'200x100'  %></td>
+      <td><%= attachment_image_tag event, :image, :fill, 200, 100, fallback: "/assets/noimage.png", size:'200x100' %></td>
       <td><%= event.name %><%= link_to "show", event_path(event.id) %></td>
       <td><%= event.address %></td>
     </tr>

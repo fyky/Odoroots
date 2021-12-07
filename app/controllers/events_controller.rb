@@ -11,9 +11,11 @@ class EventsController < ApplicationController
     if params[:event][:id]
       # もし params[:event][:id] があれば、データを探してアップデート
       @event = Event.find(params[:event][:id].to_i)
+
       @event.update(event_params)
     else
       @event = Event.new(event_params)
+      @event.user_id = current_user.id
       # save できなかったら :new へ
       unless @event.save
         render :new
@@ -21,9 +23,12 @@ class EventsController < ApplicationController
     end
   end
 
+
+
   def create
     @event = Event.find(params[:event][:id].to_i)
     # event_id を取り出してから publish を true に変更
+    # @event.user_id = current_user.id
     @event.update(publish: true)
     redirect_to event_path(@event.id)
   end

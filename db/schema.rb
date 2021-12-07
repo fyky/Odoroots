@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_07_110935) do
+ActiveRecord::Schema.define(version: 2021_12_07_144728) do
 
   create_table "events", force: :cascade do |t|
     t.string "name", null: false
@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 2021_12_07_110935) do
     t.datetime "updated_at", null: false
     t.string "image_id"
     t.boolean "publish", default: false, null: false
+    t.integer "user_id"
+    t.integer "genre_id"
   end
 
   create_table "genres", force: :cascade do |t|
