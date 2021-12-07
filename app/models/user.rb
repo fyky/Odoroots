@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   attachment :image
+  has_many :events, dependent: :destroy
 
   def age
     ((Date.today.strftime("%Y%m%d").to_i - birthday.strftime("%Y%m%d").to_i)/10000).floor
