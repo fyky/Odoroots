@@ -1,0 +1,9 @@
+主催イベント一覧
+    <table>
+      <% @events.each do |event| %>
+        <tr>
+          <td><%= event.name %></td>
+          <td><%= link_to "show", event_path(event.id) %></td>
+        </tr>
+      <% end %>
+    </table>

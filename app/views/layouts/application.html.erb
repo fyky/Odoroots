@@ -4,6 +4,10 @@
     <title>Portfolio</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+
+    <!-- FontAwesomeの読み込み -->
+    <script src="https://kit.fontawesome.com/a089111b95.js" crossorigin="anonymous"></script>
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -21,6 +25,10 @@
           <li><a href="#">DM</a></li>
           <li><a href="#">カレンダー</a></li>
           <li>
+
+            <i class="fas fa-user"></i>
+
+
             <%= link_to "マイページ", user_path(current_user) %>
           </li>
           <li>

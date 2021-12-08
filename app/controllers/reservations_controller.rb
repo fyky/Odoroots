@@ -6,6 +6,7 @@ class ReservationsController < ApplicationController
   end
 
   def confirm
+
     @reservation = Reservation.new(reservation_params)
 
     # @reservation = Reservation.find(params[:id])
@@ -20,16 +21,16 @@ class ReservationsController < ApplicationController
   def create
     @event = Event.find(params[:event_id])
     @reservation = Reservation.new(reservation_params)
-
     if @reservation.save
-      redirect_to complete_event_reservations_path
+
+      redirect_to event_reservation_path(@event, @reservation)
     else
       render :new
 
     end
   end
 
-  def complete
+  def show
   end
 
   def index

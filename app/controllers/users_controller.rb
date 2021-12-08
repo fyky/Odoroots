@@ -18,6 +18,7 @@ class UsersController < ApplicationController
   end
 
   def host
+    @events = current_user.events
   end
 
   def attend

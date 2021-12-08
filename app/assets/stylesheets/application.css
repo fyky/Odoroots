@@ -43,13 +43,13 @@ header{
 .nav li {
   width: 140px;
   text-align: center;
-  background-color: #333;
+  background-color: #eee;
   display: inline-block;
 }
 
 .nav li a {
   text-decoration: none;
-  color: #fff;
+  color: #000;
   font-weight: bold;
 }
 

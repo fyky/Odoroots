@@ -12,3 +12,18 @@
   <%= @event.introduction %>
 <h2>開催地</h2>
   <%= @event.address %>
+
+
+<% if @event.user.id = current_user.id %>
+  <h2>参加したいユーザー</h2>
+
+
+        <tr>
+          <td>aa</td>
+
+        </tr>
+
+    </table>
+
+
+<% end %>

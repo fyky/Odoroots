@@ -42,6 +42,9 @@ class EventsController < ApplicationController
     #   redirect_to new_event_path and return
     # end
     @event = Event.find(params[:id])
+
+    # @reservation = Reservation.find(2)
+
   end
 
   def edit
