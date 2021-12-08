@@ -33,6 +33,8 @@ class ReservationsController < ApplicationController
   end
 
   def index
+    @user = current_user
+    @reservations = @user.reservations
   end
 
 

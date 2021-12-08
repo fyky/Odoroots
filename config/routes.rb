@@ -19,13 +19,15 @@ Rails.application.routes.draw do
       post "confirm"
     end
 
-    resources :reservations, only: [:new, :create, :index] do
+    resources :reservations, only: [:new, :create] do
       collection do
         post "confirm"
         get "complete"
       end
     end
   end
+
+  resources :reservations, only: [:index]
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

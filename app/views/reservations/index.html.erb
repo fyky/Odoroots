@@ -1,2 +1,13 @@
-<h1>Reservations#index仮予約一覧ページ</h1>
-<p>Find me in app/views/reservations/index.html.erb</p>
+<h1>Reservations仮予約一覧ページ</h1>
+  <table>
+    <tr>
+      <th>イベント名</th>
+      <th>コメント</th>
+    </tr>
+    <% @reservations.each do |reservation| %>
+      <tr>
+        <td><%= reservation.event.name %></td>
+        <td><%= reservation.comment %></td>
+      </tr>
+    <% end %>
+  </table>
