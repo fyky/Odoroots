@@ -1,4 +1,4 @@
-<h1>予約ページ</h1>
+<h1>予約確認ページ</h1>
 
     <h2>写真</h2>
       <%= attachment_image_tag @event, :image, :fill, 300, 300, fallback: "/assets/noimage.png" %>
@@ -26,20 +26,22 @@
       <%= @event.meeting_place %>
     <h2>注意事項</h2>
       <%= @event.attention %>
-  <%= form_with model: @reservation, url: confirm_event_reservations_path, method: :post, local:true do |f| %>
+
   <h1>予約ユーザー情報</h1>
     <h2>ユーザーネーム</h2>
       <%= current_user.name %>
-    <h2></h2>
-    <%= current_user.id %>
-
     <h2>コメント</h2>
+      <%= @reservation.comment %>
 
-      <%= f.text_field :comment %>
-      <%= f.hidden_field :user_id, value: @reservation.user_id %>
-      <%= f.hidden_field :event_id, value: @event.id %>
+  <%= form_with model: @reservation, url: event_reservations_path, method: :post, local:true do |f| %>
 
-      <%= f.submit '予約確認へ進む' %>
+      <%= f.hidden_field :comment %>
+      <%= f.hidden_field :user_id, value: 1 %>
+      <%= f.hidden_field :event_id %>
 
+      	<%= f.submit '送信' %>
   <% end %>
-<p>Find me in app/views/reservations/new.html.erb</p>
+
+
+
+<p>Find me in app/views/reservations/cofirm.html.erb</p>
