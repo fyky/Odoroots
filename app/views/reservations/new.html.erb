@@ -38,6 +38,7 @@
       <%= f.text_field :comment %>
       <%= f.hidden_field :user_id, value: @reservation.user_id %>
       <%= f.hidden_field :event_id, value: @event.id %>
+      <%= f.hidden_field :permission, value: 0 %>
 
       <%= f.submit '予約確認へ進む' %>
 
