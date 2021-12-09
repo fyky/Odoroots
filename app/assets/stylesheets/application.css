@@ -20,30 +20,35 @@
   box-sizing: border-box;
 }
 
+/*ヘッダー */
 header{
   height:60px;
   width:100%;
-  background-color:#e6e6fa;
-  /*position:fixed;*/
+  background-color:#b0c4de;
+  position:fixed;
   justify-content: space-between;
   display: flex;
 }
 
-/*ヘッダーメニュー*/
-.logo{
+/*ヘッダーロゴ*/
+.logo {
+  font-family: monospace;
+  margin-left:20px;
+  font-size: 40px;
   display: flex;
   width:200px;
-  background-color: #eee;
 }
+
+/*ヘッダーメニュー*/
 .nav {
   list-style: none;
   justify-content: flex-end;
 }
 
 .nav li {
+  margin-top:15px;
   width: 140px;
   text-align: center;
-  background-color: #eee;
   display: inline-block;
 }
 
@@ -54,15 +59,38 @@ header{
 }
 
 
+/* 見出しh1~h2 */
+h1 {
+  width:500px;
+  padding: .25em 0 .25em .75em;
+  margin-bottom: 20px;
+  border-left: 6px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
 
+h2 {
+  width:300px;
+  padding: .5em .75em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
 
+main{
+  padding-top:80px;
+  padding-left:20px;
+  background-color: #eee;
+  line-height: 25pt;
+}
+
+/*横並び2カラム記事まとめ*/
 .container{
-  margin-top:60px;
   width:100%;
   display: flex;
   justify-content: center;
 }
 
+/*ユーザーページ */
 .info{
   width:350px;
   background-color: #ff6699;
@@ -74,7 +102,20 @@ header{
   height:200px;
   background-color: #fff;
 }
+
 .content{
   width: calc(100% - 350px);
   background-color: #eee;
+}
+
+/*イベントページ*/
+.event_image{
+width:650px;
+}
+
+.event_main{
+  width: calc(100% - 650px);
+}
+
+.event_detail{
 }

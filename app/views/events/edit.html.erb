@@ -1,37 +1,39 @@
-<h1>Events#編集ページ</h1>
-  <%= form_with model: @event, url: event_path, local:true do |f| %>
+<main>
+  <h1>Events#編集ページ</h1>
+    <%= form_with model: @event, url: event_path, local:true do |f| %>
 
-    <h2>写真</h2>
-      <%= f.attachment_field :image, placeholder: "プロフィール画像" %>
-    <h2>イベントタイトル</h2>
-      <%= f.text_field :name %>
-    <h2>開催地（市まで）</h2>
-      <%= f.text_field :address %>
-    <h2>開催地（市以降）</h2>
-      <%= f.text_field :address_detail %>
-    <h2>開催日</h2>
-      <%= f.date_select :date, {start_year: 2020, end_year: 2025,use_month_numbers: true} %>
-    <h2>開始時間</h2>
-      <%= f.text_field :start_time %>
-    <h2>終了予定時間</h2>
-      <%= f.text_field :end_time %>
-    <h2>紹介文</h2>
-      <%= f.text_area :introduction %>
-    <h2>参加条件</h2>
-      <%= f.text_field :requirement %>
-    <h2>募集締め切り日</h2>
-      <%= f.date_select :deadline, {start_year: 2020, end_year: 2025,use_month_numbers: true} %>
-    <h2>持ち物</h2>
-      <%= f.text_field :belongings %>
-    <h2>集合場所</h2>
-      <%= f.text_field :meeting_place %>
-    <h2>注意事項</h2>
-      <%= f.text_field :attention %>
+      <h2>写真</h2>
+        <%= f.attachment_field :image, placeholder: "プロフィール画像" %>
+      <h2>イベントタイトル</h2>
+        <%= f.text_field :name %>
+      <h2>開催地（市まで）</h2>
+        <%= f.text_field :address %>
+      <h2>開催地（市以降）</h2>
+        <%= f.text_field :address_detail %>
+      <h2>開催日</h2>
+        <%= f.date_select :date, {start_year: 2020, end_year: 2025,use_month_numbers: true} %>
+      <h2>開始時間</h2>
+        <%= f.text_field :start_time %>
+      <h2>終了予定時間</h2>
+        <%= f.text_field :end_time %>
+      <h2>紹介文</h2>
+        <%= f.text_area :introduction %>
+      <h2>参加条件</h2>
+        <%= f.text_field :requirement %>
+      <h2>募集締め切り日</h2>
+        <%= f.date_select :deadline, {start_year: 2020, end_year: 2025,use_month_numbers: true} %>
+      <h2>持ち物</h2>
+        <%= f.text_field :belongings %>
+      <h2>集合場所</h2>
+        <%= f.text_field :meeting_place %>
+      <h2>注意事項</h2>
+        <%= f.text_field :attention %>
 
-    <!-- event id を渡す -->
-    <% if params[:id] %>
-      <%= f.hidden_field :id, value: params[:id] %>
-    <% end %>
+      <!-- event id を渡す -->
+      <% if params[:id] %>
+        <%= f.hidden_field :id, value: params[:id] %>
+      <% end %>
 
-      <%= f.submit '保存' %>
-    <% end %>
+        <%= f.submit '保存' %>
+      <% end %>
+</main>

@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     collection do
       post "confirm"
     end
-    resources :reservations, only: [:new, :create, :show] do
+    resources :reservations, only: [:new, :create, :show, :update] do
       collection do
         post "confirm"
       end

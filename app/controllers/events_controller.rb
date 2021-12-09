@@ -43,8 +43,11 @@ class EventsController < ApplicationController
     # end
     @event = Event.find(params[:id])
 
-    # @reservation = Reservation.find(2)
+    @reservations = Reservation.where(event_id: @event)
 
+# if @reservations.permission == "yet"
+# @reservations.update(permission: "done")
+# end
   end
 
   def edit

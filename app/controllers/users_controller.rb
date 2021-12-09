@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @events = @user.events
+    @reservations = @user.reservations
+    @attends = @reservations.where(permission: "done")
   end
 
   def edit

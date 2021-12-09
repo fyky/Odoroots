@@ -1,13 +1,27 @@
-<h1>イベントタイトル</h1>
-  <%= @event.name %>
-<h2>写真</h2>
-  <%= attachment_image_tag @event, :image, :fill, 400, 400, fallback: "/assets/noimage.png" %>
+<main>
+<h1><%= @event.name %></h1>
+<div class="container">
+
+<div class="event_image">
+  <%= attachment_image_tag @event, :image, :fill, 600, 400, fallback: "/assets/noimage.png" %>
+
+
+  </div>
+
+
+  <div class="event_main">
 <h2>開催日時</h2>
   <%= @event.date %>
   <%= @event.start_time %>から<%= @event.end_time %>
 <h2>参加人数</h2>
 <h2>参加条件</h2>
   <%= @event.requirement %>
+
+</div>
+</div>
+<div class="event_detail">
+
+
 <h2>説明</h2>
   <%= @event.introduction %>
 <h2>開催地</h2>
@@ -16,14 +30,28 @@
 
 <% if @event.user.id = current_user.id %>
   <h2>参加したいユーザー</h2>
+    <% @reservations.each do |reservation| %>
+      <tr>
+        <td><%= reservation.user.name %></td>
+        <td><%= reservation.comment %></td>
+        <td><%= reservation.permission %></td>
+
+    <td>
+      <%= form_with model: reservation, url: event_reservation_path(reservation.event, reservation), local: true do |f| %>
+        <%= f.select :permission, Reservation.permissions.keys.map { |k| [I18n.t("enums.reservation.permission.#{k}"), k] } %>
+        <%= f.submit "更新", class: "" %>
+      <% end %>
+      </td>
 
 
-        <tr>
-          <td>aa</td>
+      </tr>
+    <% end %>
 
-        </tr>
+
 
     </table>
 
 
 <% end %>
+</div>
+</main>

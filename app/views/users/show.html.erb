@@ -1,3 +1,4 @@
+<main>
 <div class="container">
 <div class="info">
 <div class="profile_image">
@@ -38,7 +39,23 @@
 
   ここに主催イベントを表示
   <h1>参加イベント（直近3件）</h1>
+    <table>
+      <% @attends.each do |attend| %>
+        <tr>
+          <td><%= attend.event.name %></td>
+        </tr>
+      <% end %>
+    </table>
+
+
+
+
+
+
+
+
   ここに参加イベントを表示
   <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </div>
 </div>
+</main>

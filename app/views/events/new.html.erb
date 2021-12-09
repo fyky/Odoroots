@@ -1,3 +1,4 @@
+<main>
 <h1>Events#new</h1>
 
   <%= form_with model: @event, url: confirm_events_path, method: :post, local:true do |f| %>
@@ -13,9 +14,9 @@
     <h2>開催日</h2>
       <%= f.date_select :date, {start_year: 2020, end_year: 2025,use_month_numbers: true} %>
     <h2>開始時間</h2>
-      <%= f.text_field :start_time %>
+      <%= f.time_field :start_time %>
     <h2>終了予定時間</h2>
-      <%= f.text_field :end_time %>
+      <%= f.time_field :end_time %>
     <h2>紹介文</h2>
       <%= f.text_area :introduction %>
     <h2>参加条件</h2>
@@ -36,3 +37,4 @@
 
       <%= f.submit '確認画面へ' %>
     <% end %>
+</main>

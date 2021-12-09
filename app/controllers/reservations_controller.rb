@@ -33,6 +33,12 @@ class ReservationsController < ApplicationController
   def show
   end
 
+  def update
+    @reservation = Reservation.find(params[:id])
+    @reservation.update(reservation_params)
+    redirect_to reservations_path
+  end
+
   def index
     @user = current_user
     @reservations = @user.reservations
