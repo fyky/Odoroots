@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_08_111330) do
+ActiveRecord::Schema.define(version: 2021_12_09_144727) do
 
   create_table "events", force: :cascade do |t|
     t.string "name", null: false
@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(version: 2021_12_08_111330) do
     t.integer "user_id"
     t.integer "genre_id"
     t.integer "number"
+    t.boolean "end", default: false, null: false
+    t.boolean "recruitment", default: true, null: false
   end
 
   create_table "genres", force: :cascade do |t|

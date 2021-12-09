@@ -36,6 +36,17 @@ class ReservationsController < ApplicationController
   def update
     @reservation = Reservation.find(params[:id])
     @reservation.update(reservation_params)
+
+    @event = Event.find(params[:event_id])
+    @reservations = Reservation.where(event_id: @event)
+
+
+    if @reservations.where(permission: "done").count == @event.number
+      @reservation.event.update(recruitment: false)
+    # else
+    #   @reservation.event.update(recruitment: true)
+    end
+
     redirect_to reservations_path
   end
 

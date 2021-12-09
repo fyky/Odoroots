@@ -9,21 +9,37 @@
   </div>
 
 
+
   <div class="event_main">
-<h2>開催日時</h2>
-  <%= @event.date %>
-  <%= @event.start_time.strftime( "%H:%M" ) %>から<%= @event.end_time.strftime( "%H:%M" ) %>
-<h2>参加人数</h2>
-<h2>参加条件</h2>
-  <%= @event.requirement %>
+    <% unless @event.end == false %>
+      <button class="button01">このイベントは開催終了しました</button>
+    <% end %>
 
+    <% if @event.recruitment == true %>
+      <button class="button02">参加募集中</button>
+    <% else %>
+      <button class="button01">募集終了しました</button>
+    <% end %>
+
+    <h2>開催日時</h2>
+      <%= @event.date %>
+      <%= @event.start_time.strftime( "%H:%M" ) %>から<%= @event.end_time.strftime( "%H:%M" ) %>
+    <h2>参加人数</h2>
+      <%= @event.number %>
+    <h2>参加条件</h2>
+      <%= @event.requirement %>
+  </div>
 </div>
-</div>
+
 <div class="event_detail">
+  <h2>主催者</h2>
+<%= attachment_image_tag @event.user, :image, :fill, 130, 130, fallback: "/assets/noimage.png" %>
 
 
-<h2>説明</h2>
+<div class="balloon2-left">
   <%= @event.introduction %>
+</div>
+
 <h2>開催地</h2>
   <%= @event.address %>
 

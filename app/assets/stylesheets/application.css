@@ -140,3 +140,55 @@ th {
   background: #b0c4de;
   color: #fff;
 }
+
+
+.balloon2-left {
+  position: relative;
+  display: inline-block;
+  margin: 1.5em 0 1.5em 15px;
+  padding: 7px 10px;
+  width: 500px;
+  color: #555;
+  font-size: 16px;
+  background: #FFF;
+  border: solid 3px #555;
+  box-sizing: border-box;
+  border-radius: 15px;
+}
+
+.balloon2-left:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -24px;
+  margin-top: -12px;
+  border: 12px solid transparent;
+  border-right: 12px solid #FFF;
+  z-index: 2;
+}
+
+.balloon2-left:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -30px;
+  margin-top: -14px;
+  border: 14px solid transparent;
+  border-right: 14px solid #555;
+  z-index: 1;
+}
+
+/*ボタン*/
+.button01{
+  border:1px dotted #eee;
+  background-color:#808080;
+  font-size: 20px;
+  padding:10px;
+}
+
+.button02{
+  border:1px dotted #eee;
+  background-color:#db7093;
+  font-size: 20px;
+  padding:10px;
+}

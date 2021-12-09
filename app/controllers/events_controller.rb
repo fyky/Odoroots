@@ -60,6 +60,7 @@ class EventsController < ApplicationController
     if @event.update(event_params)
       redirect_to event_path(@event), notice: "You have updated user successfully."
     end
+
   end
 
 
@@ -70,7 +71,8 @@ class EventsController < ApplicationController
       :name, :image,
       :address, :address_detail,
       :date, :start_time, :end_time,
-      :introduction, :requirement, :deadline, :belongings, :meeting_place, :attention
+      :introduction, :requirement, :deadline, :belongings, :meeting_place, :attention,
+      :number
       )
   end
 
