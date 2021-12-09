@@ -10,11 +10,4 @@ class Event < ApplicationRecord
     self.where(publish: true)
   end
 
-  def self.start_time
-    start_time.strftime("%I:%M")
-  end
-
-  def self.end_time
-    end_time.strftime("%I:%M")
-  end
 end

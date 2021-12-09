@@ -1,61 +1,64 @@
 <main>
-<div class="container">
-<div class="info">
-<div class="profile_image">
-  <%= attachment_image_tag @user, :image, :fill, 130, 130, fallback: "/assets/noimage.png" %>
-  <p><%= @user.name %></p>
-  <p>follow</p>
-  <p>follow:-- follower:--</p>
-</div>
+  <div class="container">
+    <div class="info">
+      <div class="profile_image">
+        <%= attachment_image_tag @user, :image, :fill, 160, 160, fallback: "/assets/noimage.png" %>
+        <p><%= @user.name %></p>
+        <p>follow</p>
+        <p>follow:-- follower:--</p>
+      </div>
+      <p>居住地
+        <%= @user.address %>
+      </p>
+      <p>紹介文
+        <%= @user.introduction %>
+      </p>
+      <p>年齢
+        <%= @user.age %>歳
+      </p>
+      <p>ジャンル
+        <%= @user.genre %>
+      </p>
+      <p>Twitter Instagram Facebook LINE</p>
+      <p><%= link_to "編集",edit_user_path(@user) %></p>
+    </div>
+
+    <div class="content">
+      <h1>主催イベント（直近3件）</h1>
+        <table>
+          <tr>
+            <th>開催日</th>
+            <th>イベント名</th>
+            <th>詳細</th>
+          </tr>
+          <% @events.each do |event| %>
+            <tr>
+              <td><%= event.date %></td>
+              <td><%= event.name %></td>
+              <td><%= link_to "show", event_path(event.id) %></td>
+            </tr>
+          <% end %>
+        </table>
+
+      <h1>参加イベント（直近3件）</h1>
+        <table>
+          <tr>
+            <th>開催日</th>
+            <th>イベント名</th>
+            <th>詳細</th>
+          </tr>
+          <% @attends.each do |attend| %>
+            <tr>
+              <td><%= attend.event.date %></td>
+              <td><%= attend.event.name %></td>
+              <td>詳細</td>
+            </tr>
+          <% end %>
+        </table>
 
 
-<p>居住地
-  <%= @user.address %>
-</p>
-<p>紹介文
-  <%= @user.introduction %>
-</p>
-<p>年齢
-  <%= @user.age %>歳
-</p>
-<p>ジャンル
-  <%= @user.genre %>
-</p>
-<p>Twitter Instagram Facebook LINE</p>
-<p><%= link_to "編集",edit_user_path(@user) %></p>
-</div>
-
-<div class="content">
-  <h1>主催イベント（直近3件）</h1>
-    <table>
-      <% @events.each do |event| %>
-        <tr>
-          <td><%= event.name %></td>
-          <td><%= link_to "show", event_path(event.id) %></td>
-        </tr>
-      <% end %>
-    </table>
-
-
-  ここに主催イベントを表示
-  <h1>参加イベント（直近3件）</h1>
-    <table>
-      <% @attends.each do |attend| %>
-        <tr>
-          <td><%= attend.event.name %></td>
-        </tr>
-      <% end %>
-    </table>
-
-
-
-
-
-
-
-
-  ここに参加イベントを表示
-  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-</div>
-</div>
+      ここに参加イベントを表示
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    </div>
+  </div>
 </main>

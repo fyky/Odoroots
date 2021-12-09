@@ -24,6 +24,10 @@ class UsersController < ApplicationController
   end
 
   def attend
+    @user = User.find(params[:id])
+    @events = @user.events
+    @reservations = @user.reservations
+    @attends = @reservations.where(permission: "done")
   end
 
 

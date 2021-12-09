@@ -1,15 +1,18 @@
-<h1>Reservations仮予約一覧ページ</h1>
-  <table>
-    <tr>
-      <th>イベント名</th>
-      <th>コメント</th>
-    </tr>
-    <% @reservations.each do |reservation| %>
+<main>
+  <h1>仮予約イベント一覧</h1>
+    <table>
       <tr>
-        <td><%= reservation.event.name %></td>
-        <td><%= reservation.comment %></td>
-        <td><%= reservation.permission %></td>
-
+        <th>イベント名</th>
+        <th>コメント</th>
+        <th>承認ステータス</th>
       </tr>
-    <% end %>
-  </table>
+
+      <% @reservations.each do |reservation| %>
+        <tr>
+          <td><%= reservation.event.name %></td>
+          <td><%= reservation.comment %></td>
+          <td><%= reservation.permission_i18n %></td>
+        </tr>
+      <% end %>
+    </table>
+</main>

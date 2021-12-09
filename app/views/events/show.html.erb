@@ -12,7 +12,7 @@
   <div class="event_main">
 <h2>開催日時</h2>
   <%= @event.date %>
-  <%= @event.start_time %>から<%= @event.end_time %>
+  <%= @event.start_time.strftime( "%H:%M" ) %>から<%= @event.end_time.strftime( "%H:%M" ) %>
 <h2>参加人数</h2>
 <h2>参加条件</h2>
   <%= @event.requirement %>
@@ -29,22 +29,24 @@
 
 
 <% if @event.user.id = current_user.id %>
-  <h2>参加したいユーザー</h2>
-    <% @reservations.each do |reservation| %>
+  <h2>参加承認</h2>
+    <table>
       <tr>
-        <td><%= reservation.user.name %></td>
-        <td><%= reservation.comment %></td>
-        <td><%= reservation.permission %></td>
-
-    <td>
-      <%= form_with model: reservation, url: event_reservation_path(reservation.event, reservation), local: true do |f| %>
-        <%= f.select :permission, Reservation.permissions.keys.map { |k| [I18n.t("enums.reservation.permission.#{k}"), k] } %>
-        <%= f.submit "更新", class: "" %>
-      <% end %>
-      </td>
-
-
+        <th>予約したユーザー</th>
+        <th>予約時のコメント</th>
+        <th>承認ステータス状態</th>
       </tr>
+      <% @reservations.each do |reservation| %>
+        <tr>
+          <td><%= reservation.user.name %></td>
+          <td><%= reservation.comment %></td>
+          <td>
+            <%= form_with model: reservation, url: event_reservation_path(reservation.event, reservation), local: true do |f| %>
+              <%= f.select :permission, Reservation.permissions.keys.map {|k| [I18n.t("enums.reservation.permission.#{k}"), k]} %>
+              <%= f.submit "更新", class: "" %>
+            <% end %>
+          </td>
+        </tr>
     <% end %>
 
 

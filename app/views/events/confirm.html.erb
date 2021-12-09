@@ -11,9 +11,9 @@
     <h2>開催日</h2>
       <%= @event.date %>
     <h2>開始時間</h2>
-      <%= @event.start_time %>
+      <%= @event.start_time.strftime( "%H:%M" ) %>
     <h2>終了予定時間</h2>
-      <%= @event.end_time %>
+      <%= @event.end_time.strftime( "%H:%M" ) %>
     <h2>紹介文</h2>
       <%= @event.introduction %>
     <h2>参加条件</h2>

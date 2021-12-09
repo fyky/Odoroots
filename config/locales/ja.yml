@@ -1,0 +1,8 @@
+ja:
+  enums:
+    reservation:
+      permission:
+        yet: "未承認"
+        done: "承認済"
+        not: "拒否"
+

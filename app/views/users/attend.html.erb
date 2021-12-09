@@ -1,0 +1,10 @@
+<main>
+  <h1>参加イベント（直近3件）</h1>
+    <table>
+      <% @attends.each do |attend| %>
+        <tr>
+          <td><%= attend.event.name %></td>
+        </tr>
+      <% end %>
+    </table>
+</main>
