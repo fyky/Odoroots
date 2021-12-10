@@ -12,6 +12,10 @@ Rails.application.routes.draw do
       get "host"
       get "attend"
     end
+    
+    resource :relationships, only: [:create, :destroy]
+      get 'followings' => 'relationships#followings', as: 'followings'
+      get 'followers' => 'relationships#followers', as: 'followers'
   end
 
   resources :events, except: [:destroy] do
