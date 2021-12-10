@@ -6,7 +6,7 @@
     <% end %>
   </div>
 
-  
+
   <h1>Events一覧全投稿ページ</h1>
   <div class="event_container">
     <% @events.each do |event| %>
@@ -18,4 +18,6 @@
       </div>
     <% end %>
   </div>
+
+  <%= paginate @events %>
 </main>

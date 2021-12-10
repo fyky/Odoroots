@@ -19,6 +19,7 @@ Rails.application.routes.draw do
       post "confirm"
       get "search"
     end
+
     resources :reservations, only: [:new, :create, :show, :update] do
       collection do
         post "confirm"

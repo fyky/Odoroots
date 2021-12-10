@@ -230,3 +230,16 @@ th {
   font-size: 20px;
   padding:10px;
 }
+
+/*イベントページのページネーション*/
+.pagination{
+  background-color:#fff;
+  text-align:center;
+}
+
+.pagination a{
+  color:#000;
+}
+.pagination a:hover{
+  color:#b0c4de;
+}

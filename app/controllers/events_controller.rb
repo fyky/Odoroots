@@ -33,7 +33,8 @@ class EventsController < ApplicationController
   end
 
   def index
-    @events = Event.published
+    #.page(pamars[:page])でページネーションを追加
+    @events = Event.published.page(params[:page]).per(9)
   end
 
   def show
@@ -63,7 +64,7 @@ class EventsController < ApplicationController
   end
 
   def search
-    @events = Event.published.search(params[:keyword])
+    @events = Event.published.search(params[:keyword]).page(params[:page]).per(9)
     @keyword = params[:keyword]
     render "index"
   end
