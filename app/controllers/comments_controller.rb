@@ -7,8 +7,6 @@ class CommentsController < ApplicationController
     redirect_to event_path(event)
   end
 
-  def destroy
-  end
 
   private
 

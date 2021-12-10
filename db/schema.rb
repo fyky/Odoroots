@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_10_053947) do
+ActiveRecord::Schema.define(version: 2021_12_10_061436) do
 
   create_table "comments", force: :cascade do |t|
     t.text "comment", null: false
@@ -41,6 +41,13 @@ ActiveRecord::Schema.define(version: 2021_12_10_053947) do
     t.integer "genre_id"
     t.integer "number"
     t.boolean "recruitment", default: true, null: false
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "event_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "genres", force: :cascade do |t|

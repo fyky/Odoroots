@@ -4,7 +4,7 @@ class Event < ApplicationRecord
   belongs_to :user
   has_many :reservations, dependent: :destroy
   has_many :comments, dependent: :destroy
-
+  has_many :favorites, dependent: :destroy
 
   # イベント一覧（publishがtrueのものを取得するメソッド
   # Event.all -> Event.published
@@ -14,6 +14,10 @@ class Event < ApplicationRecord
 
   def self.search(keyword)
     where(["name like? OR address like?", "%#{keyword}%", "%#{keyword}%"])
+  end
+  
+  def favorited_by?(user)
+    favorites.where(user_id: user.id).exists?
   end
 
 end

@@ -20,7 +20,9 @@ Rails.application.routes.draw do
       get "search"
     end
 
-    resources :comments, only: [:create, :destroy]
+    resource :comments, only: [:create]
+
+    resource :favorites, only: [:create, :destroy]
 
     resources :reservations, only: [:new, :create, :show, :update] do
       collection do
