@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-    @events = @user.events
+    @events = @user.events.order(created_at: :desc).limit(3)
     @reservations = @user.reservations
-    @attends = @reservations.where(permission: "done")
+    @attends = @reservations.where(permission: "done").order(created_at: :desc).limit(3)
   end
 
   def edit
@@ -20,14 +20,14 @@ class UsersController < ApplicationController
   end
 
   def host
-    @events = current_user.events
+    @events = current_user.events.order(created_at: :desc)
   end
 
   def attend
     @user = User.find(params[:id])
     @events = @user.events
     @reservations = @user.reservations
-    @attends = @reservations.where(permission: "done")
+    @attends = @reservations.where(permission: "done").order(created_at: :desc)
   end
 
 
