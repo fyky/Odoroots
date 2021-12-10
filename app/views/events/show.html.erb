@@ -45,6 +45,26 @@
 <h2>開催地</h2>
   <%= @event.address %>
 
+<h3>コメント</h3>
+<p>コメント件数：<%= @event.comments.count %></p>
+
+<% @event.comments.each do |comment| %>
+<div>
+  <%= comment.user.name %>
+  <%= comment.created_at.strftime('%Y/%m/%d') %>
+  <%= comment.comment %>
+</div>
+<% end %>
+
+<div>
+<%= form_with(model:[@event, @comment], local: true) do |f| %>
+  <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
+  <%= f.submit "送信する" %>
+<% end %>
+</div>
+
+
+
 
 <% if @event.user.id = current_user.id %>
   <h2>参加承認</h2>

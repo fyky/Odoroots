@@ -3,6 +3,8 @@ class Event < ApplicationRecord
 
   belongs_to :user
   has_many :reservations, dependent: :destroy
+  has_many :comments, dependent: :destroy
+
 
   # イベント一覧（publishがtrueのものを取得するメソッド
   # Event.all -> Event.published

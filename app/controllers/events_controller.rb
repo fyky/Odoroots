@@ -46,6 +46,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
 
     @reservations = Reservation.where(event_id: @event)
+    @comment = Comment.new
 
 # if @reservations.permission == "yet"
 # @reservations.update(permission: "done")
