@@ -43,8 +43,8 @@ class ReservationsController < ApplicationController
 
     if @reservations.where(permission: "done").count == @event.number
       @reservation.event.update(recruitment: false)
-    # else
-    #   @reservation.event.update(recruitment: true)
+    else
+      @reservation.event.update(recruitment: true)
     end
 
     redirect_to reservations_path

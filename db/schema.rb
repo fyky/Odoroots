@@ -32,7 +32,6 @@ ActiveRecord::Schema.define(version: 2021_12_09_144727) do
     t.integer "user_id"
     t.integer "genre_id"
     t.integer "number"
-    t.boolean "end", default: false, null: false
     t.boolean "recruitment", default: true, null: false
   end
 

@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :events, except: [:destroy] do
     collection do
       post "confirm"
+      get "search"
     end
     resources :reservations, only: [:new, :create, :show, :update] do
       collection do

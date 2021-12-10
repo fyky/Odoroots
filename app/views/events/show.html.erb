@@ -11,7 +11,7 @@
 
 
   <div class="event_main">
-    <% unless @event.end == false %>
+    <% if Date.current < @event.date %>
       <button class="button01">このイベントは開催終了しました</button>
     <% end %>
 
@@ -25,7 +25,7 @@
       <%= @event.date %>
       <%= @event.start_time.strftime( "%H:%M" ) %>から<%= @event.end_time.strftime( "%H:%M" ) %>
     <h2>参加人数</h2>
-      <%= @event.number %>
+      <%= @event.reservations.where(permission: "done").count %>人/<%= @event.number %>人（定員）
     <h2>参加条件</h2>
       <%= @event.requirement %>
   </div>
@@ -33,9 +33,11 @@
 
 <div class="event_detail">
   <h2>主催者</h2>
-<%= attachment_image_tag @event.user, :image, :fill, 130, 130, fallback: "/assets/noimage.png" %>
+  <div class="host_image">
 
+<%= attachment_image_tag @event.user, :image, :fill, 200, 200, fallback: "/assets/noimage.png" %>
 
+</div>
 <div class="balloon2-left">
   <%= @event.introduction %>
 </div>

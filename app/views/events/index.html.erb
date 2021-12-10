@@ -1,10 +1,21 @@
-<h1>Events一覧ページ</h1>
-  <table>
-    <% @events.each do |event| %>
-    <tr>
-      <td><%= attachment_image_tag event, :image, :fill, 200, 100, fallback: "/assets/noimage.png", size:'200x100' %></td>
-      <td><%= event.name %><%= link_to "show", event_path(event.id) %></td>
-      <td><%= event.address %></td>
-    </tr>
+<main>
+  <div>
+    <%= form_with url: search_events_path, method: :get, local: true do |f| %>
+      <%= f.text_field :keyword, value: @keyword %>
+      <%= f.submit "検索" %>
     <% end %>
-  </table>
+  </div>
+
+  
+  <h1>Events一覧全投稿ページ</h1>
+  <div class="event_container">
+    <% @events.each do |event| %>
+      <div class="event_index">
+        <%= attachment_image_tag event, :image, :fill, 400, 300, fallback: "/assets/noimage.png", size:'400x300'  %>
+          <h3><%= link_to event_path(event.id) do %><%= event.name %><% end %></h3>
+          <p><%= event.date %></p>
+          <p><%= event.address %></p>
+      </div>
+    <% end %>
+  </div>
+</main>

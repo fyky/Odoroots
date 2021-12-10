@@ -24,7 +24,6 @@ class EventsController < ApplicationController
   end
 
 
-
   def create
     @event = Event.find(params[:event][:id].to_i)
     # event_id を取り出してから publish を true に変更
@@ -62,6 +61,13 @@ class EventsController < ApplicationController
     end
 
   end
+
+  def search
+    @events = Event.published.search(params[:keyword])
+    @keyword = params[:keyword]
+    render "index"
+  end
+
 
 
   # ストロングパラメータ

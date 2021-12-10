@@ -78,6 +78,17 @@ h2 {
   background-color:#b0c4de;
 }
 
+h3 a{
+  color:#000;
+  text-decoration: none;
+}
+
+h3 a:hover{
+  color:#eee;
+  text-decoration: none;
+}
+
+
 main{
   padding-top:60px;
   padding-left:20px;
@@ -99,6 +110,26 @@ main{
   height:100%;
   text-align: center;
 }
+
+/*イベント一覧表示*/
+.event_container{
+  width:100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.event_index{
+  width:30%;
+  border:1px solid #333;
+  height:500px;
+  text-align: center;
+  margin:1%;
+  background-color: #fff;
+}
+
+
+
 
 .profile_image{
   padding:20px;
@@ -123,6 +154,11 @@ width:650px;
   width: calc(100% - 650px);
 }
 
+.host_image{
+  display:inline-block;
+  width:200px; height:200px;
+  vertical-align:  middle;
+}
 .event_detail{
 }
 
@@ -154,6 +190,8 @@ th {
   border: solid 3px #555;
   box-sizing: border-box;
   border-radius: 15px;
+  height:200px;
+    vertical-align:  middle;
 }
 
 .balloon2-left:before {
