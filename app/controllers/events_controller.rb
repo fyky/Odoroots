@@ -33,8 +33,10 @@ class EventsController < ApplicationController
   end
 
   def index
+    @allevents = Event.published.order(created_at: :desc)
     #.page(pamars[:page])でページネーションを追加
-    @events = Event.published.page(params[:page]).per(9)
+    @events = @allevents.page(params[:page]).per(9)
+
   end
 
   def show
@@ -64,7 +66,9 @@ class EventsController < ApplicationController
   end
 
   def search
-    @events = Event.published.search(params[:keyword]).page(params[:page]).per(9)
+    @allevents = Event.published.search(params[:keyword]).order(created_at: :desc)
+    @events = @allevents.page(params[:page]).per(9)
+
     @keyword = params[:keyword]
     render "index"
   end
