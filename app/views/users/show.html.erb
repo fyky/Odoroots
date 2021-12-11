@@ -2,7 +2,7 @@
   <div class="container">
     <div class="info">
       <div class="profile_image">
-        <%= attachment_image_tag @user, :image, :fill, 160, 160, fallback: "/assets/noimage.png" %>
+        <%= attachment_image_tag @user, :image, :fill, 160, 160, fallback: "/assets/noimage.png", size:'160x160' %>
         <p><%= @user.name %></p>
 
 

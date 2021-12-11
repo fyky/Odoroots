@@ -4,7 +4,7 @@
 
 <div class="user-view clearfix ">
   <%= link_to user_path(notification.visitor) do %>
-    a
+    <%= attachment_image_tag visitor, :image, :fill, 160, 160, fallback: "/assets/noimage.png", size:'100x100' %>
   <% end %>
   <%= notification_form(notification) %><span class="moderate-font"><%= " (#{time_ago_in_words(notification.created_at)} 前)" %></span>
   <br>
