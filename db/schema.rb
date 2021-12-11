@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_10_163005) do
+ActiveRecord::Schema.define(version: 2021_12_11_061854) do
 
   create_table "comments", force: :cascade do |t|
     t.text "comment", null: false
@@ -56,6 +56,14 @@ ActiveRecord::Schema.define(version: 2021_12_10_163005) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "room_id"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "notifications", force: :cascade do |t|
     t.integer "visitor_id"
     t.integer "visited_id"
@@ -81,6 +89,19 @@ ActiveRecord::Schema.define(version: 2021_12_10_163005) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "permission", default: 0, null: false
+  end
+
+  create_table "room_users", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "room_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

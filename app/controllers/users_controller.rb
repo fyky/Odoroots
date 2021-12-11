@@ -4,6 +4,35 @@ class UsersController < ApplicationController
     @events = @user.events.order(created_at: :desc).limit(3)
     @reservations = @user.reservations
     @attends = @reservations.where(permission: "done").order(created_at: :desc).limit(3)
+
+
+    @current_user_room_user=RoomUser.where(user_id: current_user.id)
+    @user_room_user=RoomUser.where(user_id: @user.id)
+    # もしuseridが現在のユーザーじゃなかったら
+    unless @user.id == current_user.id
+      @current_user_room_user.each do |cu|
+        @user_room_user.each do |u|
+          # ルームIDの特定
+          if cu.room_id == u.room_id then
+            @have_room = true
+            @room_id = cu.room_id
+          end
+        end
+      end
+      if @isRoom
+      else
+        @room = Room.new
+        @room_user = RoomUser.new
+      end
+    end
+
+
+
+
+
+
+
+
   end
 
   def edit

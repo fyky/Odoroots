@@ -20,6 +20,8 @@ class User < ApplicationRecord
   # passive_notifications:相手がした通知
   has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
 
+  has_many :messages, dependent: :destroy
+  has_many :room_users, dependent: :destroy
 
 
   def age
