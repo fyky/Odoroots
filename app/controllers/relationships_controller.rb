@@ -1,10 +1,12 @@
 class RelationshipsController < ApplicationController
 
   def create
+    @user = User.find(params[:user_id])
     current_user.follow(params[:user_id])
-
+    # 通知
+    @user.create_notification_follow!(current_user)
+    # ここまで
     redirect_to request.referer
-        # binding.irb
   end
 
   def destroy

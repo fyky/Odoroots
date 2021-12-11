@@ -21,8 +21,14 @@
         <!--ユーザー認証後メニュー-->
         <% if user_signed_in? %>
           <li>
-            <%= link_to events_path do %><i class="fas fa-search-plus"></i></i>イベント<% end %></li>
-          <li><i class="fas fa-bell"></i><a href="#">通知</a></li>
+            <%= link_to events_path do %><i class="fas fa-search-plus"></i></i>イベント<% end %>
+          </li>
+          <% if unchecked_notifications.any? %>
+    <i class="fa fa-circle" style="color: gold;"></i>
+<% end %>
+          <li>
+            <%= link_to notifications_path do %><i class="fas fa-bell"></i></i>通知<% end %>
+          </li>
           <li><i class="fas fa-heart"></i><a href="#">いいね</a></li>
           <li><i class="fas fa-envelope"></i><a href="#">DM</a></li>
           <li><i class="fas fa-calendar-alt"></i><a href="#">カレンダー</a></li>

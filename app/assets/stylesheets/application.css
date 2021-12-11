@@ -28,6 +28,7 @@ header{
   position:fixed;
   justify-content: space-between;
   display: flex;
+  z-index: 3;
 }
 
 /*ヘッダーロゴ*/
@@ -222,6 +223,7 @@ th {
   background-color:#808080;
   font-size: 20px;
   padding:10px;
+  margin-bottom:10px;
 }
 
 .button02{
@@ -229,6 +231,7 @@ th {
   background-color:#db7093;
   font-size: 20px;
   padding:10px;
+  margin-bottom:10px;
 }
 
 /*イベントページのページネーション*/

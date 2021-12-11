@@ -12,7 +12,7 @@ Rails.application.routes.draw do
       get "host"
       get "attend"
     end
-    
+
     resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
@@ -37,5 +37,5 @@ Rails.application.routes.draw do
 
   resources :reservations, only: [:index]
 
-
+  resources :notifications, only: [:index]
 end

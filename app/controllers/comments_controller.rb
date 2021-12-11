@@ -4,6 +4,9 @@ class CommentsController < ApplicationController
     comment = current_user.comments.new(comment_params)
     comment.event_id = event.id
     comment.save
+    # 通知
+    event.create_notification_comment!(current_user, comment.id)
+    # ここまで
     redirect_to event_path(event)
   end
 
