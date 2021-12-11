@@ -17,18 +17,26 @@
 
 
    <div class="chat">
-     <% if @messages.present? %>
-       <% @messages.each do |m| %>
-         <div class="chat-box">
-           <div class="chat-text">
-             <%= m.body %>
-             <%= m.created_at.strftime("%Y-%m-%d %H:%M") %>
-           </div>
-         </div>
-       <% end %>
-       <%else%>
-         <p>メッセージはまだありません</p>
-     <% end %>
+    <% if @messages.present? %>
+      <% @messages.each do |m| %>
+
+        <% if m.user_id == current_user.id %>
+          <div class="current_user">
+            <strong class="current_user"><%= m.body %></strong>
+            <small class="current_user"><%= m.user.name %>さん</small>
+            <small class="current_user"><%= m.created_at.strftime("%Y-%m-%d %H:%M") %></small>
+          </div>
+        <% else %>
+          <div class="visited_user">
+            <strong class="visited_user"><%= m.body %></strong>
+            <small class="visited_user"><%= m.user.name %>さん</small>
+            <small class="visited_user"><%= m.created_at.strftime("%Y-%m-%d %H:%M") %></small>
+          </div>
+        <% end %>
+      <% end %>
+    <% else %>
+      <p>メッセージはまだありません</p>
+    <% end %>
    </div>
 
 

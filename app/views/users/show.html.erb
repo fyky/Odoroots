@@ -41,25 +41,22 @@
 
   <!--現在ログインしているユーザーではない場合 -->
   <% unless @user.id == current_user.id %>
-   <% if @have_room == true %>
-  <!-- 既にルームが作成されている場合はそのチャットルームに遷移するボタンを表示 -->
-     <%= link_to "ダイレクトメッセージ", room_path %>
-   <% else %>
-  <!-- roomsテーブルに情報を送信 -->
-     <%= form_with model: @room, local: true do |f|%>
-     <!-- room_usersテーブルに情報を送信 -->
-       <%= fields_for @room_user do |r| %>
-       <!-- room_usersテーブルにuser_idを含める -->
-         <%= r.hidden_field :user_id, value: @user.id %>
-       <% end %>
-       <%= f.submit "チャットを始める" %>
-     <% end %>
-   <% end %>
-<% end %>
+    <!-- 既にルームが作成されている場合はそのチャットルームに遷移するボタンを表示 -->
+    <% if @have_room == true %>
+     <%= link_to "ダイレクトメッセージ", room_path(@room_id) %>
+    <% else %>
+      <!-- roomsテーブルに情報を送信 -->
+      <%= form_with model: @room, local: true do |f|%>
+      <!-- room_usersテーブルに情報を送信 -->
+        <%= fields_for @room_user do |r| %>
+        <!-- room_usersテーブルにuser_idを含める -->
+          <%= r.hidden_field :name, value: @user.id %>
 
-
-
-
+        <% end %>
+        <%= f.submit "チャットを始める" %>
+      <% end %>
+    <% end %>
+  <% end %>
 
 
     </div>

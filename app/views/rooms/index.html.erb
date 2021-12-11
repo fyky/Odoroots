@@ -1,0 +1,13 @@
+ <main>
+
+    <% @current_user_room_user.each do |cu| %>
+      <div class="event_index">
+          <p>
+            <%= link_to room_path(@room_id) do %>
+            チャットの相手の名前を出したい</p>
+            <% end %>
+      </div>
+    <% end %>
+
+
+</main>

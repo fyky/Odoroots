@@ -19,6 +19,39 @@ class RoomsController < ApplicationController
     end
   end
 
+  def index
+    # @room_user=RoomUser.find(2)
+    # @room_users = RoomUser.where(user_id: current_user.id)
+    # # @rooms = Room.all
+    # @room = RoomUser.find(1).room_id
+
+
+    # RoomUser.find(params[:id]).room_id
+
+    #         @have_room = true
+    #         @room_id = cu.room_id
+
+
+    # @room_users = RoomUser.where(user_id: current_user.id)
+
+
+    @user = current_user
+    @current_user_room_user=RoomUser.where(user_id: current_user.id)
+    @user_room_user=RoomUser.where(user_id: @user.id)
+
+
+      @current_user_room_user.each do |cu|
+        @user_room_user.each do |u|
+          # ルームIDの特定
+          if cu.room_id == u.room_id then
+            @have_room = true
+            @room_id = cu.room_id
+          end
+        end
+      end
+
+  end
+
  private
 
  def join_room_params

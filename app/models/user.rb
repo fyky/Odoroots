@@ -24,6 +24,7 @@ class User < ApplicationRecord
   has_many :room_users, dependent: :destroy
 
 
+
   def age
     ((Date.today.strftime("%Y%m%d").to_i - birthday.strftime("%Y%m%d").to_i)/10000).floor
   end
