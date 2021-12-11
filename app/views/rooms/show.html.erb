@@ -1,7 +1,6 @@
 <main>
 <div class="chat-room">
  <h1>メッセージ</h1>
- # ルーム内のユーザー表示部分
  <% @room_users.each do |r| %>
  <div class="user-name">
  <strong>
@@ -43,9 +42,9 @@
 
    <div class="posts">
      <%= form_with model: @message, local: true do |f| %>
-       <%= f.text_field :body, placeholder: "メッセージを入力してください" %>
+       <%= f.text_field :body, class: "dm_form", placeholder: "メッセージを入力してください" %>
        <%= f.hidden_field :room_id, value: @room.id %>
-       <%= f.submit "送信する" %>
+       <%= f.submit "送信する", :class => 'comment_send' %>
      <% end %>
    </div>
 

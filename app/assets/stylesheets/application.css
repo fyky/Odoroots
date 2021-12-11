@@ -20,6 +20,34 @@
   box-sizing: border-box;
 }
 
+body{
+/*font-family: "Yu Gothic", YuGothic, Verdana, Meiryo, "M+ 1p", sans-serif;*/
+}
+
+
+/*リンク*/
+main a{
+  text-decoration: none;
+  color:#4682b4;
+}
+
+main a:hover{
+  text-decoration: none;
+  color:#eee;
+  background-color: #191970;
+}
+
+
+
+
+
+
+
+
+p{
+  padding-left:15px;
+}
+
 /*ヘッダー */
 header{
   height:60px;
@@ -38,6 +66,12 @@ header{
   font-size: 40px;
   display: flex;
   width:200px;
+}
+
+.logo a {
+  font-family: monospace;
+  color: #191970;
+  text-decoration: none;
 }
 
 /*ヘッダーメニュー*/
@@ -60,22 +94,21 @@ header{
 }
 
 
+
 /* 見出しh1~h2 */
 h1 {
-  width:500px;
+  display: inline-block;
   margin-top:20px;
-  padding: .25em 0 .25em .75em;
+  padding: 10px 0px 10px 10px;
   margin-bottom: 20px;
-  border-left: 6px solid #ccc;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 2px solid #ccc;
 }
 
 h2 {
-  width:300px;
-  padding: .5em .75em;
+  width:150px;
+  padding: 10px 15px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  margin-bottom: 15px;
   background-color:#b0c4de;
 }
 
@@ -110,6 +143,8 @@ main{
   background-color: #b0c4de;
   height:100%;
   text-align: center;
+  border-radius: 0px 0px 10px 10px;
+  box-shadow: 5px 5px 2px gray;
 }
 
 /*イベント一覧表示*/
@@ -157,11 +192,32 @@ width:650px;
 
 .host_image{
   display:inline-block;
-  width:200px; height:200px;
+  width:200px;
+  height:200px;
   vertical-align:  middle;
 }
 .event_detail{
 }
+
+.comment{
+  width:100%;
+  display: flex;
+  padding:10px;
+}
+
+.comment_image{
+  /*border:1px solid;*/
+  background-color: #fff;
+  width:60px;
+  padding:10px;
+}
+
+.comment_text{
+  background-color: #fff;
+  /*border:1px solid;*/
+  width:50%;
+}
+
 
 /* テーブル設定 */
 table{
@@ -185,10 +241,9 @@ th {
   margin: 1.5em 0 1.5em 15px;
   padding: 7px 10px;
   width: 500px;
-  color: #555;
   font-size: 16px;
   background: #FFF;
-  border: solid 3px #555;
+  /*border: solid 3px #555;*/
   box-sizing: border-box;
   border-radius: 15px;
   height:200px;
@@ -213,7 +268,7 @@ th {
   left: -30px;
   margin-top: -14px;
   border: 14px solid transparent;
-  border-right: 14px solid #555;
+  /*border-right: 14px solid #555;*/
   z-index: 1;
 }
 
@@ -277,4 +332,37 @@ th {
     -o-border-radius:30px;
     box-sizing: border-box;
     padding: 10px;
+}
+
+
+.comment_form{
+  width: 300px;
+  height: 100px;
+  border:none;
+  padding:10px;
+}
+
+
+.comment_send {
+  display:inline-block;
+  border-radius:5px;
+  text-align:center;
+  padding:8px;
+  background:#000000;
+  color:#ffffff;
+  line-height:10px;
+  transition: .3s;
+  border: 2px solid #000000;
+}
+
+.comment_send:hover {
+  color:#a9a9a9;
+  background-color:#eee;
+}
+
+.dm_form {
+  width: 500px;
+  height: 30px;
+  border:none;
+  padding:10px;
 }

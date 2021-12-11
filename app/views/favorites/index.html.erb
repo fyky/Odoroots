@@ -1,0 +1,13 @@
+<main>
+  <h1>いいねした投稿一覧</h1>
+<table>
+  <% @favorites.each do |favorite|%>
+    <tr>
+      <td><%= link_to event_path(favorite.event.id) do %><%= favorite.event.name %><% end %></td>
+    </tr>
+  <% end %>
+</table>
+
+
+
+</main>

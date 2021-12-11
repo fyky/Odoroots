@@ -1,112 +1,113 @@
 <main>
-<h1><%= @event.name %></h1>
-<div class="container">
+  <!-- イベント名 -->
+  <h1><%= @event.name %></h1>
+  <div class="container">
+    <!-- イベント写真 -->
+    <div class="event_image">
+      <%= attachment_image_tag @event, :image, :fill, 600, 400, fallback: "/assets/noimage.png" %>
+    </div>
 
-<div class="event_image">
-  <%= attachment_image_tag @event, :image, :fill, 600, 400, fallback: "/assets/noimage.png" %>
+    <div class="event_main">
+      <% if @event.favorited_by?(current_user) %>
+        <p>
+          <%= link_to event_favorites_path(@event), method: :delete do %>
+            ♥<%= @event.favorites.count %> いいね
+          <% end %>
+        </p>
+        <% else %>
+        <p>
+          <%= link_to event_favorites_path(@event), method: :post do %>
+            ♡<%= @event.favorites.count %> いいね
+          <% end %>
+        </p>
+      <% end %>
 
+    <!-- イベント開催、参加ボタン -->
+      <% if Date.current < @event.date %>
+        <button class="button01">このイベントは開催終了しました</button>
+      <% end %>
 
-  </div>
-
-
-
-  <div class="event_main">
-    <% if @event.favorited_by?(current_user) %>
-      <p>
-        <%= link_to event_favorites_path(@event), method: :delete do %>
-          ♥<%= @event.favorites.count %> いいね
-        <% end %>
-      </p>
+      <% if @event.recruitment == true %>
+        <button class="button02">参加募集中</button>
       <% else %>
-      <p>
-        <%= link_to event_favorites_path(@event), method: :post do %>
-          ♡<%= @event.favorites.count %> いいね
-        <% end %>
-      </p>
-    <% end %>
+        <button class="button01">募集終了しました</button>
+      <% end %>
 
 
-    <% if Date.current < @event.date %>
-      <button class="button01">このイベントは開催終了しました</button>
-    <% end %>
+      <h2>開催日時</h2>
+        <p>
+          <%= @event.date %>
+          <%= @event.start_time.strftime( "%H:%M" ) %>から<%= @event.end_time.strftime( "%H:%M" ) %>
+        </p>
+      <h2>参加人数</h2>
+        <p><%= @event.reservations.where(permission: "done").count %>人/<%= @event.number %>人（定員）</p>
+      <h2>参加条件</h2>
+        <p><%= @event.requirement %></p>
 
-    <% if @event.recruitment == true %>
-      <button class="button02">参加募集中</button>
-    <% else %>
-      <button class="button01">募集終了しました</button>
-    <% end %>
-
-    <h2>開催日時</h2>
-      <%= @event.date %>
-      <%= @event.start_time.strftime( "%H:%M" ) %>から<%= @event.end_time.strftime( "%H:%M" ) %>
-    <h2>参加人数</h2>
-      <%= @event.reservations.where(permission: "done").count %>人/<%= @event.number %>人（定員）
-    <h2>参加条件</h2>
-      <%= @event.requirement %>
+    </div>
   </div>
-</div>
 
-<div class="event_detail">
-  <h2>主催者</h2>
-  <div class="host_image">
+  <div class="event_detail">
+    <h2>主催者</h2>
+    <div class="host_image">
+      <%= attachment_image_tag @event.user, :image, :fill, 200, 200, fallback: "/assets/noimage.png" %>
+    </div>
+    <div class="balloon2-left">
+      <%= @event.introduction %>
+    </div>
 
-<%= attachment_image_tag @event.user, :image, :fill, 200, 200, fallback: "/assets/noimage.png" %>
+    <h2>開催地</h2>
+      <%= @event.address %>
 
-</div>
-<div class="balloon2-left">
-  <%= @event.introduction %>
-</div>
+    <h2>コメント</h2>
+    <p>コメント件数：<%= @event.comments.count %>件</p>
+      <% @event.comments.reverse.each do |comment| %>
+        <div class="comment">
+          <div class="comment_image">
+              <%= attachment_image_tag comment.user, :image, :fill, 50, 50, style: "border-radius:20px;", fallback: "/assets/noimage.png", size:'50x50' %><br>
 
-<h2>開催地</h2>
-  <%= @event.address %>
+          </div>
+          <div class="comment_text">
+            <p>
+              <%= link_to user_path(comment.user) do %>
+              <%= comment.user.name %>
+              <% end %>
+              <small style="color:#a9a9a9;"><%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %></small></p>
+            <p><%= comment.comment %></p>
+          </div>
+      </div>
+      <% end %>
 
-<h3>コメント</h3>
-<p>コメント件数：<%= @event.comments.count %></p>
-
-<% @event.comments.each do |comment| %>
-<div>
-  <%= comment.user.name %>
-  <%= comment.created_at.strftime('%Y/%m/%d') %>
-  <%= comment.comment %>
-</div>
-<% end %>
-
-<div>
-<%= form_with(model:[@event, @comment], local: true) do |f| %>
-  <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
-  <%= f.submit "送信する" %>
-<% end %>
-</div>
-
+      <h5><p>コメントを投稿する</p></h5>
+        <%= form_with(model:[@event, @comment], local: true) do |f| %>
+          <p>
+            <%= f.text_area :comment, class: "comment_form", rows:'5',placeholder: "コメントをここに" %>
+            <%= f.submit "送信する", :class => 'comment_send' %>
+          </p>
+        <% end %>
 
 
-
-<% if @event.user.id = current_user.id %>
-  <h2>参加承認</h2>
-    <table>
-      <tr>
-        <th>予約したユーザー</th>
-        <th>予約時のコメント</th>
-        <th>承認ステータス状態</th>
-      </tr>
-      <% @reservations.each do |reservation| %>
-        <tr>
-          <td><%= reservation.user.name %></td>
-          <td><%= reservation.comment %></td>
-          <td>
-            <%= form_with model: reservation, url: event_reservation_path(reservation.event, reservation), local: true do |f| %>
-              <%= f.select :permission, Reservation.permissions.keys.map {|k| [I18n.t("enums.reservation.permission.#{k}"), k]} %>
-              <%= f.submit "更新", class: "" %>
-            <% end %>
-          </td>
-        </tr>
+    <% if @event.user.id = current_user.id %>
+      <h2>参加承認</h2>
+        <table>
+          <tr>
+            <th>予約したユーザー</th>
+            <th>予約時のコメント</th>
+            <th>承認ステータス状態</th>
+          </tr>
+        <% @reservations.each do |reservation| %>
+          <tr>
+            <td><%= reservation.user.name %></td>
+            <td><%= reservation.comment %></td>
+            <td>
+              <%= form_with model: reservation, url: event_reservation_path(reservation.event, reservation), local: true do |f| %>
+                <%= f.select :permission, Reservation.permissions.keys.map {|k| [I18n.t("enums.reservation.permission.#{k}"), k]} %>
+                <%= f.submit "更新", class: "" %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
     <% end %>
-
-
-
-    </table>
-
-
-<% end %>
-</div>
+  </div>
 </main>
