@@ -50,7 +50,7 @@ class RoomsController < ApplicationController
           end
         end
       end
-
+# @last_message = Message.where(room_id: @room_id).last.body
   end
 
  private

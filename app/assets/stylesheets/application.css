@@ -209,7 +209,7 @@ width:650px;
 .event_detail{
 }
 
-.comment{
+.comment, .dm{
   width:100%;
   display: flex;
   padding:10px;
@@ -380,6 +380,23 @@ th {
   padding:10px;
 }
 
+.dm{
+  justify-content:center;
+}
+
+.dm_index{
+  background-color:#fff;
+  width: calc(40% - 70px);
+  height:80px;
+  padding:5px;
+}
+
+.dm_image{
+    display: inline-block;
+    width:70px;
+    height:70px;
+
+}
 
 .message{
   padding:15px;

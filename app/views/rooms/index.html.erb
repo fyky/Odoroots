@@ -1,12 +1,20 @@
  <main>
-
+  <h1>DM一覧</h1>
     <% @current_user_room_user.each do |cu| %>
-      <div class="event_index">
-          <p>
-            <%= link_to room_path(@room_id) do %>
-            <%= RoomUser.find(@room_id).user.name %></p>
-            <% end %>
+    <div class="dm">
+      <div class="dm_image">
+        <%= attachment_image_tag RoomUser.find(@room_id).user, :image, :fill, 70, 70,
+        style: "border-radius:35px;", fallback: "/assets/noimage.png", size:'70x70' %>
       </div>
+      <div class="dm_index">
+        <%= link_to room_path(@room_id) do %>
+          <%= RoomUser.find(@room_id).user.name %>
+        <% end %>
+        とのトーク
+        <p style="color:#808080;"><%= Message.where(room_id:1).last.user.name %>:<%= Message.where(room_id: @room_id).last.body %>
+        <small><%= Message.where(room_id: @room_id).last.created_at.strftime('%Y/%m/%d %H:%M:%S') %></small></p>
+      </div>
+    </div>
     <% end %>
 
 
