@@ -46,6 +46,7 @@ class RoomsController < ApplicationController
           if cu.room_id == u.room_id then
             @have_room = true
             @room_id = cu.room_id
+
           end
         end
       end

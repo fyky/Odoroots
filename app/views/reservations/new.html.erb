@@ -1,46 +1,47 @@
-<h1>予約ページ</h1>
+<main>
+  <h1>予約ページ</h1>
 
-    <h2>写真</h2>
-      <%= attachment_image_tag @event, :image, :fill, 300, 300, fallback: "/assets/noimage.png" %>
-    <h2>イベントタイトル</h2>
-      <%= @event.name %>
-    <h2>開催地（市まで）</h2>
-      <%= @event.address %>
-    <h2>開催地（市以降）</h2>
-      <%= @event.address_detail %>
-    <h2>開催日</h2>
-      <%= @event.date %>
-    <h2>開始時間</h2>
-      <%= @event.start_time %>
-    <h2>終了予定時間</h2>
-      <%= @event.end_time %>
-    <h2>紹介文</h2>
-      <%= @event.introduction %>
-    <h2>参加条件</h2>
-      <%= @event.requirement %>
-    <h2>募集締め切り日</h2>
-      <%= @event.deadline %>
-    <h2>持ち物</h2>
-      <%= @event.belongings %>
-    <h2>集合場所</h2>
-      <%= @event.meeting_place %>
-    <h2>注意事項</h2>
-      <%= @event.attention %>
-  <%= form_with model: @reservation, url: confirm_event_reservations_path, method: :post, local:true do |f| %>
-  <h1>予約ユーザー情報</h1>
-    <h2>ユーザーネーム</h2>
-      <%= current_user.name %>
-    <h2></h2>
-    <%= current_user.id %>
+      <h2>写真</h2>
+        <%= attachment_image_tag @event, :image, :fill, 300, 300, fallback: "/assets/noimage.png" %>
+      <h2>イベントタイトル</h2>
+        <%= @event.name %>
+      <h2>開催地（市まで）</h2>
+        <%= @event.address %>
+      <h2>開催地（市以降）</h2>
+        <%= @event.address_detail %>
+      <h2>開催日</h2>
+        <%= @event.date %>
+      <h2>開始時間</h2>
+        <%= @event.start_time %>
+      <h2>終了予定時間</h2>
+        <%= @event.end_time %>
+      <h2>紹介文</h2>
+        <%= @event.introduction %>
+      <h2>参加条件</h2>
+        <%= @event.requirement %>
+      <h2>募集締め切り日</h2>
+        <%= @event.deadline %>
+      <h2>持ち物</h2>
+        <%= @event.belongings %>
+      <h2>集合場所</h2>
+        <%= @event.meeting_place %>
+      <h2>注意事項</h2>
+        <%= @event.attention %>
+    <%= form_with model: @reservation, url: confirm_event_reservations_path, method: :post, local:true do |f| %>
+    <h1>予約ユーザー情報</h1>
+      <h2>ユーザーネーム</h2>
+        <%= current_user.name %>
+      <h2></h2>
+      <%= current_user.id %>
 
-    <h2>コメント</h2>
+      <h2>コメント</h2>
 
-      <%= f.text_field :comment %>
-      <%= f.hidden_field :user_id, value: @reservation.user_id %>
-      <%= f.hidden_field :event_id, value: @event.id %>
-      <%= f.hidden_field :permission, value: "yet" %>
+        <%= f.text_field :comment %>
+        <%= f.hidden_field :user_id, value: @reservation.user_id %>
+        <%= f.hidden_field :event_id, value: @event.id %>
+        <%= f.hidden_field :permission, value: "yet" %>
 
-      <%= f.submit '予約確認へ進む' %>
+        <%= f.submit '予約確認へ進む' %>
 
-  <% end %>
-
+    <% end %>
+</main>

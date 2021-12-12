@@ -1,65 +1,76 @@
 <main>
   <!-- イベント名 -->
   <h1><%= @event.name %></h1>
+    <!-- イベント開催、参加ボタン -->
+    <% unless Date.current > @event.date %>
+      <button class="button02">開催前</button>
+        <% if @event.recruitment == true %>
+          <button class="button02">参加募集中</button>
+        <% else %>
+          <button class="button01">募集終了しました</button>
+        <% end %>
+    <% else %>
+      <button class="button01">開催終了</button>
+    <% end %>
+
+    <!-- いいね -->
+    <div class="<%= "event_" + @event.id.to_s %>", style="display:inline-block;">
+      <%= render "favorites/favorite", event: @event %>
+    </div>
+
+
+
   <div class="container">
     <!-- イベント写真 -->
     <div class="event_image">
       <%= attachment_image_tag @event, :image, :fill, 600, 400, fallback: "/assets/noimage.png" %>
     </div>
 
+
     <div class="event_main">
-      <% if @event.favorited_by?(current_user) %>
-        <p>
-          <%= link_to event_favorites_path(@event), method: :delete do %>
-            ♥<%= @event.favorites.count %> いいね
-          <% end %>
-        </p>
-        <% else %>
-        <p>
-          <%= link_to event_favorites_path(@event), method: :post do %>
-            ♡<%= @event.favorites.count %> いいね
-          <% end %>
-        </p>
-      <% end %>
-
-    <!-- イベント開催、参加ボタン -->
-      <% if Date.current < @event.date %>
-        <button class="button01">このイベントは開催終了しました</button>
-      <% end %>
-
-      <% if @event.recruitment == true %>
-        <button class="button02">参加募集中</button>
-      <% else %>
-        <button class="button01">募集終了しました</button>
-      <% end %>
 
 
-      <h2>開催日時</h2>
-        <p>
+      <p>
+        <h2>開催日時</h2>
           <%= @event.date %>
           <%= @event.start_time.strftime( "%H:%M" ) %>から<%= @event.end_time.strftime( "%H:%M" ) %>
-        </p>
-      <h2>参加人数</h2>
-        <p><%= @event.reservations.where(permission: "done").count %>人/<%= @event.number %>人（定員）</p>
-      <h2>参加条件</h2>
-        <p><%= @event.requirement %></p>
+      </p>
+      <p>
+        <h2>開催地　</h2>
+          <%= @event.address %>
+      </p>
+      <p>
+        <h2>参加人数</h2>
+          <%= @event.reservations.where(permission: "done").count %>人/<%= @event.number %>人（定員）
+      </p>
+      <p>
+        <h2>参加条件</h2>
+          <%= @event.requirement %>
+      </p>
+
+      <!-- 予約ボタン表示 -->
+      <% unless Date.current > @event.date %>
+        <%= link_to new_event_reservation_path(@event) do %>予約へ進む<% end %>
+      <% end %>
 
     </div>
   </div>
 
   <div class="event_detail">
-    <h2>主催者</h2>
+    <h3>主催者</h3><br>
     <div class="host_image">
-      <%= attachment_image_tag @event.user, :image, :fill, 200, 200, fallback: "/assets/noimage.png" %>
+      <%= attachment_image_tag @event.user, :image, :fill, 200, 200, style: "border-radius:100px;", fallback: "/assets/noimage.png" %><br>
+      <%= link_to user_path(@event.user.id) do %><%= @event.user.name %><% end %>
     </div>
     <div class="balloon2-left">
       <%= @event.introduction %>
     </div>
+    <br>
 
-    <h2>開催地</h2>
-      <%= @event.address %>
+    <h3>開催地（詳細）</h3>
+      <p><%= @event.address %><%= @event.address_detail %></p>
 
-    <h2>コメント</h2>
+    <h3>コメント</h3>
     <p>コメント件数：<%= @event.comments.count %>件</p>
       <% @event.comments.reverse.each do |comment| %>
         <div class="comment">

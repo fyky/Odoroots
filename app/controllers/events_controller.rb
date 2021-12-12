@@ -44,7 +44,6 @@ class EventsController < ApplicationController
     #   redirect_to new_event_path and return
     # end
     @event = Event.find(params[:id])
-
     @reservations = Reservation.where(event_id: @event)
     @comment = Comment.new
 

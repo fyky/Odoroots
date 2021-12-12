@@ -4,7 +4,7 @@
       <div class="event_index">
           <p>
             <%= link_to room_path(@room_id) do %>
-            チャットの相手の名前を出したい</p>
+            <%= RoomUser.find(@room_id).user.name %></p>
             <% end %>
       </div>
     <% end %>

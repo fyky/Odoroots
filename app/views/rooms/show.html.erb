@@ -4,9 +4,9 @@
  <% @room_users.each do |r| %>
  <div class="user-name">
  <strong>
-     <a class="rooms-user-link" href="/users/<%= r.user.id %>">
-       <%= r.user.name %>さん
-     </a>
+    <%= link_to user_path(r.user.id) do %>
+      <%= r.user.name %>さん
+    <% end %>
  </strong>
  </div>
  <% end %>
@@ -38,9 +38,10 @@
     <% end %>
    </div>
 
+<br><br><br>
 
 
-   <div class="posts">
+   <div class="message">
      <%= form_with model: @message, local: true do |f| %>
        <%= f.text_field :body, class: "dm_form", placeholder: "メッセージを入力してください" %>
        <%= f.hidden_field :room_id, value: @room.id %>

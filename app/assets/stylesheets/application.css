@@ -38,14 +38,9 @@ main a:hover{
 }
 
 
-
-
-
-
-
-
 p{
   padding-left:15px;
+  padding-bottom: 10px;
 }
 
 /*ヘッダー */
@@ -100,18 +95,24 @@ h1 {
   display: inline-block;
   margin-top:20px;
   padding: 10px 0px 10px 10px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   border-bottom: 2px solid #ccc;
 }
 
 h2 {
-  width:150px;
+  display: inline-block;
   padding: 10px 15px;
   border: 1px solid #ccc;
   border-radius: 4px;
   background-color:#b0c4de;
+  font-size: 20px;
+  margin-right:10px;
 }
 
+h3{
+  display: inline;
+  background-image: linear-gradient(rgba(0,0,0,0) 70%, #4682b4 70%);
+}
 h3 a{
   color:#000;
   text-decoration: none;
@@ -122,6 +123,14 @@ h3 a:hover{
   text-decoration: none;
 }
 
+h4{
+  border:1px solid;
+  font-size: 20px;
+  border-radius: 4px;
+  background-color:#4682b4;
+  padding:8px;
+  display: inline-block;
+}
 
 main{
   padding-top:60px;
@@ -193,7 +202,8 @@ width:650px;
 .host_image{
   display:inline-block;
   width:200px;
-  height:200px;
+  height:250px;
+  text-align: center;
   vertical-align:  middle;
 }
 .event_detail{
@@ -238,15 +248,15 @@ th {
 .balloon2-left {
   position: relative;
   display: inline-block;
-  margin: 1.5em 0 1.5em 15px;
-  padding: 7px 10px;
-  width: 500px;
+  margin: 10px 0px 60px 10px;
+  padding: 10px 15px;
+  width: 55%;
   font-size: 16px;
   background: #FFF;
   /*border: solid 3px #555;*/
   box-sizing: border-box;
   border-radius: 15px;
-  height:200px;
+  height:180px;
     vertical-align:  middle;
 }
 
@@ -276,17 +286,20 @@ th {
 .button01{
   border:1px dotted #eee;
   background-color:#808080;
-  font-size: 20px;
-  padding:10px;
+  font-size: 15px;
+  padding:3px;
   margin-bottom:10px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .button02{
   border:1px dotted #eee;
   background-color:#db7093;
-  font-size: 20px;
+  font-size: 15px;
   padding:10px;
   margin-bottom:10px;
+  margin-left: 20px;
 }
 
 /*イベントページのページネーション*/
@@ -365,4 +378,17 @@ th {
   height: 30px;
   border:none;
   padding:10px;
+}
+
+
+.message{
+  padding:15px;
+  margin-left: -20px;
+  text-align:center;
+  background-color:#808080;
+  height:80px;
+  position:fixed;
+  width:100%;
+  bottom: 0;
+  opacity: 0.5;
 }
