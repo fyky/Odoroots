@@ -70,33 +70,21 @@
     <h3>開催地（詳細）</h3>
       <p><%= @event.address %><%= @event.address_detail %></p>
 
-    <h3>コメント</h3>
-    <p>コメント件数：<%= @event.comments.count %>件</p>
-      <% @event.comments.reverse.each do |comment| %>
-        <div class="comment">
-          <div class="comment_image">
-              <%= attachment_image_tag comment.user, :image, :fill, 50, 50, style: "border-radius:20px;", fallback: "/assets/noimage.png", size:'50x50' %><br>
-
-          </div>
-          <div class="comment_text">
-            <p>
-              <%= link_to user_path(comment.user) do %>
-              <%= comment.user.name %>
-              <% end %>
-              <small style="color:#a9a9a9;"><%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %></small></p>
-            <p><%= comment.comment %></p>
-          </div>
-      </div>
-      <% end %>
+    <!-- コメント -->
+    <div class="comment_ajax">
+      <%= render "comments/comment", event: @event, comment: @comment %>
+    </div>
 
       <h5><p>コメントを投稿する</p></h5>
-        <%= form_with(model:[@event, @comment], local: true) do |f| %>
+        <%= form_with(model:[@event, @comment]) do |f| %>
           <p>
             <%= f.text_area :comment, class: "comment_form", rows:'5',placeholder: "コメントをここに" %>
             <%= f.submit "送信する", :class => 'comment_send' %>
           </p>
         <% end %>
 
+
+    </div>
 
     <% if @event.user.id = current_user.id %>
       <h2>参加承認</h2>

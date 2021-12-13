@@ -23,6 +23,7 @@ class MessagesController < ApplicationController
             notification.checked = true
         end
         notification.save if notification.valid?
+
       # ここまでを追加
 
       redirect_to room_path(@message.room_id)

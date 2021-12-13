@@ -12,37 +12,16 @@
  <% end %>
 
  <hr>
- <div class="chats">
+  <div id="direct_messages" room_id="<%= @room.id %>">
+    <%= render "messages/message", messages: @messages %>
+  </div>
 
-
-   <div class="chat">
-    <% if @messages.present? %>
-      <% @messages.each do |m| %>
-
-        <% if m.user_id == current_user.id %>
-          <div class="current_user">
-            <strong class="current_user"><%= m.body %></strong>
-            <small class="current_user"><%= m.user.name %>さん</small>
-            <small class="current_user"><%= m.created_at.strftime("%Y-%m-%d %H:%M") %></small>
-          </div>
-        <% else %>
-          <div class="visited_user">
-            <strong class="visited_user"><%= m.body %></strong>
-            <small class="visited_user"><%= m.user.name %>さん</small>
-            <small class="visited_user"><%= m.created_at.strftime("%Y-%m-%d %H:%M") %></small>
-          </div>
-        <% end %>
-      <% end %>
-    <% else %>
-      <p>メッセージはまだありません</p>
-    <% end %>
-   </div>
 
 <br><br><br>
 
 
    <div class="message">
-     <%= form_with model: @message, local: true do |f| %>
+     <%= form_with model: @message, remote: true do |f| %>
        <%= f.text_field :body, class: "dm_form", placeholder: "メッセージを入力してください" %>
        <%= f.hidden_field :room_id, value: @room.id %>
        <%= f.submit "送信する", :class => 'comment_send' %>

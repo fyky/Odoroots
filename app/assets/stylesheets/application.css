@@ -225,7 +225,8 @@ width:650px;
 .comment_text{
   background-color: #fff;
   /*border:1px solid;*/
-  width:50%;
+  width: calc(60% - 60px);
+  padding:10px;
 }
 
 
