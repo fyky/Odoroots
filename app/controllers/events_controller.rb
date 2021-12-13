@@ -59,8 +59,18 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
     @event.user_id = current_user.id
+    @reservations = Reservation.where(event_id: @event)
+
     if @event.update(event_params)
-      redirect_to event_path(@event), notice: "You have updated user successfully."
+      # if @reservations.event.recruitment.count == @event.number.count
+      if @reservations.where(permission: "done").count == @event.number
+        @reservations.find_by(event_id: @event, permission: "done").event.update(recruitment: false)
+      else
+        @reservations.find_by(event_id: @event, permission: "done").event.update(recruitment: true)
+      end
+
+      # else
+      redirect_to event_path(@event)
     end
 
   end

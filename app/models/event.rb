@@ -35,7 +35,7 @@ class Event < ApplicationRecord
       )
       # 自分の投稿に対するいいねの場合は、通知しない（通知済みとする）
       if notification.visitor_id == notification.visited_id
-        notification.checked = true
+        notification.is_checked = true
       end
       notification.save if notification.valid?
     end

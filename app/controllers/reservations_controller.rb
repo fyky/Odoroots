@@ -47,7 +47,7 @@ class ReservationsController < ApplicationController
       @reservation.event.update(recruitment: true)
     end
 
-    redirect_to reservations_path
+    redirect_to event_path(@event)
   end
 
   def index
