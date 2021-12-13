@@ -46,7 +46,8 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @reservations = Reservation.where(event_id: @event)
     @comment = Comment.new
-
+@attendreservations = Reservation.where(event_id: @event, permission:"done")
+@attend = current_user.reservations.find_by(event_id: @event, permission:"done")
 # if @reservations.permission == "yet"
 # @reservations.update(permission: "done")
 # end

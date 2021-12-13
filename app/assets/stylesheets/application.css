@@ -112,6 +112,7 @@ h2 {
 h3{
   display: inline;
   background-image: linear-gradient(rgba(0,0,0,0) 70%, #4682b4 70%);
+  margin-left:10px;
 }
 h3 a{
   color:#000;
@@ -298,9 +299,10 @@ th {
   border:1px dotted #eee;
   background-color:#db7093;
   font-size: 15px;
-  padding:10px;
+  padding:3px;
   margin-bottom:10px;
   margin-left: 20px;
+  margin-right: 20px;
 }
 
 /*イベントページのページネーション*/
@@ -409,4 +411,9 @@ th {
   width:100%;
   bottom: 0;
   opacity: 0.5;
+}
+
+
+main ul{
+  padding-left:40px;
 }

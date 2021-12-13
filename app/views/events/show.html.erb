@@ -82,12 +82,35 @@
             <%= f.submit "送信する", :class => 'comment_send' %>
           </p>
         <% end %>
-
-
     </div>
 
+
+      <h3>参加予定者</h3>
+        <ul>
+          <% @attendreservations.each do |attendreservations| %>
+            <li>
+              <%= link_to user_path(attendreservations.user) do %>
+                <%= attendreservations.user.name %>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+<!--もしこのイベントの自分の予約がtrueだったら -->
+
+    <% if @attend.present? %>
+    <h2 style="margin-top:15px;">参加者への連絡事項</h2>
+      <h5><p>※以下項目は参加者にのみ表示されています</p></h5>
+        <h3>待ち合わせ場所</h3>
+        <p><%= @event.meeting_place %></p>
+        <h3>持ち物</h3>
+        <p><%= @event.belongings %></p>
+        <h3>注意事項</h3>
+        <p><%= @event.attention %></p>
+    <% end %>
+
     <% if @event.user.id = current_user.id %>
-      <h2>参加承認</h2>
+      <h2 style="margin-top:15px;">参加承認</h2>
+        <h5><p>※以下項目は主催者にのみ表示されています</p></h5>
         <table>
           <tr>
             <th>予約したユーザー</th>
@@ -109,4 +132,5 @@
       </table>
     <% end %>
   </div>
+  <br><br><br>
 </main>
