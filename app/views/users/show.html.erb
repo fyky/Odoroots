@@ -44,11 +44,7 @@
       <!-- roomsテーブルに情報を送信 -->
       <%= form_with model: @room, local: true do |f|%>
       <!-- room_usersテーブルに情報を送信 -->
-        <%= fields_for @room_user do |r| %>
-        <!-- room_usersテーブルにuser_idを含める -->
-          <%= r.hidden_field :name, value: @user.id %>
-
-        <% end %>
+        <%= hidden_field_tag 'room_user[user_id]', @user.id %>
         <%= f.submit "チャットを始める" %>
       <% end %>
     <% end %>

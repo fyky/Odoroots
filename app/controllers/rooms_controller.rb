@@ -36,21 +36,19 @@ class RoomsController < ApplicationController
 
 
     @user = current_user
-    @current_user_room_user=RoomUser.where(user_id: current_user.id)
+    @rooms = @user.room_users
     @user_room_user=RoomUser.where(user_id: @user.id)
 
 
-      @current_user_room_user.each do |cu|
-        @user_room_user.each do |u|
-          # ルームIDの特定
-          if cu.room_id == u.room_id then
-            @have_room = true
-            @room_id = cu.room_id
-
-          end
-        end
-      end
-# @last_message = Message.where(room_id: @room_id).last.body
+      # @current_user_room_user.each do |cu|
+      #   @user_room_user.each do |u|
+      #     # ルームIDの特定
+      #     if cu.room_id == u.room_id then
+      #       @have_room = true
+      #       @room_id = cu.room_id
+      #     end
+      #   end
+      # end
   end
 
  private

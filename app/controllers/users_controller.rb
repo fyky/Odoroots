@@ -19,10 +19,11 @@ class UsersController < ApplicationController
           end
         end
       end
-      if @is_room
-      else
+      unless @have_room    #ルームが同じじゃなければ
+        #新しいインスタンスを生成
         @room = Room.new
-        @room_user = RoomUser.new
+        @RoomUser = RoomUser.new
+        #//新しいインスタンスを生成
       end
     end
 
