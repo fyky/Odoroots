@@ -1,0 +1,8 @@
+  <div>
+    <%= form_with url: search_events_path, method: :get, local: true do |f| %>
+      <%= f.text_field :keyword, value: keyword %>
+      <%= f.submit "検索" %>
+    <% end %>
+
+    <p>地図、開催地、タグ検索、ジャンル検索？</p>
+  </div>

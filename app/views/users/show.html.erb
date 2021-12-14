@@ -32,8 +32,37 @@
       <p>ジャンル
         <%= @user.genre %>
       </p>
-      <p>Twitter Instagram Facebook LINE</p>
-      <p><%= link_to "編集",edit_user_path(@user) %></p>
+
+　　　<!-- SNSアイコン表示 -->
+      <% if @user.twitter.present? %>
+        <%= link_to @user.twitter, target: :_blank do %>
+          <i class="fab fa-twitter-square fa-3x"></i>
+        <% end %>
+      <% end %>
+
+      <% if @user.facebook.present? %>
+        <%= link_to @user.facebook, target: :_blank do %>
+          <i class="fab fa-facebook-square fa-3x"></i>
+        <% end %>
+      <% end %>
+
+      <% if @user.instagram.present? %>
+        <%= link_to @user.instagram, target: :_blank do %>
+          <i class="fab fa-instagram fa-3x"></i>
+        <% end %>
+      <% end %>
+
+      <% if @user.youtube.present? %>
+        <%= link_to @user.youtube, target: :_blank do %>
+          <i class="fab fa-youtube fa-3x"></i>
+        <% end %>
+      <% end %>
+      <!-- ここまで -->
+
+
+      <% if @user == current_user %>
+        <p><%= link_to "編集",edit_user_path(@user) %></p>
+      <% end %>
 
   <!--現在ログインしているユーザーではない場合 -->
   <% unless @user.id == current_user.id %>
@@ -54,40 +83,46 @@
     </div>
 
     <div class="content">
-      <h1>主催イベント（直近3件）</h1>
+      <h1>主催イベント（開催前・直近3件）</h1>
+        <p><h5>参加承認を必ずしてください</h5></p>
         <table>
           <tr>
             <th>開催日</th>
             <th>イベント名</th>
-            <th>詳細</th>
           </tr>
           <% @events.each do |event| %>
-            <tr>
-              <td><%= event.date %></td>
-              <td><%= event.name %></td>
-              <td><%= link_to "show", event_path(event.id) %></td>
-            </tr>
+            <% if Date.current < event.date %>
+              <tr>
+                <td><%= event.date %></td>
+                <td><%= link_to event_path(event.id) do %><%= event.name %><% end %></td>
+              </tr>
+            <% end %>
           <% end %>
         </table>
-        <%= link_to "さらに見る", host_user_path %>
+        <p><%= link_to "主催イベントをすべて見る", host_user_path %></p>
 
-      <h1>参加イベント（直近3件）</h1>
+      <h1>参加予定イベント（開催前・直近3件）</h1>
+        <p><h5>集合場所、持ち物などの詳細を必ずご確認ください</h5></p>
         <table>
           <tr>
             <th>開催日</th>
             <th>イベント名</th>
-            <th>詳細</th>
           </tr>
           <% @attends.each do |attend| %>
-            <tr>
-              <td><%= attend.event.date %></td>
-              <td><%= attend.event.name %></td>
-              <td>詳細</td>
-            </tr>
+            <% if Date.current < attend.event.date %>
+              <tr>
+                <td><%= attend.event.date %></td>
+                <td><%= link_to event_path(attend.event.id) do %><%= attend.event.name %><% end %></td>
+              </tr>
+            <% end %>
           <% end %>
         </table>
+        <p><%= link_to "参加イベントをすべて見る", attend_user_path %></p>
 
-        <%= link_to "さらに見る", attend_user_path %>
+        <%= link_to reservations_path do %>
+          予約履歴を見る
+        <% end %>
+
 
 
       <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

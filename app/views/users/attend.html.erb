@@ -1,8 +1,13 @@
 <main>
-  <h1>参加イベント（直近3件）</h1>
+  <h1>参加イベント一覧</h1>
     <table>
+      <tr>
+        <th>開催日</th>
+        <th>イベント名</th>
+      </tr>
       <% @attends.each do |attend| %>
         <tr>
+          <td><%= attend.event.date %></td>
           <td><%= attend.event.name %></td>
         </tr>
       <% end %>

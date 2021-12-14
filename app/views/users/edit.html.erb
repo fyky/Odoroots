@@ -1,28 +1,42 @@
-<h1>ユーザー情報編集</h1>
-<%= form_with model:@user, local: true do |f| %>
-  <h2>名前</h2>
-  <%= f.text_field :name %>
+<main>
+  <h1>ユーザー情報編集</h1>
+  <%= form_with model:@user, local: true do |f| %>
+    <h3>名前</h3>
+      <p><%= f.text_field :name %></p>
 
-  <h2>写真</h2>
-  <%= attachment_image_tag @user, :image, :fill, 60, 60, fallback: "no_image.jpg"%>
-  <%= f.attachment_field :image, placeholder: "プロフィール画像" %>
+    <h3>写真</h3>
+      <p>
+        <%= attachment_image_tag @user, :image, :fill, 100, 100, fallback: "noimage.png", size:'100x100' %><br>
+        <%= f.attachment_field :image, placeholder: "プロフィール画像" %>
+      </p>
+
+    <h3>ダンスジャンル</h3>
+      <p><%= f.text_field :genre %></p>
+
+    <h3>住所（市まで）</h3>
+      <p><%= f.text_field :address %></p>
+
+    <h3>住所（市以降）</h3>
+      <p><%= f.text_field :address_detail %></p>
+
+    <h3>電話番号</h3>
+      <p><%= f.text_field :phone_number %></p>
+
+    <h3>紹介文</h3>
+      <p><%= f.text_field :introduction %></p>
+
+    <h3>SNSリンク</h3><br>
+      <h5>Twitter</h5>
+        <p><%= f.text_field :twitter %></p>
+      <h5>Instagram</h5>
+        <p><%= f.text_field :instagram %></p>
+      <h5>Facebook</h5>
+        <p><%= f.text_field :facebook %></p>
+      <h5>Youtube</h5>
+        <p><%= f.text_field :youtube %></p>
 
 
-  <h2>ダンスジャンル</h2>
-  <%= f.text_field :genre %>
 
-  <h2>住所（市まで）</h2>
-  <%= f.text_field :address %>
-
-  <h2>住所（市以降）</h2>
-  <%= f.text_field :address_detail %>
-
-
-  <h2>電話番号</h2>
-  <%= f.text_field :phone_number %>
-
-  <h2>紹介文</h2>
-  <%= f.text_field :introduction %>
-
-  <%= f.submit 'Update Book' %>
-<% end %>
+    <p><%= f.submit '更新する' %></p>
+  <% end %>
+</main>

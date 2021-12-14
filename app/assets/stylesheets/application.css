@@ -305,6 +305,18 @@ th {
   margin-right: 20px;
 }
 
+a.btn03, .btn03 {
+  border: 1px dashed #000;
+  background-color: #778899;
+  padding:10px;
+  font-size:15px;
+}
+a.btn03:hover, .btn03:hover {
+  border: 1px dashed #000;
+  background-color: #b0c4de;
+  padding:10px;
+}
+
 /*イベントページのページネーション*/
 .pagination{
   background-color:#fff;
@@ -416,4 +428,22 @@ th {
 
 main ul{
   padding-left:40px;
+}
+
+/* SNSアイコンの色変更 */
+
+.fa-twitter{
+  color:#1da1f2;
+}
+
+.fa-facebook-square{
+  color:#3b5998;
+}
+
+.fa-instagram{
+  color:#e1306c;
+}
+
+.fa-youtube{
+  color:#ff0000;
 }

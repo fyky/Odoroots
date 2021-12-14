@@ -23,7 +23,6 @@ class EventsController < ApplicationController
     end
   end
 
-
   def create
     @event = Event.find(params[:event][:id].to_i)
     # event_id を取り出してから publish を true に変更
@@ -46,11 +45,12 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @reservations = Reservation.where(event_id: @event)
     @comment = Comment.new
-@attendreservations = Reservation.where(event_id: @event, permission:"done")
-@attend = current_user.reservations.find_by(event_id: @event, permission:"done")
-# if @reservations.permission == "yet"
-# @reservations.update(permission: "done")
-# end
+
+    @attendreservations = Reservation.where(event_id: @event, permission:"done")
+    @attend = current_user.reservations.find_by(event_id: @event, permission:"done")
+    # if @reservations.permission == "yet"
+    # @reservations.update(permission: "done")
+    # end
   end
 
   def edit
@@ -83,7 +83,6 @@ class EventsController < ApplicationController
     @keyword = params[:keyword]
     render "index"
   end
-
 
 
   # ストロングパラメータ

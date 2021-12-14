@@ -2,15 +2,20 @@
   <h1>仮予約イベント一覧</h1>
     <table>
       <tr>
+        <th>開催日</th>
         <th>イベント名</th>
         <th>コメント</th>
+        <th>予約日時</th>
         <th>承認ステータス</th>
       </tr>
 
+
       <% @reservations.each do |reservation| %>
         <tr>
+          <td><%= reservation.event.date %></td>
           <td><%= reservation.event.name %></td>
           <td><%= reservation.comment %></td>
+          <td><%= reservation.created_at.strftime("%Y-%m-%d %H:%M") %></td>
           <td><%= reservation.permission_i18n %></td>
         </tr>
       <% end %>

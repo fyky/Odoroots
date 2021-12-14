@@ -21,11 +21,15 @@
         <!--ユーザー認証後メニュー-->
         <% if user_signed_in? %>
           <li>
+            <%= link_to new_event_path do %><i class="fas fa-plus"></i>イベント<% end %>
+          </li>
+
+          <li>
             <%= link_to events_path do %><i class="fas fa-search-plus"></i></i>イベント<% end %>
           </li>
           <% if unchecked_notifications.any? %>
-    <i class="fa fa-circle" style="color: gold;"></i>
-<% end %>
+            <i class="fa fa-circle" style="color: gold;"></i>
+          <% end %>
           <li>
             <%= link_to notifications_path do %><i class="fas fa-bell"></i></i>通知<% end %>
           </li>

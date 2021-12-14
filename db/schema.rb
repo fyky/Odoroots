@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_11_084311) do
+ActiveRecord::Schema.define(version: 2021_12_14_084509) do
 
   create_table "comments", force: :cascade do |t|
     t.text "comment", null: false
@@ -127,6 +127,10 @@ ActiveRecord::Schema.define(version: 2021_12_11_084311) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "genre"
+    t.string "twitter"
+    t.string "instagram"
+    t.string "facebook"
+    t.string "youtube"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

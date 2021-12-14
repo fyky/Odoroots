@@ -1,11 +1,14 @@
 <main>
   <h1>主催イベント一覧</h1>
     <table>
+      <tr>
+        <th>開催日</th>
+        <th>イベント名</th>
+      </tr>
       <% @events.each do |event| %>
         <tr>
-          <td><%= event.name %></td>
-
-          <td><%= link_to "show", event_path(event.id) %></td>
+          <td><%= event.date %></td>
+          <td><%= link_to event_path(event.id) do %><%= event.name %><% end %></td>
         </tr>
       <% end %>
     </table>

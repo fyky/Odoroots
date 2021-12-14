@@ -1,12 +1,5 @@
 <main>
-  <div>
-    <%= form_with url: search_events_path, method: :get, local: true do |f| %>
-      <%= f.text_field :keyword, value: @keyword %>
-      <%= f.submit "検索" %>
-    <% end %>
-  </div>
-
-
+<%= render "events/search", keyword: @keyword %>
   <h1>Events一覧全投稿ページ</h1>
   全<%= @allevents.count %>件
   <div class="event_container">

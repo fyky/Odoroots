@@ -1,38 +1,40 @@
-<h1>Events#confirm</h1>
-<%= form_with model: @event, url: events_path, method: :post, local:true do |form| %>
-    <h2>写真</h2>
-      <%= attachment_image_tag @event, :image, :fill, 300, 300, fallback: "/assets/noimage.png" %>
-    <h2>イベントタイトル</h2>
-      <%= @event.name %>
-    <h2>開催地（市まで）</h2>
-      <%= @event.address %>
-    <h2>開催地（市以降）</h2>
-      <%= @event.address_detail %>
-    <h2>開催日</h2>
-      <%= @event.date %>
-    <h2>開始時間</h2>
-      <%= @event.start_time.strftime( "%H:%M" ) %>
-    <h2>終了予定時間</h2>
-      <%= @event.end_time.strftime( "%H:%M" ) %>
-    <h2>紹介文</h2>
-      <%= @event.introduction %>
-    <h2>募集人数</h2>
-      <%= @event.number %>
-    <h2>参加条件</h2>
-      <%= @event.requirement %>
-    <h2>募集締め切り日</h2>
-      <%= @event.deadline %>
-    <h2>持ち物</h2>
-      <%= @event.belongings %>
-    <h2>集合場所</h2>
-      <%= @event.meeting_place %>
-    <h2>注意事項</h2>
-      <%= @event.attention %>
+<main>
+  <h1>主催イベント投稿確認ページ</h1>
+  <%= form_with model: @event, url: events_path, method: :post, local:true do |form| %>
+      <h3>写真</h3>
+        <p><%= attachment_image_tag @event, :image, :fill, 300, 300, fallback: "/assets/noimage.png" %></p>
+      <h3>イベントタイトル</h3>
+        <p><%= @event.name %></p>
+      <h3>開催地（市まで）</h3>
+        <p><%= @event.address %></p>
+      <h3>開催地（市以降）</h3>
+        <p><%= @event.address_detail %></p>
+      <h3>開催日</h3>
+        <p><%= @event.date %></p>
+      <h3>開始時間</h3>
+        <p><%= @event.start_time.strftime( "%H:%M" ) %></p>
+      <h3>終了予定時間</h3>
+        <p><%= @event.end_time.strftime( "%H:%M" ) %></p>
+      <h3>紹介文</h3>
+        <p><%= @event.introduction %></p>
+      <h3>募集人数</h3>
+        <p><%= @event.number %></p>
+      <h3>参加条件</h3>
+        <p><%= @event.requirement %></p>
+      <h3>募集締め切り日</h3>
+        <p><%= @event.deadline %></p>
+      <h3>持ち物</h3>
+        <p><%= @event.belongings %></p>
+      <h3>集合場所</h3>
+        <p><%= @event.meeting_place %></p>
+      <h3>注意事項</h3>
+        <p><%= @event.attention %></p>
 
-  <!-- event id を渡す -->
-  <%= form.hidden_field :id, value: @event.id %>
+    <!-- event id を渡す -->
+    <%= form.hidden_field :id, value: @event.id %>
 
-  <%= link_to 'back', new_event_path(id: @event.id) %>
+    <%= link_to '修正する', new_event_path(id: @event.id) %>
 
-	<%= form.submit '送信する' %>
-<% end %>
+  	<%= form.submit '送信する' %>
+  <% end %>
+</main>
