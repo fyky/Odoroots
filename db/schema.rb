@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_14_084509) do
+ActiveRecord::Schema.define(version: 2021_12_14_092625) do
 
   create_table "comments", force: :cascade do |t|
     t.text "comment", null: false
@@ -41,6 +41,8 @@ ActiveRecord::Schema.define(version: 2021_12_14_084509) do
     t.integer "genre_id"
     t.integer "number"
     t.boolean "recruitment", default: true, null: false
+    t.float "latitude"
+    t.float "longitude"
   end
 
   create_table "favorites", force: :cascade do |t|

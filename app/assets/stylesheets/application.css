@@ -447,3 +447,8 @@ main ul{
 .fa-youtube{
   color:#ff0000;
 }
+
+#map{
+  height: 150px;
+  width:270px;
+}

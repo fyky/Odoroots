@@ -68,3 +68,7 @@ gem 'enum_help'
 gem 'rails-i18n'
 gem 'kaminari','~> 1.2.1'
 gem 'jquery-rails'
+gem 'geocoder'
+# 環境変数化
+gem 'dotenv-rails'
+gem 'gon'

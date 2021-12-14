@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
+    gon.user = @user
+
     @events = @user.events.order(created_at: :desc).limit(3)
     @reservations = @user.reservations
     @attends = @reservations.where(permission: "done").order(created_at: :desc).limit(3)

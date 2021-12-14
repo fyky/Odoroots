@@ -8,6 +8,16 @@ class Event < ApplicationRecord
 
   has_many :notifications, dependent: :destroy
 
+  # 住所を一行で取得
+  def full_address
+    address + address_detail
+  end
+
+  # 地図を緯度と経度で取得
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
+
+
   # イベント一覧（publishがtrueのものを取得するメソッド
   # Event.all -> Event.published
   def self.published

@@ -64,10 +64,12 @@ class EventsController < ApplicationController
 
     if @event.update(event_params)
       # if @reservations.event.recruitment.count == @event.number.count
-      if @reservations.where(permission: "done").count == @event.number
-        @reservations.find_by(event_id: @event, permission: "done").event.update(recruitment: false)
-      else
-        @reservations.find_by(event_id: @event, permission: "done").event.update(recruitment: true)
+      unless @reservations.find_by(event_id: @event, permission: "yet").present?
+        if @reservations.where(permission: "done").count == @event.number
+          @reservations.find_by(event_id: @event, permission: "done").event.update(recruitment: false)
+        else
+          @reservations.find_by(event_id: @event, permission: "done").event.update(recruitment: true)
+        end
       end
 
       # else
@@ -93,7 +95,7 @@ class EventsController < ApplicationController
       :address, :address_detail,
       :date, :start_time, :end_time,
       :introduction, :requirement, :deadline, :belongings, :meeting_place, :attention,
-      :number
+      :number, :longitude, :latitude
       )
   end
 
