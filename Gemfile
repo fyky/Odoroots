@@ -72,3 +72,5 @@ gem 'geocoder'
 # 環境変数化
 gem 'dotenv-rails'
 gem 'gon'
+# 自動更新
+gem 'whenever', require: false

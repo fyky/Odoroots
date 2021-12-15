@@ -49,6 +49,8 @@
       <button class="button01">開催終了</button>
     <% end %>
 
+    <b>募集期日 <%= @event.deadline %></b>
+
   <div class="container">
     <!-- イベント写真 -->
     <div class="event_image">
@@ -76,17 +78,22 @@
         <h2>参加条件</h2>
           <%= @event.requirement %>
       </p>
-
+      <br>
       <!-- 予約ボタン表示 -->
       <% unless current_user == @event.user %>
         <!-- もしイベントが募集中で、現在のユーザーがこのイベントを予約していなかったら-->
         <% if @event.recruitment && Reservation.find_by(event_id: @event, user_id: current_user).nil? %>
-          <%= link_to new_event_reservation_path(@event) do %>予約へ進む<% end %>
+          <%= link_to new_event_reservation_path(@event) do %>
+            <button class="btn03">予約へ進む</button>
+          <% end %>
+            ※予約にはログインが必要です。
         <% end %>
       <% else %>
         <!-- 編集リンク表示 -->
         <%= link_to edit_event_path(@event) do %>編集する<% end %>
       <% end %>
+
+
 
     </div>
   </div>
