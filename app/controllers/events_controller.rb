@@ -64,13 +64,22 @@ class EventsController < ApplicationController
 
     if @event.update(event_params)
       # if @reservations.event.recruitment.count == @event.number.count
-      unless @reservations.find_by(event_id: @event, permission: "yet").present?
+      # 現在のイベントで、「未承認」のものが存在していなかったら
+      # unless @reservations.find_by(event_id: @event, permission: "yet").present?
+        # 予約の「承認」数が、イベントの募集人数と同じだったら
         if @reservations.where(permission: "done").count == @event.number
-          @reservations.find_by(event_id: @event, permission: "done").event.update(recruitment: false)
+          # 「承認」された予約のイベント
+          @event.update(recruitment: false)
+          # @reservations.find_by(event_id: @event, permission: "done").event.update(recruitment: false)
         else
-          @reservations.find_by(event_id: @event, permission: "done").event.update(recruitment: true)
+          @event.update(recruitment: true)
+          # @reservations.find_by(event_id: @event, permission: "done").event.update(recruitment: true)
         end
-      end
+      # end
+
+
+
+      # Event.published.where(['deadline < ?', Date.current]).update_all(recruitment: true)
 
       # else
       redirect_to event_path(@event)
