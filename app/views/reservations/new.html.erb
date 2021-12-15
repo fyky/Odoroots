@@ -23,7 +23,6 @@
       </tr>
     </table>
 
-    <%= form_with model: @reservation, url: confirm_event_reservations_path, method: :post, local:true do |f| %>
     <h1>予約ユーザー情報</h1>   ※<small>主催者への開示情報</small><br>
       <h3>ユーザーネーム</h3>
         <p><%= current_user.name %></p>
@@ -35,13 +34,14 @@
           <b>※待ち合わせ場所や持ち物などの詳細は本予約完了してからのお知らせとなります。</b></p>
       <h3>コメント</h3>
         <p><b>主催者へ伝えたいことがあればご記入ください</b></p>
-        <p>
-          <%= f.text_field :comment %>
-          <%= f.hidden_field :user_id, value: @reservation.user_id %>
-          <%= f.hidden_field :event_id, value: @event.id %>
-          <%= f.hidden_field :permission, value: "yet" %>
-          <br>
-          <%= f.submit '予約確認へ進む' %>
-        </p>
-    <% end %>
+          <%= form_with model: @reservation, url: confirm_event_reservations_path, method: :post, local:true do |f| %>
+          <p>
+            <%= f.text_field :comment %>
+            <%= f.hidden_field :user_id, value: @reservation.user_id %>
+            <%= f.hidden_field :event_id, value: @event.id %>
+            <%= f.hidden_field :permission, value: "yet" %>
+            <br>
+            <%= f.submit '予約確認へ進む' %>
+          </p>
+        <% end %>
 </main>

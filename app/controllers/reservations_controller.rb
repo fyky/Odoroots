@@ -31,6 +31,7 @@ class ReservationsController < ApplicationController
   end
 
   def show
+    @event = Event.find(params[:id])
   end
 
   def update
@@ -53,6 +54,12 @@ class ReservationsController < ApplicationController
   def index
     @user = current_user
     @reservations = @user.reservations
+  end
+
+  def back
+    @event = Event.find(params[:event_id])
+    @reservation = Reservation.new(reservation_params)
+		render :new
   end
 
 

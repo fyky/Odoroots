@@ -2,8 +2,6 @@ Rails.application.routes.draw do
 
   root to: 'homes#top'
 
-
-
   devise_for :users
   resources :users, only: [:show, :edit, :update] do
     member do
@@ -31,6 +29,7 @@ Rails.application.routes.draw do
     resources :reservations, only: [:new, :create, :show, :update] do
       collection do
         post "confirm"
+        post "back"
       end
     end
   end
