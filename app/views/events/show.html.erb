@@ -1,3 +1,31 @@
+<script type="text/javascript">
+    function initMap() {
+
+        var test ={lat: <%= @event.latitude %>, lng: <%= @event.longitude %>};
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            center: test
+        });
+        var transitLayer = new google.maps.TransitLayer();
+        transitLayer.setMap(map);
+
+        var contentString = '住所：<%= @event.full_address %>';
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
+
+        var marker = new google.maps.Marker({
+            position:test,
+            map: map,
+            title: contentString
+        });
+
+        marker.addListener('click', function() {
+            infowindow.open(map, marker);
+        });
+    }
+</script>
+
 <main>
   <!-- イベント名 -->
   <h1><%= @event.name %></h1>
@@ -11,6 +39,7 @@
     <!-- イベント開催、参加ボタン -->
     <% unless Date.current > @event.date %>
       <button class="button02">開催前</button>
+        <!-- もしイベントが募集中だったら-->
         <% if @event.recruitment == true %>
           <button class="button02">参加募集中</button>
         <% else %>
@@ -50,7 +79,8 @@
 
       <!-- 予約ボタン表示 -->
       <% unless current_user == @event.user %>
-        <% unless Date.current > @event.date %>
+        <!-- もしイベントが募集中で、現在のユーザーがこのイベントを予約していなかったら-->
+        <% if @event.recruitment == true && Reservation.find_by(event_id: @event, user_id: current_user).nil? == true %>
           <%= link_to new_event_reservation_path(@event) do %>予約へ進む<% end %>
         <% end %>
       <% else %>
@@ -77,50 +107,9 @@
       <p><%= @event.address %><%= @event.address_detail %></p>
 
 <div id="map"></div>
-
-
-      <p>住所</p>
-<p><%= @event.address %></p>(住所名表示)
-
-(地図を表示)
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
 </script>
-
-
-<script type="text/javascript">
-    function initMap() {
-
-        var test ={lat: <%= @event.latitude %>, lng: <%= @event.longitude %>};
-        var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 15,
-            center: test
-        });
-        var transitLayer = new google.maps.TransitLayer();
-        transitLayer.setMap(map);
-
-        var contentString = '住所：<%= @event.address %>';
-        var infowindow = new google.maps.InfoWindow({
-            content: contentString
-        });
-
-        var marker = new google.maps.Marker({
-            position:test,
-            map: map,
-            title: contentString
-        });
-
-        marker.addListener('click', function() {
-            infowindow.open(map, marker);
-        });
-    }
-</script>
-
-
-
-
-
-
 
 
 

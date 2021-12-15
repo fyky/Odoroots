@@ -14,8 +14,8 @@ class Event < ApplicationRecord
   end
 
   # 地図を緯度と経度で取得
-  geocoded_by :address
-  after_validation :geocode, if: :address_changed?
+  geocoded_by :full_address
+  after_validation :geocode, if: :address_changed?&&:address_detail_changed?
 
 
   # イベント一覧（publishがtrueのものを取得するメソッド

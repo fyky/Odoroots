@@ -52,6 +52,7 @@ header{
   justify-content: space-between;
   display: flex;
   z-index: 3;
+    opacity: 0.8;
 }
 
 /*ヘッダーロゴ*/
@@ -449,6 +450,6 @@ main ul{
 }
 
 #map{
-  height: 150px;
-  width:270px;
+  height: 300px;
+  width:500px;
 }

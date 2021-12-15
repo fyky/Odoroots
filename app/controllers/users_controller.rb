@@ -3,7 +3,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     gon.user = @user
 
-    @events = @user.events.order(created_at: :desc).limit(3)
+    @events = @user.events.published.order(created_at: :desc).limit(3)
     @reservations = @user.reservations
     @attends = @reservations.where(permission: "done").order(created_at: :desc).limit(3)
 
@@ -45,12 +45,12 @@ class UsersController < ApplicationController
   end
 
   def host
-    @events = current_user.events.order(created_at: :desc)
+    @events = current_user.events.published.order(created_at: :desc)
   end
 
   def attend
     @user = User.find(params[:id])
-    @events = @user.events
+    @events = @user.events.published
     @reservations = @user.reservations
     @attends = @reservations.where(permission: "done").order(created_at: :desc)
   end
