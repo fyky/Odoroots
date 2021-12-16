@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   root to: 'homes#top'
 
   devise_for :users
@@ -43,4 +44,6 @@ Rails.application.routes.draw do
 
   resources :rooms, only: [:create,:show, :index]
 
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
 end
