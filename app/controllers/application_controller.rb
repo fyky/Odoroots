@@ -1,4 +1,7 @@
 class ApplicationController < ActionController::Base
+  # ログインする前にもアクセス可能なページ
+  before_action :authenticate_user!,except: [:top]
+  
   #ログイン認証の前
   before_action :configure_permitted_parameters, if: :devise_controller?
 
