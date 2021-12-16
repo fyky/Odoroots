@@ -30,8 +30,12 @@ class EventsController < ApplicationController
     @event = Event.find(params[:event][:id].to_i)
     # event_id を取り出してから publish を true に変更
     # @event.user_id = current_user.id
-    @event.update(publish: true)
-    redirect_to event_path(@event.id)
+    if @event.update(publish: true)
+      flash[:notice] = "イベントを投稿しました"
+      redirect_to event_path(@event.id)
+    else
+      flash[:alert] = "イベントを投稿できませんでした"
+    end
   end
 
   def index
@@ -48,7 +52,8 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @reservations = Reservation.where(event_id: @event)
     @comment = Comment.new
-    @user = current_user&.user
+    @user = current_user
+    # &.user
 
     @attendreservations = Reservation.where(event_id: @event, permission:"done")
     @attend = @user.reservations.find_by(event_id: @event, permission:"done")
@@ -86,7 +91,12 @@ class EventsController < ApplicationController
       # Event.published.where(['deadline < ?', Date.current]).update_all(recruitment: true)
 
       # else
+      flash[:alert] = "イベントを更新しました"
       redirect_to event_path(@event)
+
+    else
+      flash[:alert] = "イベントを更新できませんでした"
+      render :edit
     end
 
   end
