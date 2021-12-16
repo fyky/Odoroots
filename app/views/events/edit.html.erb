@@ -1,45 +1,43 @@
-<main>
-  <h1>Events#編集ページ</h1>
-    <%= form_with model: @event, url: event_path, local:true do |f| %>
+<h1>Events#編集ページ</h1>
+  <%= form_with model: @event, url: event_path, local:true do |f| %>
 
-      <h3>写真</h3>
-        <p><%= f.attachment_field :image, placeholder: "プロフィール画像" %></p>
-      <h3>イベントタイトル</h3>
-        <p><%= f.text_field :name %></p>
-      <h3>開催地（市まで）</h3>
-        <p><%= f.text_field :address %></p>
-      <h3>開催地（市以降）</h3>
-        <p><%= f.text_field :address_detail %></p>
-      <h3>開催日</h3>
-        <p><%= f.date_select :date, {start_year: 2020, end_year: 2025,use_month_numbers: true} %></p>
-      <h3>開始時間</h3>
-        <p><%= f.time_field :start_time %></p>
-      <h3>終了予定時間</h3>
-        <p><%= f.time_field :end_time %></p>
-      <h3>紹介文</h3>
-        <p><%= f.text_area :introduction %></p>
-      <h3>募集人数</h3>
-        <p><%= f.select :number,
-        [["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"],
-         ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"], ["11", "11"], ["12", "12"],
-         ["13", "13"], ["14", "14"], ["15", "15"], ["16", "16"], ["17", "17"], ["18", "18"],
-         ["19", "19"], ["20", "20"]] %></p>
-      <h3>参加条件</h3>
-        <p><%= f.text_field :requirement %></p>
-      <h3>募集締め切り日</h3>
-        <p><%= f.date_select :deadline, {start_year: 2020, end_year: 2025,use_month_numbers: true} %></p>
-      <h3>持ち物</h3>
-        <p><%= f.text_field :belongings %></p>
-      <h3>集合場所</h3>
-        <p><%= f.text_field :meeting_place %></p>
-      <h3>注意事項</h3>
-        <p><%= f.text_field :attention %></p>
+    <h3>写真</h3>
+      <p><%= f.attachment_field :image, placeholder: "プロフィール画像" %></p>
+    <h3>イベントタイトル</h3>
+      <p><%= f.text_field :name %></p>
+    <h3>開催地（市まで）</h3>
+      <p><%= f.text_field :address %></p>
+    <h3>開催地（市以降）</h3>
+      <p><%= f.text_field :address_detail %></p>
+    <h3>開催日</h3>
+      <p><%= f.date_select :date, {start_year: 2020, end_year: 2025,use_month_numbers: true} %></p>
+    <h3>開始時間</h3>
+      <p><%= f.time_field :start_time %></p>
+    <h3>終了予定時間</h3>
+      <p><%= f.time_field :end_time %></p>
+    <h3>紹介文</h3>
+      <p><%= f.text_area :introduction %></p>
+    <h3>募集人数</h3>
+      <p><%= f.select :number,
+      [["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"],
+       ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"], ["11", "11"], ["12", "12"],
+       ["13", "13"], ["14", "14"], ["15", "15"], ["16", "16"], ["17", "17"], ["18", "18"],
+       ["19", "19"], ["20", "20"]] %></p>
+    <h3>参加条件</h3>
+      <p><%= f.text_field :requirement %></p>
+    <h3>募集締め切り日</h3>
+      <p><%= f.date_select :deadline, {start_year: 2020, end_year: 2025,use_month_numbers: true} %></p>
+    <h3>持ち物</h3>
+      <p><%= f.text_field :belongings %></p>
+    <h3>集合場所</h3>
+      <p><%= f.text_field :meeting_place %></p>
+    <h3>注意事項</h3>
+      <p><%= f.text_field :attention %></p>
 
-      <!-- event id を渡す -->
-      <% if params[:id] %>
-        <%= f.hidden_field :id, value: params[:id] %>
-      <% end %>
-        <p><%= f.submit '保存' %></p>
-
+    <!-- event id を渡す -->
+    <% if params[:id] %>
+      <%= f.hidden_field :id, value: params[:id] %>
     <% end %>
-</main>
+      <p><%= f.submit '保存' %></p>
+
+  <% end %>

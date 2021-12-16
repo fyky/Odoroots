@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   attachment :image
+  
+  # アソシエーション
   has_many :events, dependent: :destroy
   has_many :reservations, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -23,12 +25,20 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :room_users, dependent: :destroy
 
+  # バリデーション
+  validates :real_name, presence: true
+  validates :postal_code, presence: true
+  validates :address, presence: true
+  validates :address_detail, presence: true
+  validates :phone_number, presence: true
+  validates :birthday, presence: true
+  validates :gender, presence: true
+  validates :name, presence: true
 
 
   def age
     ((Date.today.strftime("%Y%m%d").to_i - birthday.strftime("%Y%m%d").to_i)/10000).floor
   end
-
 
 
   # フォローしたときの処理
@@ -45,7 +55,7 @@ class User < ApplicationRecord
   end
 
 
-  #通知：フォロー
+  # 通知：フォロー
   def create_notification_follow!(current_user)
     temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
     if temp.blank?

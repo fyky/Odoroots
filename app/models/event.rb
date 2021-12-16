@@ -1,12 +1,29 @@
 class Event < ApplicationRecord
   attachment :image
 
+  # アソシエーション
   belongs_to :user
   has_many :reservations, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
   has_many :notifications, dependent: :destroy
+
+  # バリデーション
+  validates :name, presence: true
+  validates :address, presence: true
+  validates :address_detail, presence: true
+  validates :date, presence: true
+  validates :start_time, presence: true
+  validates :end_time, presence: true
+  validates :introduction, presence: true
+  validates :requirement, presence: true
+  validates :deadline, presence: true
+  validates :belongings, presence: true
+  validates :meeting_place, presence: true
+  validates :number, presence: true
+  validates :attention, presence: true
+
 
   # 住所を一行で取得
   def full_address

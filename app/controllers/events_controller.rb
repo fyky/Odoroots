@@ -1,4 +1,7 @@
 class EventsController < ApplicationController
+  # ログインする前にもアクセス可能なページ、コントローラ
+  before_action :authenticate_user!,except: [:index, :show, :search]
+
   def new
     if params[:id]
       @event = Event.find(params[:id])
@@ -27,8 +30,12 @@ class EventsController < ApplicationController
     @event = Event.find(params[:event][:id].to_i)
     # event_id を取り出してから publish を true に変更
     # @event.user_id = current_user.id
-    @event.update(publish: true)
-    redirect_to event_path(@event.id)
+    if @event.update(publish: true)
+      flash[:notice] = "イベントを投稿しました"
+      redirect_to event_path(@event.id)
+    else
+      flash[:alert] = "イベントを投稿できませんでした"
+    end
   end
 
   def index
@@ -45,9 +52,11 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @reservations = Reservation.where(event_id: @event)
     @comment = Comment.new
+    @user = current_user
+    # &.user
 
     @attendreservations = Reservation.where(event_id: @event, permission:"done")
-    @attend = current_user.reservations.find_by(event_id: @event, permission:"done")
+    @attend = @user.reservations.find_by(event_id: @event, permission:"done")
     # if @reservations.permission == "yet"
     # @reservations.update(permission: "done")
     # end
@@ -76,13 +85,14 @@ class EventsController < ApplicationController
           # @reservations.find_by(event_id: @event, permission: "done").event.update(recruitment: true)
         end
       # end
-
-
-
       # Event.published.where(['deadline < ?', Date.current]).update_all(recruitment: true)
-
       # else
+      flash[:notice] = "イベントを更新しました"
       redirect_to event_path(@event)
+
+    else
+      flash[:alert] = "イベントを更新できませんでした"
+      render :edit
     end
 
   end

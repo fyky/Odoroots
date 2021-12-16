@@ -7,12 +7,9 @@ class CommentsController < ApplicationController
     # 通知
     @event.create_notification_comment!(current_user, @comment.id)
     # ここまで
-    # redirect_to event_path(event)
   end
 
-
   private
-
   def comment_params
     params.require(:comment).permit(:comment)
   end

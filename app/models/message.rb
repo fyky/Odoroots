@@ -1,7 +1,10 @@
 class Message < ApplicationRecord
-  validates :body, presence: true
+  # アソシエーション
   belongs_to :user
   belongs_to :room
 
   has_many :notifications, dependent: :destroy
+  
+  # バリデーション
+  validates :body, presence: true
 end

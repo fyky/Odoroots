@@ -63,6 +63,13 @@
     </header>
     <!-- ヘッダーメニューここまで -->
 
-    <%= yield %>
+    <main>
+      <!--フラッシュメッセージ-->
+      <%= notice %>
+      <%= alert %>
+
+      <%= yield %>
+    </main>
+
   </body>
 </html>
