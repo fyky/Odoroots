@@ -85,13 +85,9 @@ class EventsController < ApplicationController
           # @reservations.find_by(event_id: @event, permission: "done").event.update(recruitment: true)
         end
       # end
-
-
-
       # Event.published.where(['deadline < ?', Date.current]).update_all(recruitment: true)
-
       # else
-      flash[:alert] = "イベントを更新しました"
+      flash[:notice] = "イベントを更新しました"
       redirect_to event_path(@event)
 
     else
