@@ -1,14 +1,16 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
+
   def show
     @user = User.find(params[:id])
-    gon.user = @user
 
     @events = @user.events.published.order(created_at: :desc).limit(3)
     @reservations = @user.reservations
     @attends = @reservations.where(permission: "done").order(created_at: :desc).limit(3)
 
+  unless current_user == nil
+      @current_user_room_user=RoomUser.where(user_id: current_user.id)
 
-    @current_user_room_user=RoomUser.where(user_id: current_user.id)
     @user_room_user=RoomUser.where(user_id: @user.id)
     # もしuseridが現在のユーザーじゃなかったら
     unless @user.id == current_user.id
@@ -28,7 +30,7 @@ class UsersController < ApplicationController
         #//新しいインスタンスを生成
       end
     end
-
+  end
   end
 
   def edit

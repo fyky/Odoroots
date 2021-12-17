@@ -71,7 +71,9 @@ gem 'jquery-rails'
 gem 'geocoder'
 # 環境変数化
 gem 'dotenv-rails'
-gem 'gon'
 # 自動更新
 gem 'whenever', require: false
+# 管理者機能
 gem 'activeadmin'
+# カレンダー
+gem "simple_calendar", "~> 2.0"

@@ -15,7 +15,10 @@ module NotificationsHelper
           tag.a(@visitor.name, href:user_path(@visitor), style:"font-weight: bold;")+"が"+tag.a('あなたの投稿', href:event_path(notification.event_id), style:"font-weight: bold;")+"にコメントしました"
       when "dm" then
         tag.a(notification.visitor.name, href:user_path(@visitor), style:"font-weight: bold;")+"からの新着DMがあります"
-
+      when  "reservation" then
+        tag.a(notification.visitor.name, href:user_path(@visitor), style:"font-weight: bold;")+"が"+tag.a('あなたの投稿', href:event_path(notification.event_id), style:"font-weight: bold;")+"を予約しました。承認してください。"
+      when  "permission" then
+        tag.a(notification.visitor.name, href:user_path(@visitor), style:"font-weight: bold;")+"が"+tag.a('あなたが予約したイベント', href:event_path(notification.event_id), style:"font-weight: bold;")+"を参加承認しました。持ち物と集合場所を確認してください。"
     end
   end
 

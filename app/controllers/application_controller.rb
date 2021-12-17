@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::Base
   # ログインする前にもアクセス可能なページ
-  before_action :authenticate_user!,except: [:top]
-  
+  # before_action :authenticate_user!,except: [:top]
+
+
   #ログイン認証の前
   before_action :configure_permitted_parameters, if: :devise_controller?
 
@@ -12,11 +13,14 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    user_path(@user)
+    if resource.is_a?(AdminUser)
+      admin_root_path
+    else
+      user_path(resource)
+    end
   end
 
   def after_sign_up_path_for(resource)
-    user_path(@user)
+    user_path(resource)
   end
-
 end

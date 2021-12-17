@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  ActiveAdmin.routes(self)
+  devise_for :admin_users, ActiveAdmin::Devise.config
+
 
   root to: 'homes#top'
 
@@ -16,6 +19,7 @@ Rails.application.routes.draw do
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
   end
+
 
   resources :events, except: [:destroy] do
     collection do
@@ -44,6 +48,5 @@ Rails.application.routes.draw do
 
   resources :rooms, only: [:create,:show, :index]
 
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
+
 end

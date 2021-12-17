@@ -58,6 +58,7 @@
 
 
     <div class="event_main">
+      <p>＊<%= @event.genre.name %></p>
       <p>
         <h2>開催日時</h2>
           <%= @event.date.strftime('%Y年%m月%d日') %>
@@ -76,20 +77,28 @@
           <%= @event.requirement %>
       </p>
       <br>
+
+    <% if user_signed_in? %>
       <!-- 予約ボタン表示 -->
-      <% unless current_user == @event.user %>
+      <!-- 現在のユーザーがイベントの主催ユーザーじゃなかったら-->
+      <% if user_signed_in? && current_user != @event.user %>
+
         <!-- もしイベントが募集中で、現在のユーザーがこのイベントを予約していなかったら-->
         <% if @event.recruitment && Reservation.find_by(event_id: @event, user_id: current_user).nil? %>
           <%= link_to new_event_reservation_path(@event) do %>
             <button class="btn03">予約へ進む</button>
           <% end %>
-            ※予約にはログインが必要です。
         <% end %>
+
+      <!-- 現在のユーザーがイベントの主催ユーザーだったら-->
       <% else %>
         <!-- 編集リンク表示 -->
         <%= link_to edit_event_path(@event) do %>編集する<% end %>
       <% end %>
 
+    <% else %>
+    ※予約にはログインが必要です。
+    <% end %>
 
 
     </div>
@@ -115,10 +124,9 @@
         src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
 </script>
 
+    <!--以下はログイン中のみ-->
 
-
-
-
+    <% if user_signed_in? %>
     <!-- コメント -->
     <div class="comment_ajax">
       <%= render "comments/comment", event: @event, comment: @comment %>
@@ -133,6 +141,7 @@
         <% end %>
     </div>
 
+
       <h3>参加予定者</h3>
         <ul>
           <% @attendreservations.each do |attendreservations| %>
@@ -143,6 +152,8 @@
             </li>
           <% end %>
         </ul>
+    <% end %>
+
 <!--もしこのイベントの自分の予約がtrueだったら -->
 
     <% if @attend.present? %>
@@ -156,7 +167,7 @@
         <p><%= @event.attention %></p>
     <% end %>
 
-    <% if @event.user.id = current_user.id %>
+    <% if current_user != nil && @event.user.name == current_user.name %>
       <h2 style="margin-top:15px;">参加承認</h2>
         <h5><p>※以下項目は主催者にのみ表示されています</p></h5>
         <table>
@@ -172,12 +183,13 @@
             <td>
               <%= form_with model: reservation, url: event_reservation_path(reservation.event, reservation), local: true do |f| %>
                 <%= f.select :permission, Reservation.permissions.keys.map {|k| [I18n.t("enums.reservation.permission.#{k}"), k]} %>
+                <%= f.hidden_field :event_id, value: @event.id %>
                 <%= f.submit "更新", class: "" %>
               <% end %>
             </td>
           </tr>
         <% end %>
-      </table>
+        </table>
     <% end %>
   </div>
   <br><br><br>

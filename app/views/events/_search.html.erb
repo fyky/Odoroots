@@ -1,8 +1,13 @@
   <div>
     <%= form_with url: search_events_path, method: :get, local: true do |f| %>
       <%= f.text_field :keyword, value: keyword %>
+      <%= select_tag 'method', options_for_select({ "開催前だけ" => "before", "開催後も" => "all" }) %>
       <%= f.submit "検索" %>
     <% end %>
 
-    <p>地図、開催地、タグ検索、ジャンル検索？</p>
+
+    <p>フリーワード検索=>開催地、イベント名<br>
+    ジャンル検索（プルダウン）<br>
+    開催前or開催終了も含む（ラジオボタン条件分岐）<br>
+    地図（現在地から近い順or 開催地を地図全部にポイント表示）</p>
   </div>

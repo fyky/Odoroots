@@ -18,7 +18,13 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new(reservation_params)
     if @reservation.save
       redirect_to event_reservation_path(@event, @reservation)
+
+    # 通知
+    @event.create_notification_reservation!(current_user, @reservation.id)
+    # ここまで
+
     else
+      flash[:alert] = "イベントを予約できません。"
       render :new
     end
   end
@@ -30,6 +36,11 @@ class ReservationsController < ApplicationController
   def update
     @reservation = Reservation.find(params[:id])
     @reservation.update(reservation_params)
+      if @reservation.permission == "done"
+      # 通知
+        @reservation.update_notification_permission!(current_user)
+      # ここまで
+      end
 
     @event = Event.find(params[:event_id])
     @reservations = Reservation.where(event_id: @event)

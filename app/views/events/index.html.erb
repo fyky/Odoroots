@@ -1,15 +1,6 @@
 <%= render "events/search", keyword: @keyword %>
-  <h1>Events一覧全投稿ページ</h1>
-  全<%= @allevents.count %>件
-  <div class="event_container">
-    <% @events.each do |event| %>
-      <div class="event_index">
-        <%= attachment_image_tag event, :image, :fill, 400, 300, fallback: "/assets/noimage.png", size:'400x300'  %>
-          <h3><%= link_to event_path(event.id) do %><%= event.name %><% end %></h3>
-          <p><%= event.date %></p>
-          <p><%= event.address %></p>
-      </div>
-    <% end %>
-  </div>
-
-  <%= paginate @events %>
+  <%= render "events/index", events: @events, allevents: @allevents %>
+<% if @method == "before" %>
+  <%= render "events/index", events: @records, allevents: @not_end_event %>
+<% end %>
+  <%= render "events/calendar", events: @allevents %>

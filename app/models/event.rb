@@ -6,6 +6,7 @@ class Event < ApplicationRecord
   has_many :reservations, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  belongs_to :genre
 
   has_many :notifications, dependent: :destroy
 
@@ -30,6 +31,10 @@ class Event < ApplicationRecord
     address + address_detail
   end
 
+  def event_date
+    self.date
+  end
+
   # 地図を緯度と経度で取得
   geocoded_by :full_address
   after_validation :geocode, if: :address_changed?&&:address_detail_changed?
@@ -45,8 +50,14 @@ class Event < ApplicationRecord
     where(["name like? OR address like?", "%#{keyword}%", "%#{keyword}%"])
   end
 
+  # def self.search(method)
+  # self.published.where(['date > ?', Date.current])
+  # end
+
   def favorited_by?(user)
-    favorites.where(user_id: user.id).exists?
+    unless user==nil
+      favorites.where(user_id: user.id).exists?
+    end
   end
 
   # 通知：いいね
@@ -94,6 +105,16 @@ class Event < ApplicationRecord
     notification.save if notification.valid?
   end
 
+  # イベント仮予約通知の設定をここに記述
+  def create_notification_reservation!(current_user, reservation_id)
+    notification = current_user.active_notifications.new(
+      event_id: id,
+      reservation_id: reservation_id,
+      visited_id: user_id,
+      action:"reservation"
+    )
+    notification.save if notification.valid?
+  end
 
 
 
