@@ -74,6 +74,11 @@ class EventsController < ApplicationController
     @reservations = Reservation.where(event_id: @event)
 
     if @event.update(event_params)
+
+      # 通知
+      @event.update_notification_permission!(current_user, @reservation.id)
+      # ここまで
+
       # if @reservations.event.recruitment.count == @event.number.count
       # 現在のイベントで、「未承認」のものが存在していなかったら
       # unless @reservations.find_by(event_id: @event, permission: "yet").present?
