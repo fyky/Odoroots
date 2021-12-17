@@ -24,6 +24,7 @@ class ReservationsController < ApplicationController
     # ここまで
 
     else
+      flash[:alert] = "イベントを予約できません。"
       render :new
     end
   end
@@ -35,6 +36,11 @@ class ReservationsController < ApplicationController
   def update
     @reservation = Reservation.find(params[:id])
     @reservation.update(reservation_params)
+      if @reservation.permission == "done"
+      # 通知
+        @reservation.update_notification_permission!(current_user)
+      # ここまで
+      end
 
     @event = Event.find(params[:event_id])
     @reservations = Reservation.where(event_id: @event)

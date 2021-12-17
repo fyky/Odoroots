@@ -167,7 +167,7 @@
         <p><%= @event.attention %></p>
     <% end %>
 
-    <% if current_user != nil && @event.user.id = current_user.id %>
+    <% if current_user != nil && @event.user.name == current_user.name %>
       <h2 style="margin-top:15px;">参加承認</h2>
         <h5><p>※以下項目は主催者にのみ表示されています</p></h5>
         <table>
@@ -183,12 +183,13 @@
             <td>
               <%= form_with model: reservation, url: event_reservation_path(reservation.event, reservation), local: true do |f| %>
                 <%= f.select :permission, Reservation.permissions.keys.map {|k| [I18n.t("enums.reservation.permission.#{k}"), k]} %>
+                <%= f.hidden_field :event_id, value: @event.id %>
                 <%= f.submit "更新", class: "" %>
               <% end %>
             </td>
           </tr>
         <% end %>
-      </table>
+        </table>
     <% end %>
   </div>
   <br><br><br>
