@@ -15,6 +15,8 @@ module NotificationsHelper
           tag.a(@visitor.name, href:user_path(@visitor), style:"font-weight: bold;")+"が"+tag.a('あなたの投稿', href:event_path(notification.event_id), style:"font-weight: bold;")+"にコメントしました"
       when "dm" then
         tag.a(notification.visitor.name, href:user_path(@visitor), style:"font-weight: bold;")+"からの新着DMがあります"
+      when  "reservation" then
+        tag.a(notification.visitor.name, href:user_path(@visitor), style:"font-weight: bold;")+"が"+tag.a('あなたの投稿', href:event_path(notification.event_id), style:"font-weight: bold;")+"を予約しました。承認してください。"
 
     end
   end

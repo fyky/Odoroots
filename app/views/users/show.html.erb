@@ -1,4 +1,3 @@
-<main>
   <div class="container">
     <div class="info">
       <div class="profile_image">
@@ -65,7 +64,7 @@
       <% end %>
 
   <!--現在ログインしているユーザーではない場合 -->
-  <% unless @user.id == current_user.id %>
+  <% if current_user != nil && @user.id != current_user.id %>
     <!-- 既にルームが作成されている場合はそのチャットルームに遷移するボタンを表示 -->
     <% if @have_room == true %>
      <%= link_to "ダイレクトメッセージ", room_path(@room_id) %>
@@ -125,7 +124,12 @@
 
 
 
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      <br><br><br><br>
+
+
+
+
+
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     </div>
   </div>
-</main>

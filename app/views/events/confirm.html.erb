@@ -4,12 +4,14 @@
       <p><%= attachment_image_tag @event, :image, :fill, 300, 300, fallback: "/assets/noimage.png" %></p>
     <h3>イベントタイトル</h3>
       <p><%= @event.name %></p>
+    <h3>ダンスジャンル</h3>
+      <p><%= @event.genre.name %></p>
     <h3>開催地（市まで）</h3>
       <p><%= @event.address %></p>
     <h3>開催地（市以降）</h3>
       <p><%= @event.address_detail %></p>
     <h3>開催日</h3>
-      <p><%= @event.date %></p>
+      <p><%= @event.date.strftime( "%Y年%m月%d日" ) %></p>
     <h3>開始時間</h3>
       <p><%= @event.start_time.strftime( "%H:%M" ) %></p>
     <h3>終了予定時間</h3>

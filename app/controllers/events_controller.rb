@@ -56,7 +56,9 @@ class EventsController < ApplicationController
     # &.user
 
     @attendreservations = Reservation.where(event_id: @event, permission:"done")
-    @attend = @user.reservations.find_by(event_id: @event, permission:"done")
+    unless @user == nil
+      @attend = @user.reservations.find_by(event_id: @event, permission:"done")
+    end
     # if @reservations.permission == "yet"
     # @reservations.update(permission: "done")
     # end
@@ -103,6 +105,21 @@ class EventsController < ApplicationController
 
     @keyword = params[:keyword]
     render "index"
+
+    # @allevents = Event.published.search(params[:keyword]).order(created_at: :desc)
+    # @events = @allevents.page(params[:page]).per(9)
+
+    # render "index"
+
+    #開催前のみを表示
+    # @not_end_event = Event.published.where(['date > ?', Date.current])
+    #これをラジオボタンで実装したい
+
+    # @keyword = params[:keyword]
+    # @method = params["method"]
+    # @records = search_for(@keyword, @method)
+
+
   end
 
 
@@ -110,12 +127,26 @@ class EventsController < ApplicationController
   private
   def event_params
     params.require(:event).permit(
-      :name, :image,
+      :name, :image, :genre_id,
       :address, :address_detail,
       :date, :start_time, :end_time,
       :introduction, :requirement, :deadline, :belongings, :meeting_place, :attention,
       :number, :longitude, :latitude
       )
   end
+
+  # def search_for(keyword, method)
+
+  #     if method == 'before'
+  #       Event.published.where(['date > ?', Date.current])
+  #     end
+
+  #     if method == 'all'
+  #       Event.published.all
+  #     end
+
+  # end
+
+
 
 end

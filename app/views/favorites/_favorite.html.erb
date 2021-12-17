@@ -1,11 +1,13 @@
-<% unless current_user == event.user %>
-  <% if event.favorited_by?(current_user) %>
-    <%= link_to event_favorites_path(event), method: :delete, remote: true do %>
-      ♥<%= event.favorites.count %> いいね
-    <% end %>
-  <% else %>
-    <%= link_to event_favorites_path(event), method: :post, remote: true do %>
-      ♡<%= event.favorites.count %> いいね
+<% if user_signed_in? %>
+  <% unless current_user == event.user %>
+    <% if event.favorited_by?(current_user) %>
+      <%= link_to event_favorites_path(event), method: :delete, remote: true do %>
+        ♥<%= event.favorites.count %> いいね
+      <% end %>
+    <% else %>
+      <%= link_to event_favorites_path(event), method: :post, remote: true do %>
+        ♡<%= event.favorites.count %> いいね
+      <% end %>
     <% end %>
   <% end %>
 <% end %>

@@ -3,8 +3,11 @@
   <%= form_with model: @event, url: confirm_events_path, method: :post, local:true do |f| %>
 
     <h3>写真</h3>
-      <p><%= f.attachment_field :image, placeholder: "プロフィール画像" %></p>      <h3>イベントタイトル</h3>
-        <p><%= f.text_field :name %></p>
+      <p><%= f.attachment_field :image, placeholder: "プロフィール画像" %></p>
+    <h3>イベントタイトル</h3>
+      <p><%= f.text_field :name %></p>
+    <h3>ダンスジャンル</h3>
+      <p><%= f.select :genre_id, Genre.all.map{|pf| [pf.name, pf.id]} %></p>
     <h3>開催地（市まで）</h3>
       <p><%= f.text_field :address %></p>
     <h3>開催地（市以降）</h3>

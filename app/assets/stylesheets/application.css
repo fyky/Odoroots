@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
+ @import "simple_calendar";
 
 *{
   margin: 0;

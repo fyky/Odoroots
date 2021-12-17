@@ -18,6 +18,11 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new(reservation_params)
     if @reservation.save
       redirect_to event_reservation_path(@event, @reservation)
+
+    # 通知
+    @event.create_notification_reservation!(current_user, @reservation.id)
+    # ここまで
+
     else
       render :new
     end
