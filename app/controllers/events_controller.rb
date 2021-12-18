@@ -103,7 +103,7 @@ class EventsController < ApplicationController
   end
 
   def search
-    @allevents = Event.published.search(params[:keyword]).order(created_at: :desc)
+    @allevents = Event.published.search(params[:keyword], params[:type]).order(created_at: :desc)
     @events = @allevents.page(params[:page]).per(9)
 
     @keyword = params[:keyword]

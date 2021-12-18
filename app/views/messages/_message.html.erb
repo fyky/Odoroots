@@ -1,7 +1,7 @@
 <div class="chats">
 
    <div class="chat">
-    <% if messages.present? %>
+    <%# if messages.present? %>
       <% messages.each do |m| %>
 
         <% if m.user_id == current_user.id %>
@@ -18,7 +18,7 @@
           </div>
         <% end %>
       <% end %>
-    <% else %>
-      <p>メッセージはまだありません</p>
-    <% end %>
+    <%# else %>
+      <!--p>メッセージはまだありません</p-->
+    <%# end %>
    </div>

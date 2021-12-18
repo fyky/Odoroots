@@ -1,7 +1,7 @@
   <div>
     <%= form_with url: search_events_path, method: :get, local: true do |f| %>
       <%= f.text_field :keyword, value: keyword %>
-      <%= select_tag 'method', options_for_select({ "開催前だけ" => "before", "開催後も" => "all" }) %>
+      <%= select_tag 'type', options_for_select({ "開催前だけ" => "before", "開催後も" => "all" }) %>
       <%= f.submit "検索" %>
     <% end %>
 
