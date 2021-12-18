@@ -31,9 +31,7 @@ class Event < ApplicationRecord
     address + address_detail
   end
 
-  def event_date
-    self.date
-  end
+
 
   # 地図を緯度と経度で取得
   geocoded_by :full_address

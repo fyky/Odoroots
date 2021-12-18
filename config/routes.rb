@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :admin_users, ActiveAdmin::Devise.config
 
-
   root to: 'homes#top'
+
 
   devise_for :users
   resources :users, only: [:show, :edit, :update] do
@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       patch "withdraw"
       get "host"
       get "attend"
+      get "calendar"
     end
 
     resource :relationships, only: [:create, :destroy]

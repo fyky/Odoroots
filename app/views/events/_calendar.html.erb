@@ -1,10 +1,10 @@
-  <%= month_calendar(attribute: :date, end_attribute: :date, events: @allevents) do |date, allevents| %>
+  <%= month_calendar(attribute: :date, end_attribute: :date, events: allevents) do |date, allevents| %>
   <%= date %>
-
     <% allevents.each do |event| %>
       <div>
         <%= event.name %>
       </div>
     <% end %>
+
 
 <% end %>

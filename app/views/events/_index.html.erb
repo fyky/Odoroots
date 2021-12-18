@@ -7,6 +7,7 @@
           <h3><%= link_to event_path(event.id) do %><%= event.name %><% end %></h3>
           <p><%= event.date.strftime( "%Y年%m月%d日" ) %></p>
           <p><%= event.address %></p>
+          <p><%= event.genre.name %></p>
       </div>
     <% end %>
   </div>
