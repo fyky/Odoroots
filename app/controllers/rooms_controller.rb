@@ -2,7 +2,7 @@ class RoomsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    @room = Room.create
+    @room = Room.create(:name => "DM")
     @join_current_user = RoomUser.create(user_id: current_user.id, room_id: @room.id)
     @join_user = RoomUser.create(join_room_params)
     redirect_to room_path(@room.id)

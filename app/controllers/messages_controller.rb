@@ -8,7 +8,7 @@ class MessagesController < ApplicationController
       @room=@message.room
       # ここまでを追加
 
-      # ここから
+      # ここから (notification)
         @room_member_not_me=RoomUser.where(room_id: @room.id).where.not(user_id: current_user.id)
         @the_id=@room_member_not_me.find_by(room_id: @room.id)
         notification = current_user.active_notifications.new(
@@ -25,7 +25,7 @@ class MessagesController < ApplicationController
         end
         notification.save if notification.valid?
 
-      # ここまでを追加
+      # ここまでを追加 (notification)
 
       redirect_to room_path(@message.room_id)
     else

@@ -1,0 +1,16 @@
+<div id="message_<%= message.id %>">
+    <strong><%= message.body %></strong>
+    <small><%= message.user.name %>さん</small>
+    <small><%= message.created_at.strftime("%Y-%m-%d %H:%M") %></small>
+</div>
+
+<script>
+  var current_user_id = $('#message').data('user_id');
+  if (current_user_id === <%= message.user_id %>) {
+    $('#message_<%= message.id %>').addClass('current_user');
+    $('#message_<%= message.id %>').children().addClass('current_user')
+  } else {
+    $('#message_<%= message.id %>').addClass('visited_user');
+    $('#message_<%= message.id %>').children().addClass('visited_user')
+  }
+</script>

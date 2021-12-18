@@ -1,12 +1,18 @@
-App.room = App.cable.subscriptions.create "RoomChannel",
-  connected: ->
-    # Called when the subscription is ready for use on the server
+document.addEventListener 'turbolinks:load', ->
+  console.log($('#message').data('room_id'))
+  App.room = App.cable.subscriptions.create { channel: "RoomChannel", room: $('#message').data('room_id') },
+    connected: ->
 
-  disconnected: ->
-    # Called when the subscription has been terminated by the server
+    disconnected: ->
 
-  received: (data) ->
-    # Called when there's incoming data on the websocket for this channel
+    received: (data) ->
+      $('#messages').append data['message']
 
-  speak: ->
-    @perform 'speak'
+    speak: (message) ->
+      @perform 'speak', { message: message, room_id: $('#message').data('room_id'), user_id: $('#message').data('user_id') }
+
+  $('#chat-input').on 'keypress', (event) ->
+    if event.keyCode is 13
+      App.room.speak event.target.value
+      event.target.value = ''
+      event.preventDefault()
