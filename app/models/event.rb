@@ -46,8 +46,12 @@ class Event < ApplicationRecord
     self.where(publish: true)
   end
 
-  def self.search(keyword)
-    where(["name like? OR address like?", "%#{keyword}%", "%#{keyword}%"])
+  def self.search(keyword, type)
+    if type == 'all'
+      where(["name LIKE ? OR address LIKE ?", "%#{keyword}%", "%#{keyword}%"])
+    else
+      where(["date > ? AND (name LIKE ? OR address LIKE ?)", Date.current, "%#{keyword}%", "%#{keyword}%"])
+    end
   end
 
   # def self.search(method)
@@ -98,7 +102,7 @@ class Event < ApplicationRecord
       visited_id: visited_id,
       action: 'comment'
     )
-    # 自分の投稿に対するコメントの場合は、通知済みとする
+    # 自分���投稿に対するコメントの場合は、通知済みとする
     if notification.visitor_id == notification.visited_id
       notification.checked = true
     end

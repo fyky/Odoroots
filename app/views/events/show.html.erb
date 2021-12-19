@@ -58,7 +58,7 @@
 
 
     <div class="event_main">
-      <p>＊<%= @event.genre.name %></p>
+      <button class="btn_tag"><%= @event.genre.name %></button>
       <p>
         <h2>開催日時</h2>
           <%= @event.date.strftime('%Y年%m月%d日') %>
@@ -105,24 +105,27 @@
   </div>
 
   <div class="event_detail">
-    <h3>主催者</h3><br>
-    <div class="host_image">
-      <%= attachment_image_tag @event.user, :image, :fill, 200, 200, style: "border-radius:100px;",
-      fallback: "/assets/noimage.png", size:'200x200' %><br>
-      <%= link_to user_path(@event.user.id) do %><%= @event.user.name %><% end %>
+    <h3>主催者</h3>
+    <div class="text">
+      <div class="host_image">
+        <%= attachment_image_tag @event.user, :image, :fill, 200, 200, style: "border-radius:100px;",
+        fallback: "/assets/noimage.png", size:'200x200' %><br>
+        <%= link_to user_path(@event.user.id) do %><%= @event.user.name %><% end %>
+      </div>
+      <div class="balloon2-left">
+        <%= @event.introduction %>
+      </div>
     </div>
-    <div class="balloon2-left">
-      <%= @event.introduction %>
-    </div>
-    <br>
-
     <h3>開催地（詳細）</h3>
-      <p><%= @event.address %><%= @event.address_detail %></p>
+      <div class="text">
+        <%= @event.address %><%= @event.address_detail %>
+        <div id="map"></div>
+      </div>
 
-<div id="map"></div>
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
-</script>
+      <script async defer
+              src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
+      </script>
+
 
     <!--以下はログイン中のみ-->
 
@@ -132,14 +135,13 @@
       <%= render "comments/comment", event: @event, comment: @comment %>
     </div>
 
-      <h5><p>コメントを投稿する</p></h5>
-        <%= form_with(model:[@event, @comment]) do |f| %>
-          <p>
-            <%= f.text_area :comment, class: "comment_form", rows:'5',placeholder: "コメントをここに" %>
-            <%= f.submit "送信する", :class => 'comment_send' %>
-          </p>
-        <% end %>
-    </div>
+        <div class="text">
+          <h5>コメントを投稿する</h5>
+          <%= form_with(model:[@event, @comment]) do |f| %>
+              <%= f.text_area :comment, class: "comment_form", rows:'5',placeholder: "コメントをここに" %>
+              <%= f.submit "送信する", class: "send" %>
+          <% end %>
+        </div>
 
 
       <h3>参加予定者</h3>
@@ -153,43 +155,49 @@
           <% end %>
         </ul>
     <% end %>
+    </div>
+
 
 <!--もしこのイベントの自分の予約がtrueだったら -->
 
     <% if @attend.present? %>
     <h2 style="margin-top:15px;">参加者への連絡事項</h2>
-      <h5><p>※以下項目は参加者にのみ表示されています</p></h5>
+      <div class="text">
+        <h5>※以下項目は参加者にのみ表示されています</h5>
         <h3>待ち合わせ場所</h3>
         <p><%= @event.meeting_place %></p>
         <h3>持ち物</h3>
         <p><%= @event.belongings %></p>
         <h3>注意事項</h3>
         <p><%= @event.attention %></p>
+      </div>
     <% end %>
 
     <% if current_user != nil && @event.user.name == current_user.name %>
       <h2 style="margin-top:15px;">参加承認</h2>
-        <h5><p>※以下項目は主催者にのみ表示されています</p></h5>
-        <table>
-          <tr>
-            <th>予約したユーザー</th>
-            <th>予約時のコメント</th>
-            <th>承認ステータス状態</th>
-          </tr>
-        <% @reservations.each do |reservation| %>
-          <tr>
-            <td><%= reservation.user.name %></td>
-            <td><%= reservation.comment %></td>
-            <td>
-              <%= form_with model: reservation, url: event_reservation_path(reservation.event, reservation), local: true do |f| %>
-                <%= f.select :permission, Reservation.permissions.keys.map {|k| [I18n.t("enums.reservation.permission.#{k}"), k]} %>
-                <%= f.hidden_field :event_id, value: @event.id %>
-                <%= f.submit "更新", class: "" %>
-              <% end %>
-            </td>
-          </tr>
-        <% end %>
-        </table>
+        <div class="text">
+          <h5>※以下項目は主催者にのみ表示されています</h5>
+          <table>
+            <tr>
+              <th>予約したユーザー</th>
+              <th>予約時のコメント</th>
+              <th>承認ステータス状態</th>
+            </tr>
+          <% @reservations.each do |reservation| %>
+            <tr>
+              <td><%= reservation.user.name %></td>
+              <td><%= reservation.comment %></td>
+              <td>
+                <%= form_with model: reservation, url: event_reservation_path(reservation.event, reservation), local: true do |f| %>
+                  <%= f.select :permission, Reservation.permissions.keys.map {|k| [I18n.t("enums.reservation.permission.#{k}"), k]} %>
+                  <%= f.hidden_field :event_id, value: @event.id %>
+                  <%= f.submit "更新", class: "" %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+          </table>
+        </div>
     <% end %>
   </div>
-  <br><br><br>
+  </div>

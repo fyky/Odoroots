@@ -1,13 +1,14 @@
-  <h1>Events一覧全投稿ページ</h1>
+<h1>投稿されたイベント</h1>
   全<%= allevents.count %>件
   <div class="event_container">
     <% events.each do |event| %>
       <div class="event_index">
-        <%= attachment_image_tag event, :image, :fill, 400, 300, fallback: "/assets/noimage.png", size:'400x300'  %>
-          <h3><%= link_to event_path(event.id) do %><%= event.name %><% end %></h3>
-          <p><%= event.date.strftime( "%Y年%m月%d日" ) %></p>
-          <p><%= event.address %></p>
-          <p><%= event.genre.name %></p>
+        <%= attachment_image_tag event, :image, :fill, 400, 300, fallback: "/assets/noimage.png", size:'400x300' %><br>
+          <div class="event_index_text">
+            <span class="event_title"><%= link_to event_path(event.id) do %><%= event.name %><% end %></span><br>
+            <p><i class="fas fa-table"></i> <%= event.date.strftime( "%Y年%m月%d日" ) %> <i class="fas fa-map-marker"></i> <%= event.address %></p>
+            <!--<button class="btn_tag"><%#= event.genre.name %></button>-->
+          </div>
       </div>
     <% end %>
   </div>

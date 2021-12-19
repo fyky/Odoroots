@@ -35,13 +35,11 @@ main a{
 main a:hover{
   text-decoration: none;
   color:#eee;
-  background-color: #191970;
 }
 
 
 p{
-  padding-left:15px;
-  padding-bottom: 10px;
+
 }
 
 /*ヘッダー */
@@ -92,14 +90,24 @@ header{
 
 
 
-/* 見出しh1~h2 */
+/* 見出し関連 */
 h1 {
   display: inline-block;
   margin-top:20px;
   padding: 10px 0px 10px 10px;
   margin-bottom: 10px;
   border-bottom: 2px solid #ccc;
+  font-weight:normal;
 }
+
+h1:before{
+  font-family: "Font Awesome 5 Free";
+  content: "\f591";
+  font-weight: 900;
+  padding-right : 5px;
+  color: #708090;
+}
+
 
 h2 {
   display: inline-block;
@@ -114,7 +122,8 @@ h2 {
 h3{
   display: inline;
   background-image: linear-gradient(rgba(0,0,0,0) 70%, #4682b4 70%);
-  margin-left:10px;
+  margin-left: -10px;
+  font-weight: normal;
 }
 h3 a{
   color:#000;
@@ -135,9 +144,9 @@ h4{
   display: inline-block;
 }
 
+/*　メイン */
 main{
-  padding-top:60px;
-  padding-left:20px;
+  padding: 60px 0px 30px 20px;
   background-color: #eee;
   line-height: 25pt;
 }
@@ -169,15 +178,38 @@ main{
 
 .event_index{
   width:30%;
-  border:1px solid #333;
+  border:1px solid #d3cfd9;
   height:500px;
   text-align: center;
   margin:1%;
   background-color: #fff;
 }
 
+.event_index_text{
+  width:95%;
+  margin: auto;
+  text-align:left;
+  background-color: #eee;
+  height:170px;
+  padding: 10px;
+}
+
+.event_title{
+  font-size:25px;
+}
 
 
+.search_form{
+  width: 300px;
+  height: 25px;
+  border:none;
+  padding:10px;
+}
+
+.select{
+  padding:5px;
+  border: 0;
+}
 
 .profile_image{
   padding:20px;
@@ -210,6 +242,7 @@ width:650px;
   vertical-align:  middle;
 }
 .event_detail{
+  margin-left:20px;
 }
 
 .comment, .dm{
@@ -319,6 +352,14 @@ a.btn03:hover, .btn03:hover {
   padding:10px;
 }
 
+/* ダンスジャンル */
+.btn_tag{
+  border: 1px solid;
+  font-size: 13px;
+  padding: 8px;
+  margin: 5px 0 5px 0;
+}
+
 /*イベントページのページネーション*/
 .pagination{
   background-color:#fff;
@@ -373,7 +414,7 @@ a.btn03:hover, .btn03:hover {
 }
 
 
-.comment_send {
+.send {
   display:inline-block;
   border-radius:5px;
   text-align:center;
@@ -412,7 +453,7 @@ a.btn03:hover, .btn03:hover {
     display: inline-block;
     width:70px;
     height:70px;
-
+    margin-right:10px;
 }
 
 .message{
@@ -497,4 +538,8 @@ main ul{
 
 .box-show {
   display: block;
+}
+
+.text{
+  margin-left:20px;
 }
