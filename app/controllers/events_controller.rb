@@ -39,7 +39,14 @@ class EventsController < ApplicationController
   end
 
   def index
-    @allevents = Event.published.order(created_at: :desc)
+    if params[:genre_id]
+      @genre = Genre.find(params[:genre_id])
+      @genres = Genre.all
+
+      @allevents = @genre.events.published.order(created_at: :desc)
+    else
+      @allevents = Event.published.order(created_at: :desc)
+    end
     #.page(pamars[:page])でページネーションを追加
     @events = @allevents.page(params[:page]).per(9)
 
@@ -103,7 +110,7 @@ class EventsController < ApplicationController
   end
 
   def search
-    @allevents = Event.published.search(params[:keyword]).order(created_at: :desc)
+    @allevents = Event.published.search(params[:keyword], params[:type]).order(created_at: :desc)
     @events = @allevents.page(params[:page]).per(9)
 
     @keyword = params[:keyword]

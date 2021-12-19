@@ -1,13 +1,21 @@
   <div>
+    <h3>フリーワードで検索</h3>
+    <h5>イベント名、開催地</h5>
     <%= form_with url: search_events_path, method: :get, local: true do |f| %>
       <%= f.text_field :keyword, value: keyword %>
-      <%= select_tag 'method', options_for_select({ "開催前だけ" => "before", "開催後も" => "all" }) %>
+      <%= select_tag 'type', options_for_select({ "開催前だけ" => "before", "開催後も" => "all" }) %>
       <%= f.submit "検索" %>
     <% end %>
 
+    <!-- genre.idでとってこれるようにする-->
+    <h3>ジャンルで検索</h3><br>
+    <%= link_to "HIPHOP", events_path(genre_id: "1") %>
+    <%= link_to "KPOP", events_path(genre_id: "2") %>
+    <%= link_to "JAZZ", events_path(genre_id: "3") %>
+    <%= link_to "HOUSE", events_path(genre_id: "4") %>
+    <%= link_to "その他", events_path(genre_id: "6") %>
 
-    <p>フリーワード検索=>開催地、イベント名<br>
-    ジャンル検索（プルダウン）<br>
-    開催前or開催終了も含む（ラジオボタン条件分岐）<br>
+
+    <p>
     地図（現在地から近い順or 開催地を地図全部にポイント表示）</p>
   </div>

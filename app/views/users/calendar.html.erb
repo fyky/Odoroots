@@ -1,0 +1,14 @@
+<div class="tab_container">
+  <ul class="tab-list">
+    <li class="tab box-active">主催イベント</li>
+    <li class="tab">参加イベント</li></li>
+  </ul>
+  <div class="tabbox-contents">
+    <div class="tabbox box-show">
+<%= render "events/calendar", hosts: @hosts %>
+    </div>
+    <div class="tabbox">
+<%= render "reservations/calendar", attends: @attends %>
+    </div>
+  </div>
+</div>

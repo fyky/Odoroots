@@ -454,3 +454,47 @@ main ul{
   height: 300px;
   width:500px;
 }
+
+
+
+.tab_container {
+  margin: 10px;
+  border: 1px solid #ccc;
+}
+
+.tab_container ul{
+  list-style: none;
+  padding-left:0;
+}
+
+.tab-list {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.tab {
+  width: 100%;
+  padding: 10px;
+  cursor: pointer;
+  border-left: solid 1px #CCC;
+  border-bottom: solid 1px #CCC;
+}
+.tab:first-child {
+  border-left: none;
+}
+
+.tab-active {
+  color: #FFF;
+  background: #a9a9a9;
+  transition: all 0.2s ease-in-out;
+}
+
+.tabbox {
+  display: none;
+  padding: 15px;
+}
+
+.box-show {
+  display: block;
+}

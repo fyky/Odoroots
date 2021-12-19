@@ -36,6 +36,10 @@ class User < ApplicationRecord
   validates :name, presence: true
 
 
+  def date
+    Event.date
+  end
+
   def age
     ((Date.today.strftime("%Y%m%d").to_i - birthday.strftime("%Y%m%d").to_i)/10000).floor
   end

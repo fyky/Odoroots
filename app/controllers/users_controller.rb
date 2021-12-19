@@ -62,6 +62,12 @@ class UsersController < ApplicationController
     @attends = @reservations.where(permission: "done").order(created_at: :desc)
   end
 
+  def calendar
+    @user = User.find(params[:id])
+    @hosts = @user.events.published
+    @attends = @user.reservations.where(permission: "done")
+    # @allevents = (attends + hosts) #エラー
+  end
 
   private
     def user_params
