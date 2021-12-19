@@ -111,12 +111,14 @@ h1:before{
 
 h2 {
   display: inline-block;
-  padding: 10px 15px;
+  padding: 5px 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  background-color:#b0c4de;
+  background-color:#d7e0ea;
   font-size: 20px;
-  margin-right:10px;
+  margin-left:10px;
+  font-weight: normal;
+  margin:5px;
 }
 
 h3{
@@ -163,9 +165,8 @@ main{
   width:350px;
   background-color: #b0c4de;
   height:100%;
-  text-align: center;
   border-radius: 0px 0px 10px 10px;
-  box-shadow: 5px 5px 2px gray;
+  /*box-shadow: 5px 5px 2px gray;*/
 }
 
 /*イベント一覧表示*/
@@ -215,8 +216,15 @@ main{
   padding:20px;
   margin:auto;
   width:90%;
-  height:300px;
+  height:320px;
   background-color: #fff;
+  text-align: center;
+}
+
+.profile_text{
+  padding:20px;
+  margin:auto;
+  width:90%;
 }
 
 .content{
@@ -264,6 +272,15 @@ width:650px;
   width: calc(60% - 60px);
   padding:10px;
 }
+
+.event_form{
+  width: 300px;
+  height: 25px;
+  border:none;
+  padding:10px;
+}
+
+
 
 
 /* テーブル設定 */
@@ -331,25 +348,27 @@ th {
 }
 
 .button02{
-  border:1px dotted #eee;
-  background-color:#db7093;
+  border:1px solid #eee;
+  background-color:#d4c9de;
   font-size: 15px;
-  padding:3px;
-  margin-bottom:10px;
-  margin-left: 20px;
-  margin-right: 20px;
+  padding:10px;
+  margin: 0px 10px 10px 10px;
+  border-radius: 50%;
 }
 
 a.btn03, .btn03 {
   border: 1px dashed #000;
-  background-color: #778899;
+  background-color: #fff;
   padding:10px;
-  font-size:15px;
+  font-size:18px;
+  color: #4682b4;
 }
 a.btn03:hover, .btn03:hover {
   border: 1px dashed #000;
   background-color: #b0c4de;
   padding:10px;
+  cursor: pointer;
+  color:#eee;
 }
 
 /* ダンスジャンル */
@@ -357,7 +376,7 @@ a.btn03:hover, .btn03:hover {
   border: 1px solid;
   font-size: 13px;
   padding: 8px;
-  margin: 5px 0 5px 0;
+  margin: 10px;
 }
 
 /*イベントページのページネーション*/
@@ -424,6 +443,7 @@ a.btn03:hover, .btn03:hover {
   line-height:10px;
   transition: .3s;
   border: 2px solid #000000;
+  cursor: pointer;
 }
 
 .comment_send:hover {
@@ -542,4 +562,11 @@ main ul{
 
 .text{
   margin-left:20px;
+}
+
+.user-view{
+  background-color:#fff;
+  margin:20px;
+  border:1px solid #d3cfd9;
+  padding:10px;
 }

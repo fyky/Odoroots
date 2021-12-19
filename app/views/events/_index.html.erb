@@ -6,6 +6,7 @@
         <%= attachment_image_tag event, :image, :fill, 400, 300, fallback: "/assets/noimage.png", size:'400x300' %><br>
           <div class="event_index_text">
             <span class="event_title"><%= link_to event_path(event.id) do %><%= event.name %><% end %></span><br>
+            <button class="btn_tag"><%= event.genre.name %></button><br>
             <p><i class="fas fa-table"></i> <%= event.date.strftime( "%Y年%m月%d日" ) %> <i class="fas fa-map-marker"></i> <%= event.address %></p>
             <!--<button class="btn_tag"><%#= event.genre.name %></button>-->
           </div>

@@ -2,7 +2,7 @@
   <h1>ユーザー情報編集</h1>
   <%= form_with model:@user, local: true do |f| %>
     <h3>名前</h3>
-      <p><%= f.text_field :name %></p>
+      <p><%= f.text_field :name, class: "event_form" %></p>
 
     <h3>写真</h3>
       <p>
@@ -11,32 +11,41 @@
       </p>
 
     <h3>ダンスジャンル</h3>
-      <p><%= f.text_field :genre %></p>
+      <p><%= f.text_field :genre, class: "event_form" %></p>
 
     <h3>住所（市まで）</h3>
-      <p><%= f.text_field :address %></p>
-
-    <h3>住所（市以降）</h3>
-      <p><%= f.text_field :address_detail %></p>
-
-    <h3>電話番号</h3>
-      <p><%= f.text_field :phone_number %></p>
+      <p><%= f.text_field :address, class: "event_form" %></p>
 
     <h3>紹介文</h3>
-      <p><%= f.text_field :introduction %></p>
+      <p><%= f.text_field :introduction, class: "event_form" %></p>
 
     <h3>SNSリンク</h3><br>
       <h5>Twitter</h5>
-        <p><%= f.text_field :twitter %></p>
+        <p><%= f.text_field :twitter, class: "event_form" %></p>
       <h5>Instagram</h5>
-        <p><%= f.text_field :instagram %></p>
+        <p><%= f.text_field :instagram, class: "event_form" %></p>
       <h5>Facebook</h5>
-        <p><%= f.text_field :facebook %></p>
+        <p><%= f.text_field :facebook, class: "event_form" %></p>
       <h5>Youtube</h5>
-        <p><%= f.text_field :youtube %></p>
+        <p><%= f.text_field :youtube, class: "event_form" %></p>
+
+    <h2 style="margin-left: -20px;">登録情報更新</h2><br>
+      <h5>※以下は個人情報のため他のユーザーには公開されません<br>
+        ※本名、生年月日は変更できません</h5>
+
+      <h3>名前（本名）</h3>
+        <p><%= @user.real_name %></p>
+
+      <h3>生年月日</h3>
+        <p><%= @user.birthday.strftime( "%Y年%m月%d日" ) %></p>
 
 
+      <h3>住所（市以降）</h3>
+        <p><%= f.text_field :address_detail, class: "event_form" %></p>
 
-    <p><%= f.submit '更新する' %></p>
+      <h3>電話番号</h3>
+        <p><%= f.text_field :phone_number, class: "event_form" %></p>
+
+    <p><%= f.submit '更新する', class: "send" %></p>
   <% end %>
 </main>

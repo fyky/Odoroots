@@ -1,16 +1,13 @@
 <div class="chat-room">
- <h1>メッセージ</h1>
- <% @room_users.each do |r| %>
- <div class="user-name">
- <strong>
+ <h2>
+  <% @room_users.each do |r| %>
     <%= link_to user_path(r.user.id) do %>
       <%= r.user.name %>さん
     <% end %>
- </strong>
- </div>
  <% end %>
+ のトークルーム
+ </h2>
 
- <hr>
   <div id="messages" room_id="<%= @room.id %>">
     <div class="chats">
     <div class="chat">
