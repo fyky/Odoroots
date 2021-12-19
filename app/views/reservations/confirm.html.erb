@@ -50,6 +50,7 @@
         <%= f.hidden_field :comment %>
         <%= f.hidden_field :user_id, value: current_user.id %>
         <%= f.hidden_field :event_id %>
+        <%= f.hidden_field :date, value: @event.date %>
 
       <p><%= f.submit '入力画面へ戻る' %></p>
       <% end %>

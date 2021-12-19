@@ -31,7 +31,9 @@ class Event < ApplicationRecord
     address + address_detail
   end
 
-
+  def event_date
+    self.date
+  end
 
   # 地図を緯度と経度で取得
   geocoded_by :full_address
@@ -44,12 +46,8 @@ class Event < ApplicationRecord
     self.where(publish: true)
   end
 
-  def self.search(keyword, type)
-    if type == 'all'
-      where(["name LIKE ? OR address LIKE ?", "%#{keyword}%", "%#{keyword}%"])
-    else
-      where(["date > ? AND (name LIKE ? OR address LIKE ?)", Date.current, "%#{keyword}%", "%#{keyword}%"])
-    end
+  def self.search(keyword)
+    where(["name like? OR address like?", "%#{keyword}%", "%#{keyword}%"])
   end
 
   # def self.search(method)

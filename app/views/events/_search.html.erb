@@ -7,6 +7,12 @@
 
 
     <p>フリーワード検索=>開催地、イベント名<br>
+    <%= link_to "HIPHOP", events_path(genre_id: "1") %><br>
+    <%= link_to "KPOP", events_path(genre_id: "2") %>
+    <%= link_to "HIPHOP", events_path(genre_id: "3") %>
+    <%= link_to "HIPHOP", events_path(genre_id: "4") %>
+    <%= link_to "HIPHOP", events_path(genre_id: "5") %>
+
     ジャンル検索（プルダウン）<br>
     開催前or開催終了も含む（ラジオボタン条件分岐）<br>
     地図（現在地から近い順or 開催地を地図全部にポイント表示）</p>
