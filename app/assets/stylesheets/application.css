@@ -456,10 +456,9 @@ main ul{
 }
 
 
-/* ↓外枠↓ */
+
 .tab_container {
   margin: 10px;
-
   border: 1px solid #ccc;
 }
 
@@ -467,13 +466,13 @@ main ul{
   list-style: none;
   padding-left:0;
 }
-/* ↓タブを横並び↓ */
+
 .tab-list {
   display: flex;
   justify-content: space-around;
   text-align: center;
 }
-/* ↓タブのデザイン↓ */
+
 .tab {
   width: 100%;
   padding: 10px;
@@ -484,21 +483,18 @@ main ul{
 .tab:first-child {
   border-left: none;
 }
-/* ↓タブがアクティブになっている時のデザイン↓ */
+
 .tab-active {
   color: #FFF;
   background: #a9a9a9;
   transition: all 0.2s ease-in-out;
 }
-/* ↓タブの中身↓ */
+
 .tabbox {
-  /* ↓タブの中身を最初は非表示↓ */
   display: none;
-  /* ↓タブの中身の余白↓ */
   padding: 15px;
 }
 
-/* ↓このクラスがついている時だけタブの中身を表示↓ */
 .box-show {
   display: block;
 }

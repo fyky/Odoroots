@@ -41,6 +41,7 @@ class EventsController < ApplicationController
   def index
     if params[:genre_id]
       @genre = Genre.find(params[:genre_id])
+      @genres = Genre.all
 
       @allevents = @genre.events.published.order(created_at: :desc)
     else
