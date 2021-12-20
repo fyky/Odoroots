@@ -17,6 +17,7 @@ class ReservationsController < ApplicationController
     @event = Event.find(params[:event_id])
     @reservation = Reservation.new(reservation_params)
     if @reservation.save
+      # binding.irb
       redirect_to event_reservation_path(@event, @reservation)
 
     # 通知
@@ -30,7 +31,7 @@ class ReservationsController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:id])
+    @event = Event.find(params[:event_id])
   end
 
   def update

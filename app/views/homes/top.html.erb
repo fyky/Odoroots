@@ -1,6 +1,10 @@
-  <h1>odorootsとは</h1>
-   <p>odorootsとは、ダンサーが気軽に集まれるコミュニティサイトです。<br>
-   イベントを主催したり、参加したりして、みんなでたくさん踊りましょう！<br>
-   イベントの予約・主催には会員登録が必要です。</p>
-  <h1>イベント検索</h1>
-    <%= render "events/search", keyword: @keyword %>
+<h1>odorootsとは</h1>
+  <div class="text">
+    odorootsとは、ダンサーが気軽に集まれるコミュニティサイトです。<br>
+    イベントを主催したり、参加したりして、みんなでたくさん踊りましょう！<br>
+    イベントへの参加予約・主催には会員登録が必要です。
+    <br>
+    詳しい使い方はこちら
+  </div>
+
+<%= render "events/search", keyword: @keyword %>

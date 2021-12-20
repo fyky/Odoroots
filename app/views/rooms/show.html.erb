@@ -1,16 +1,13 @@
-<div class="chat-room">
- <h1>メッセージ</h1>
- <% @room_users.each do |r| %>
- <div class="user-name">
- <strong>
+<div class="chat-room" id="top">
+ <h2>
+  <% @room_users.each do |r| %>
     <%= link_to user_path(r.user.id) do %>
       <%= r.user.name %>さん
     <% end %>
- </strong>
- </div>
  <% end %>
+ のトークルーム
+ </h2>
 
- <hr>
   <div id="messages" room_id="<%= @room.id %>">
     <div class="chats">
     <div class="chat">
@@ -33,7 +30,7 @@
        <%#= input_field :body, class: "dm_form", data: { behavior: "room_speaker" }, placeholder: "メッセージを入力してください" %>
        <%#= f.hidden_field :room_id, value: @room.id %>
        <%#= f.submit "送信する", :class => 'comment_send' %>
-       <input id="chat-input" type="text" style="width:300px;"></input>
+      <input id="chat-input" type="text" style="width:300px;"></input><br>
      <%# end %>
    </div>
 

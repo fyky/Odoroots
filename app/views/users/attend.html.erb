@@ -1,15 +1,17 @@
-<main>
-  <h1>参加イベント一覧</h1>
-    <table>
+<h1>参加イベント一覧</h1>
+  <table>
+    <tr>
+      <th>開催日</th>
+      <th>開始時刻</th>
+      <th>イベント名</th>
+      <th>集合場所</th>
+    </tr>
+    <% @attends.each do |attend| %>
       <tr>
-        <th>開催日</th>
-        <th>イベント名</th>
+        <td><%= attend.event.date.strftime( "%Y年%m月%d日" ) %></td>
+        <td><%= attend.event.start_time.strftime( "%H:%M" ) %></td>
+        <td><%= link_to event_path(attend.event.id) do %><%= attend.event.name %><% end %></td>
+        <td><%= attend.event.meeting_place %></td>
       </tr>
-      <% @attends.each do |attend| %>
-        <tr>
-          <td><%= attend.event.date %></td>
-          <td><%= attend.event.name %></td>
-        </tr>
-      <% end %>
-    </table>
-</main>
+    <% end %>
+  </table>

@@ -1,11 +1,14 @@
-  <h1>いいねした投稿一覧</h1>
+  <h1>いいねした投稿</h1>
     <div class="event_container">
       <% @favorites.each do |favorite|%>
         <div class="event_index">
           <%= attachment_image_tag favorite.event, :image, :fill, 400, 300, fallback: "/assets/noimage.png", size:'400x300'  %>
-          <h3><%= link_to event_path(favorite.event.id) do %><%= favorite.event.name %><% end %></h3>
-          <p><%= favorite.event.date.strftime('%Y年%m月%d日') %></p>
-          <p><%= favorite.event.address %></p>
+          <div class="event_index_text">
+          <span class="event_title"><%= link_to event_path(favorite.event.id) do %><%= favorite.event.name %><% end %></span><br>
+          <button class="btn_tag"><%= favorite.event.genre.name %></button><br>
+          <p><i class="fas fa-table"></i> <%= favorite.event.date.strftime( "%Y年%m月%d日" ) %>
+          <i class="fas fa-map-marker"></i> <%= favorite.event.address %></p>
+        </div>
         </div>
       <% end %>
     </div>

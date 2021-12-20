@@ -2,7 +2,7 @@
     <div class="info">
       <div class="profile_image">
         <%= attachment_image_tag @user, :image, :fill, 160, 160, fallback: "/assets/noimage.png", size:'160x160' %>
-        <p><%= @user.name %></p>
+        <p class="event_title"><%= @user.name %></p>
 
     <!-- フォローボタン（ログイン中かつマイページではない） -->
     <% if user_signed_in? %>
@@ -14,53 +14,59 @@
         <% end %>
       <% end %>
     <% end %>
+        <i class="fas fa-user"></i>
+        <%= link_to user_followings_path(@user.id) do %><%= @user.followings.count %><% end %>
+        follow
 
-        follow：<%= link_to user_followings_path(@user.id) do %><%= @user.followings.count %><% end %> |
-        follower：<%= link_to user_followers_path(@user.id) do %><%= @user.followers.count %><% end %>
+        <i class="fas fa-user"></i>
+        <%= link_to user_followers_path(@user.id) do %><%= @user.followers.count %><% end %>
+        follower<br>
 
-      </div>
-      <p>居住地
-        <%= @user.address %>
-      </p>
-      <p>紹介文
-        <%= @user.introduction %>
-      </p>
-      <p>年齢
-        <%= @user.age %>歳
-      </p>
-      <p>ジャンル
-        <%= @user.genre %>
-      </p>
-
-　　　<!-- SNSアイコン表示 -->
+      <!-- SNSアイコンここから -->
       <% if @user.twitter.present? %>
         <%= link_to @user.twitter, target: :_blank do %>
-          <i class="fab fa-twitter-square fa-3x"></i>
+          <i class="fab fa-twitter-square fa-2x"></i>
         <% end %>
       <% end %>
 
       <% if @user.facebook.present? %>
         <%= link_to @user.facebook, target: :_blank do %>
-          <i class="fab fa-facebook-square fa-3x"></i>
+          <i class="fab fa-facebook-square fa-2x"></i>
         <% end %>
       <% end %>
 
       <% if @user.instagram.present? %>
         <%= link_to @user.instagram, target: :_blank do %>
-          <i class="fab fa-instagram fa-3x"></i>
+          <i class="fab fa-instagram fa-2x"></i>
         <% end %>
       <% end %>
 
       <% if @user.youtube.present? %>
         <%= link_to @user.youtube, target: :_blank do %>
-          <i class="fab fa-youtube fa-3x"></i>
+          <i class="fab fa-youtube fa-2x"></i>
         <% end %>
       <% end %>
       <!-- ここまで -->
 
+      </div>
+      <div class="profile_text">
+        <p><i class="fas fa-map-marker"></i>
+          <%= @user.address %>
+        </p>
+        <p><i class="fas fa-id-badge"></i>
+          <%= @user.age %>歳
+        </p>
+        <p><i class="fas fa-star"></i>
+          <%= @user.genre %>
+        </p>
+        <p><i class="fas fa-hand-paper"></i>
+          <%= @user.introduction %>
+        </p>
+
+
 
       <% if @user == current_user %>
-        <p><%= link_to "編集",edit_user_path(@user) %></p>
+        <p><%= link_to "ユーザー情報を編集する",edit_user_path(@user) %></p>
       <% end %>
 
   <!--現在ログインしているユーザーではない場合 -->
@@ -73,45 +79,53 @@
       <%= form_with model: @room, local: true do |f|%>
       <!-- room_usersテーブルに情報を送信 -->
         <%= hidden_field_tag 'room_user[user_id]', @user.id %>
-        <%= f.submit "チャットを始める" %>
+        <%= f.submit "チャットを始める", class: "send" %>
       <% end %>
     <% end %>
   <% end %>
 
-
+      </div>
     </div>
 
     <div class="content">
-      <h1>主催イベント（開催前・直近3件）</h1>
+      <h1>主催イベント</h1>（開催前・直近3件まで）
         <p><h5>参加承認を必ずしてください</h5></p>
         <table>
           <tr>
             <th>開催日</th>
+            <th>開始時刻</th>
             <th>イベント名</th>
+            <th>集合場所</th>
           </tr>
           <% @events.each do |event| %>
             <% if Date.current < event.date %>
               <tr>
-                <td><%= event.date %></td>
+                <td><%= event.date.strftime( "%Y年%m月%d日" )  %></td>
+                <td><%= event.start_time.strftime( "%H:%M" ) %></td>
                 <td><%= link_to event_path(event.id) do %><%= event.name %><% end %></td>
+                <td><%= event.meeting_place %></td>
               </tr>
             <% end %>
           <% end %>
         </table>
         <p><%= link_to "主催イベントをすべて見る", host_user_path %></p>
 
-      <h1>参加予定イベント（開催前・直近3件）</h1>
+      <h1>参加予定イベント</h1>（開催前・直近3件まで）
         <p><h5>集合場所、持ち物などの詳細を必ずご確認ください</h5></p>
         <table>
           <tr>
             <th>開催日</th>
+            <th>開始時刻</th>
             <th>イベント名</th>
+            <th>集合場所</th>
           </tr>
           <% @attends.each do |attend| %>
             <% if Date.current < attend.event.date %>
               <tr>
-                <td><%= attend.event.date %></td>
+                <td><%= attend.event.date.strftime( "%Y年%m月%d日" )  %></td>
+                <td><%= attend.event.start_time.strftime( "%H:%M" ) %></td>
                 <td><%= link_to event_path(attend.event.id) do %><%= attend.event.name %><% end %></td>
+                <td><%= attend.event.meeting_place %></td>
               </tr>
             <% end %>
           <% end %>
@@ -119,7 +133,7 @@
         <p><%= link_to "参加イベントをすべて見る", attend_user_path %></p>
 
         <%= link_to reservations_path do %>
-          予約履歴を見る
+          今までの予約履歴を見る
         <% end %>
 
 

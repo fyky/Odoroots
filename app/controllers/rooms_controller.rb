@@ -5,6 +5,26 @@ class RoomsController < ApplicationController
     @room = Room.create(:name => "DM")
     @join_current_user = RoomUser.create(user_id: current_user.id, room_id: @room.id)
     @join_user = RoomUser.create(join_room_params)
+
+      # ここから (notification)
+        @room_member_not_me=RoomUser.where(room_id: @room.id).where.not(user_id: current_user.id)
+        @the_id=@room_member_not_me.find_by(room_id: @room.id)
+        notification = current_user.active_notifications.new(
+            room_id: @room.id,
+            room_id: @room.id,
+            visited_id: @the_id.user_id,
+            visitor_id: current_user.id,
+            action: 'dm'
+        )
+
+        # 自分の投稿に対するコメントの場合は、通知済みとする
+        if notification.visitor_id == notification.visited_id
+            notification.checked = true
+        end
+        notification.save if notification.valid?
+
+      # ここまでを追加 (notification)
+
     redirect_to room_path(@room.id)
   end
 
@@ -36,7 +56,7 @@ class RoomsController < ApplicationController
 
 
     @user = current_user
-    @rooms = @user.room_users
+    @rooms = @user.room_users.order(updated_at: :desc)
     @user_room_user=RoomUser.where(user_id: @user.id)
 
 

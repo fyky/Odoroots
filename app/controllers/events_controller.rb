@@ -41,7 +41,6 @@ class EventsController < ApplicationController
   def index
     if params[:genre_id]
       @genre = Genre.find(params[:genre_id])
-      @genres = Genre.all
 
       @allevents = @genre.events.published.order(created_at: :desc)
     else
@@ -110,24 +109,26 @@ class EventsController < ApplicationController
   end
 
   def search
+    # keyword = params[:keyword]
+    # type = params[:type]
+    # @records = search(keyword, type)
+
     @allevents = Event.published.search(params[:keyword], params[:type]).order(created_at: :desc)
+
     @events = @allevents.page(params[:page]).per(9)
 
-    @keyword = params[:keyword]
-    render "index"
+    # @keyword = params[:keyword]
+
 
     # @allevents = Event.published.search(params[:keyword]).order(created_at: :desc)
-    # @events = @allevents.page(params[:page]).per(9)
 
+    @keyword = params[:keyword]
     # render "index"
 
     #開催前のみを表示
     # @not_end_event = Event.published.where(['date > ?', Date.current])
     #これをラジオボタンで実装したい
-
-    # @keyword = params[:keyword]
-    # @method = params["method"]
-    # @records = search_for(@keyword, @method)
+    render "index"
 
 
   end
