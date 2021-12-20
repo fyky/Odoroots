@@ -77,3 +77,6 @@ gem 'whenever', require: false
 gem 'activeadmin'
 # カレンダー
 gem "simple_calendar", "~> 2.0"
+group :production do
+  gem 'mysql2'
+end
