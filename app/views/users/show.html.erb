@@ -79,7 +79,7 @@
       <%= form_with model: @room, local: true do |f|%>
       <!-- room_usersテーブルに情報を送信 -->
         <%= hidden_field_tag 'room_user[user_id]', @user.id %>
-        <%= f.submit "チャットを始める" %>
+        <%= f.submit "チャットを始める", class: "send" %>
       <% end %>
     <% end %>
   <% end %>

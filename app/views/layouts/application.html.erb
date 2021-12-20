@@ -21,35 +21,32 @@
       <ul class="nav">
         <!--ユーザー認証後メニュー-->
         <% if user_signed_in? %>
-          <li>
-            <%= link_to new_event_path do %><i class="far fa-plus-square"></i>イベント<% end %>
+          <li class="event">
+            <%= link_to new_event_path do %><i class="far fa-plus-square"></i>イベントを主催<% end %>
           </li>
-
           <li>
-            <%= link_to events_path do %><i class="fas fa-search-plus"></i>イベント<% end %>
+            <%= link_to events_path do %><i class="fas fa-search-plus"></i>イベントを検索<% end %>
           </li>
           <li>
           <% if unchecked_notifications.any? %>
             <i class="fa fa-circle" style="color: gold;"></i>
           <% end %>
-            <%= link_to notifications_path do %><i class="fas fa-bell"></i>通知<% end %>
+            <%= link_to notifications_path do %><i class="fas fa-bell"></i><% end %>
           </li>
           <li>
-            <%= link_to favorites_path do %><i class="fas fa-heart"></i>いいね<% end %>
+            <%= link_to favorites_path do %><i class="fas fa-heart"></i><% end %>
           </li>
           <li>
-            <%= link_to rooms_path do %><i class="fas fa-envelope"></i>DM<% end %>
+            <%= link_to rooms_path do %><i class="fas fa-envelope"></i><% end %>
           </li>
           <li>
-            <%= link_to calendar_user_path(current_user) do %><i class="fas fa-calendar-alt"></i>カレンダー<% end %>
+            <%= link_to calendar_user_path(current_user) do %><i class="fas fa-calendar-alt"></i><% end %>
           </li>
           <li>
-            <i class="fas fa-user"></i>
-            <%= link_to "マイページ", user_path(current_user) %>
+            <%= link_to user_path(current_user) do %><i class="fas fa-user"></i><% end %>
           </li>
           <li>
-            <i class="fas fa-sign-out-alt"></i>
-            <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+            <%= link_to destroy_user_session_path, method: :delete do %><i class="fas fa-sign-out-alt"></i><% end %>
           </li>
         <!--ユーザー未認証メニュー-->
         <% else %>

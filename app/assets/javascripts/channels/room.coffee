@@ -16,3 +16,4 @@ document.addEventListener 'turbolinks:load', ->
       App.room.speak event.target.value
       event.target.value = ''
       event.preventDefault()
+

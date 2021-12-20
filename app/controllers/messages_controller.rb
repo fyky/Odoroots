@@ -8,24 +8,24 @@ class MessagesController < ApplicationController
       @room=@message.room
       # ここまでを追加
 
-      # ここから (notification)
-        @room_member_not_me=RoomUser.where(room_id: @room.id).where.not(user_id: current_user.id)
-        @the_id=@room_member_not_me.find_by(room_id: @room.id)
-        notification = current_user.active_notifications.new(
-            room_id: @room.id,
-            message_id: @message.id,
-            visited_id: @the_id.user_id,
-            visitor_id: current_user.id,
-            action: 'dm'
-        )
+      # # ここから (notification)
+      #   @room_member_not_me=RoomUser.where(room_id: @room.id).where.not(user_id: current_user.id)
+      #   @the_id=@room_member_not_me.find_by(room_id: @room.id)
+      #   notification = current_user.active_notifications.new(
+      #       room_id: @room.id,
+      #       message_id: @message.id,
+      #       visited_id: @the_id.user_id,
+      #       visitor_id: current_user.id,
+      #       action: 'dm'
+      #   )
 
-        # 自分の投稿に対するコメントの場合は、通知済みとする
-        if notification.visitor_id == notification.visited_id
-            notification.checked = true
-        end
-        notification.save if notification.valid?
+      #   # 自分の投稿に対するコメントの場合は、通知済みとする
+      #   if notification.visitor_id == notification.visited_id
+      #       notification.checked = true
+      #   end
+      #   notification.save if notification.valid?
 
-      # ここまでを追加 (notification)
+      # # ここまでを追加 (notification)
 
       redirect_to room_path(@message.room_id)
     else

@@ -1,23 +1,15 @@
 <h1>フォローしている人一覧</h1>
 <% if @users.exists? %>
   <% @users.each do |user| %>
-
-  <table>
-    <tr>
-      <th>Image</th>
-      <th>Name</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-    <tr>
-      <td><%= attachment_image_tag user, :image, :fill, 100, 100, fallback: "/assets/noimage.png", size:'100x100' %></td>
-      <td><%= user.name %></td>
-      <td>フォロー数：<%= user.followings.count %></td>
-      <td>フォロワー数：<%= user.followers.count %></td>
-      <td><%= link_to "Show", user_path(user.id) %></td>
-    </tr>
-  </table>
+  <div class="follow">
+    <%= link_to user_path(user) do %>
+      <%= attachment_image_tag user, :image, :fill, 80, 80, fallback: "/assets/noimage.png", size:'80x80' %>
+      <%= user.name %>
+    <% end %>
+      <!--follow：<%#= user.followings.count %>
+      follower：<%#= user.followers.count %> -->
+      <%#= link_to "Show", user_path(user.id) %>
+  </div>
     <% end %>
 <% else %>
   <p>ユーザーはいません</p>

@@ -1,4 +1,5 @@
-  <h1>予約ページ</h1>
+<h1>予約ページ</h1>
+  <div class="text">
     <table>
       <tr>
         <th>イベントタイトル</th>
@@ -13,16 +14,13 @@
         <td><%= @event.address %><%= @event.address_detail %></td>
       </tr>
       <tr>
-        <th>紹介文</th>
-        <td><%= @event.introduction %></td>
-      </tr>
-      <tr>
         <th>参加条件</th>
         <td><%= @event.requirement %></td>
       </tr>
     </table>
-
-    <h1>予約ユーザー情報</h1>   ※<small>主催者への開示情報</small><br>
+  </div>
+  <h1>予約ユーザー情報</h1>   ※<small>主催者への開示情報</small><br>
+    <div class="text">
       <h3>ユーザーネーム</h3>
         <p><%= current_user.name %></p>
       <h3>予約に際しての確認事項</h3>
@@ -32,15 +30,16 @@
           <b>※主催者からの承認がない（または棄却された）場合、参加できません。</b><br>
           <b>※待ち合わせ場所や持ち物などの詳細は本予約完了してからのお知らせとなります。</b></p>
       <h3>コメント</h3>
-        <p><b>主催者へ伝えたいことがあればご記入ください</b></p>
+        <p>主催者へ伝えたいことがあればご記入ください</p>
           <%= form_with model: @reservation, url: confirm_event_reservations_path, method: :post, local:true do |f| %>
           <p>
-            <%= f.text_field :comment %>
+            <%= f.text_field :comment, class: "event_form" %>
             <%= f.hidden_field :user_id, value: @reservation.user_id %>
             <%= f.hidden_field :event_id, value: @event.id %>
             <%= f.hidden_field :date, value: @event.date %>
             <%= f.hidden_field :permission, value: "yet" %>
             <br>
-            <%= f.submit '予約確認へ進む' %>
+            <%= f.submit '予約確認へ進む', class: "send" %>
           </p>
         <% end %>
+    </div>
