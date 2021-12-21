@@ -56,7 +56,7 @@ class ReservationsController < ApplicationController
 
   def index
     @user = current_user
-    @reservations = @user.reservations
+    @reservations = @user.reservations.order(created_at: :desc)
   end
 
   def back

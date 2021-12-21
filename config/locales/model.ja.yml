@@ -1,0 +1,16 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: 確認用パスワード
+        remember_me: 次回から自動的にログイン
+        name: ユーザーネーム
+        real_name: 本名
+        postal_code: 郵便番号
+        address: 住所（市まで）
+        address_detail: 住所（市より後）
+        phone_number: 電話番号
+        birthday: 誕生日
+        gender: 性別

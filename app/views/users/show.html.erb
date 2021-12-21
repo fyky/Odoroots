@@ -100,7 +100,7 @@
           <% @events.each do |event| %>
             <% if Date.current < event.date %>
               <tr>
-                <td><%= event.date.strftime( "%Y年%m月%d日" )  %></td>
+                <td><%= event.date.strftime( "%Y/%m/%d" )  %></td>
                 <td><%= event.start_time.strftime( "%H:%M" ) %></td>
                 <td><%= link_to event_path(event.id) do %><%= event.name %><% end %></td>
                 <td><%= event.meeting_place %></td>
@@ -122,7 +122,7 @@
           <% @attends.each do |attend| %>
             <% if Date.current < attend.event.date %>
               <tr>
-                <td><%= attend.event.date.strftime( "%Y年%m月%d日" )  %></td>
+                <td><%= attend.event.date.strftime( "%Y/%m/%d" )  %></td>
                 <td><%= attend.event.start_time.strftime( "%H:%M" ) %></td>
                 <td><%= link_to event_path(attend.event.id) do %><%= attend.event.name %><% end %></td>
                 <td><%= attend.event.meeting_place %></td>

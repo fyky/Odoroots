@@ -8,7 +8,7 @@
     </tr>
     <% @attends.each do |attend| %>
       <tr>
-        <td><%= attend.event.date.strftime( "%Y年%m月%d日" ) %></td>
+        <td><%= attend.event.date.strftime( "%Y/%m/%d" ) %></td>
         <td><%= attend.event.start_time.strftime( "%H:%M" ) %></td>
         <td><%= link_to event_path(attend.event.id) do %><%= attend.event.name %><% end %></td>
         <td><%= attend.event.meeting_place %></td>

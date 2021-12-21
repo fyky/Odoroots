@@ -7,7 +7,7 @@
       </tr>
       <tr>
         <th>開催日時</th>
-        <td><%= @event.date.strftime('%Y年%m月%d日') %> <%= @event.start_time.strftime( "%H:%M" ) %>から<%= @event.end_time.strftime( "%H:%M" ) %></td>
+        <td><%= @event.date.strftime('%Y年%m月%d日') %> <%= @event.start_time.strftime( "%H時%M分" ) %>から<%= @event.end_time.strftime( "%H時%M分" ) %></td>
       </tr>
       <tr>
         <th>開催地</th>
@@ -33,7 +33,7 @@
         <p>主催者へ伝えたいことがあればご記入ください</p>
           <%= form_with model: @reservation, url: confirm_event_reservations_path, method: :post, local:true do |f| %>
           <p>
-            <%= f.text_field :comment, class: "event_form" %>
+            <%= f.text_field :comment, class: "form" %>
             <%= f.hidden_field :user_id, value: @reservation.user_id %>
             <%= f.hidden_field :event_id, value: @event.id %>
             <%= f.hidden_field :date, value: @event.date %>

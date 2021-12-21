@@ -3,5 +3,5 @@ ja:
     reservation:
       permission:
         yet: "未承認"
-        done: "承認済"
+        done: "承認"
         not: "拒否"

@@ -6,4 +6,5 @@ class Tasks::Eventupdatetask
       Event.published.where(['deadline < ?', Date.current]).update_all(recruitment: false)
     # end
   end
+
 end

@@ -60,7 +60,7 @@
     <div class="event_main">
       <p>
         <h2>開催日時</h2><br>　　<i class="fas fa-clock"></i>
-          <%= @event.date.strftime('%Y年%m月%d日') %>
+          <%= @event.date.strftime('%Y/%m/%d') %>
           <%= @event.start_time.strftime( "%H:%M" ) %>から<%= @event.end_time.strftime( "%H:%M" ) %>
       </p>
       <p>
@@ -87,10 +87,10 @@
             <button class="btn03">予約へ進む</button>
           <% end %>
         <% end %>
-      <i class="fas fa-hourglass"></i> 募集締め切り <%= @event.deadline.strftime('%Y年%m月%d日') %>
+      <i class="fas fa-hourglass"></i> 募集締め切り <%= @event.deadline.strftime('%Y/%m/%d') %> 23:59
 
       <!-- 現在のユーザーがイベントの主催ユーザーだったら-->
-      <% else %>
+      <% elsif  user_signed_in? && current_user == @event.user && @event.date > Date.current %>
         <!-- 編集リンク表示 -->
         <%= link_to edit_event_path(@event) do %>投稿内容を編集する<% end %>
       <% end %>
@@ -159,7 +159,7 @@
 
 <!--もしこのイベントの自分の予約がtrueだったら -->
 
-    <% if @attend.present? %>
+    <% if @attend.present? || current_user != nil && @event.user == current_user %>
     <h2 style="margin-top:15px;">参加者への連絡事項</h2>
       <div class="text">
         <h5>※以下項目は参加者にのみ表示されています</h5>
@@ -172,7 +172,7 @@
       </div>
     <% end %>
 
-    <% if current_user != nil && @event.user.name == current_user.name %>
+    <% if current_user != nil && @event.user == current_user %>
       <h2 style="margin-top:15px;">参加承認</h2>
         <div class="text">
           <h5>※以下項目は主催者にのみ表示されています</h5>
@@ -184,14 +184,25 @@
             </tr>
           <% @reservations.each do |reservation| %>
             <tr>
-              <td><%= reservation.user.name %></td>
+              <td>
+                <%= link_to user_path(reservation.user) do %>
+                  <%= reservation.user.name %>
+                <% end %>
+              </td>
               <td><%= reservation.comment %></td>
               <td>
+            <% if reservation.permission != "done" %>
                 <%= form_with model: reservation, url: event_reservation_path(reservation.event, reservation), local: true do |f| %>
                   <%= f.select :permission, Reservation.permissions.keys.map {|k| [I18n.t("enums.reservation.permission.#{k}"), k]} %>
                   <%= f.hidden_field :event_id, value: @event.id %>
                   <%= f.submit "更新", class: "" %>
                 <% end %>
+            <% else %>
+                <%= reservation.permission_i18n %>済
+                <small>承認後は変更できません</small>
+            <% end %>
+
+
               </td>
             </tr>
           <% end %>

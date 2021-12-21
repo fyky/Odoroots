@@ -4,13 +4,13 @@
     <h3>写真</h3>
       <p><%= f.attachment_field :image, placeholder: "プロフィール画像" %></p>
     <h3>イベントタイトル</h3>
-      <p><%= f.text_field :name, class: "event_form" %></p>
+      <p><%= f.text_field :name, class: "form" %></p>
     <h3>ダンスジャンル</h3>
       <p><%= f.select :genre_id, Genre.all.map{|pf| [pf.name, pf.id]} %></p>
     <h3>開催地（市まで）</h3>
-      <p><%= f.text_field :address, class: "event_form" %></p>
+      <p><%= f.text_field :address, class: "form" %></p>
     <h3>開催地（市以降）</h3>
-      <p><%= f.text_field :address_detail, class: "event_form" %></p>
+      <p><%= f.text_field :address_detail, class: "form" %></p>
     <h3>開催日</h3>
       <p><%= f.date_select :date, {start_year: 2020, end_year: 2025,use_month_numbers: true} %></p>
     <h3>開始時間</h3>
@@ -18,7 +18,7 @@
     <h3>終了予定時間</h3>
       <p><%= f.time_field :end_time %></p>
     <h3>紹介文</h3>
-      <p><%= f.text_area :introduction, style: "height:100px;", class: "event_form" %></p>
+      <p><%= f.text_area :introduction, style: "height:100px;", class: "form" %></p>
     <h3>募集人数</h3>
       <p><%= f.select :number,
       [["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"],
@@ -26,16 +26,16 @@
        ["13", "13"], ["14", "14"], ["15", "15"], ["16", "16"], ["17", "17"], ["18", "18"],
        ["19", "19"], ["20", "20"]] %></p>
     <h3>参加条件</h3>
-      <p><%= f.text_field :requirement, class: "event_form" %></p>
+      <p><%= f.text_field :requirement, class: "form" %></p>
     <h3>募集締め切り日</h3>
       <p><%= f.date_select :deadline, {start_year: 2020, end_year: 2025,use_month_numbers: true} %></p>
     <h3>持ち物</h3>
-      <p><%= f.text_field :belongings, class: "event_form" %></p>
+      <p><%= f.text_field :belongings, class: "form" %></p>
     <h3>集合場所</h3>
       <p>※現地集合の場合は開催場所と同じ住所を入力してください</p>
-      <p><%= f.text_field :meeting_place, class: "event_form" %></p>
+      <p><%= f.text_field :meeting_place, class: "form" %></p>
     <h3>注意事項</h3>
-      <p><%= f.text_area :attention, style: "height:100px;", class: "event_form" %></p>
+      <p><%= f.text_area :attention, style: "height:100px;", class: "form" %></p>
 
       <!-- event id を渡す -->
       <% if params[:id] %>
