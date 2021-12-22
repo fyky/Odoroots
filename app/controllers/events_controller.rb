@@ -39,6 +39,7 @@ class EventsController < ApplicationController
   end
 
   def index
+    @genres = Genre.all
     if params[:genre_id]
       @genre = Genre.find(params[:genre_id])
 
@@ -109,6 +110,7 @@ class EventsController < ApplicationController
   end
 
   def search
+    @genres = Genre.all
     # keyword = params[:keyword]
     # type = params[:type]
     # @records = search(keyword, type)
