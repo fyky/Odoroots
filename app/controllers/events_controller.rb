@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   # ログインする前にもアクセス可能なページ、コントローラ
   before_action :authenticate_user!,except: [:index, :show, :search]
+  before_action :correct_event,only: [:edit]
 
   def new
     if params[:id]
@@ -73,6 +74,10 @@ class EventsController < ApplicationController
 
   def edit
     @event = Event.find(params[:id])
+    if @event.date < Date.current
+      flash[:alert] = "終了したイベントのため編集できません"
+      redirect_to event_path(@event)
+    end
   end
 
   def update
@@ -158,6 +163,12 @@ class EventsController < ApplicationController
 
   end
 
+  def correct_event
+    @event = Event.find(params[:id])
+    unless @event.user == current_user
+      redirect_to event_path(@event)
+    end
+  end
 
   # ストロングパラメータ
   private

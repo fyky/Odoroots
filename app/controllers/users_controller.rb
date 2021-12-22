@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :correct_user,only: [:edit,:unsubscribe, :calendar]
 
   def show
     @user = User.find(params[:id])
@@ -51,15 +52,23 @@ class UsersController < ApplicationController
   def unsubscribe
   end
 
+  def withdraw
+    user = current_user
+    user.update(is_deleted: true)
+    reset_session
+    flash[:alert] = "退会が完了しました"
+    redirect_to root_path
+  end
+
   def host
-    @events = current_user.events.published.order(created_at: :desc)
+    @events = current_user.events.published.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def attend
     @user = User.find(params[:id])
     @events = @user.events.published
     @reservations = @user.reservations
-    @attends = @reservations.where(permission: "done").order(created_at: :desc)
+    @attends = @reservations.where(permission: "done").order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def calendar
@@ -67,6 +76,13 @@ class UsersController < ApplicationController
     @hosts = @user.events.published
     @attends = @user.reservations.where(permission: "done")
     # @allevents = (attends + hosts) #エラー
+  end
+
+  def correct_user
+    @user = User.find(params[:id])
+    unless @user.id == current_user.id
+      redirect_to user_path(@user)
+    end
   end
 
   private

@@ -6,7 +6,11 @@ Rails.application.routes.draw do
   root to: 'homes#top'
 
 
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: 'user/registrations',
+    sessions: 'user/sessions'
+  }
+
   resources :users, only: [:show, :edit, :update] do
     member do
       get "unsubscribe"

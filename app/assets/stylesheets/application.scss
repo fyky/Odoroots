@@ -34,7 +34,7 @@ main a{
 
 main a:hover{
   text-decoration: none;
-  color:#eee;
+  color:#fff;
 }
 
 
@@ -164,6 +164,7 @@ main{
   padding: 60px 0px 30px 20px;
   background-color: #eee;
   line-height: 25pt;
+  min-height: 100vh;
 }
 
 /*横並び2カラム記事まとめ*/

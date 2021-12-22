@@ -17,6 +17,7 @@
 //= require jquery
 //= require jquery_ujs
 
+/*global $*/
 $(document).on('turbolinks:load', function() {
     $(function() {
         // ↓タブをクリックした時の処理↓
@@ -33,5 +34,4 @@ $(document).on('turbolinks:load', function() {
             $('.tabbox').eq(index).addClass('box-show');
         });
     });
-
 });

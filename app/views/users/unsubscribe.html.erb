@@ -1,0 +1,9 @@
+<h1>本当に退会しますか？</h1>
+<div class="text">
+  退会すると、ユーザー情報や<br>
+  これまでの全てのイベントの履歴が閲覧できなくなります。<br>
+  退会する場合は、「退会する」をクリックしてください。<br><br>
+
+    <%= link_to "退会しない", user_path, class: "send" %>
+    <%= link_to "退会する", withdraw_user_path, method: :patch %>
+</div>

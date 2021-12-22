@@ -1,8 +1,28 @@
 class ReservationsController < ApplicationController
+
   def new
-    @reservation = Reservation.new
     @event = Event.find(params[:event_id])
-    @reservation.user_id = current_user.id
+
+    if current_user == @event.user
+      flash[:alert] = "あなたが主催したイベントであるため、予約できません。"
+      redirect_to event_path(@event)
+    elsif Reservation.find_by(event_id: @event.id, user_id: current_user.id).present?
+      flash[:alert] = "すでに予約したイベントのため、予約できません。"
+      redirect_to event_path(@event)
+    elsif Reservation.find_by(date: @event.date, permission: "done")
+      flash[:alert] = "重複した参加予定のイベントがあるため、予約できません。"
+      redirect_to event_path(@event)
+    elsif Reservation.find_by(date: @event.date, permission: "yet")
+      flash[:alert] = "参加承認待ちのイベントがあるため、予約できません。"
+      redirect_to event_path(@event)
+    elsif Event.find_by(user_id: current_user.id, date: @event.date)
+      flash[:alert] = "主催イベントの開催日ですので、予約できません。"
+      redirect_to event_path(@event)
+    else
+      @reservation = Reservation.new
+      @reservation.user_id = current_user.id
+    end
+    # @reservation.user_id = current_user.id
   end
 
   def confirm
