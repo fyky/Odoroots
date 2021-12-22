@@ -10,7 +10,7 @@
 
     <!-- genre.idでとってこれるようにする-->
     <h3>ジャンルで検索</h3><br>
-      <%# genres.each do |genre| %>
-        <%#= link_to genre.name, events_path(genre_id: genre.id) %>
-      <%# end %>
+      <% genres.each do |genre| %>
+        <%= link_to genre.name, events_path(genre_id: genre.id) %>
+      <% end %>
   </div>

@@ -1,4 +1,4 @@
-<%= render "events/search", keyword: @keyword %>
+<%= render "events/search", keyword: @keyword, genres: @genres %>
   <%= render "events/index", events: @events, allevents: @allevents %>
 <% if @method == "before" %>
   <%= render "events/index", events: @records, allevents: @not_end_event %>
