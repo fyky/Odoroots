@@ -115,7 +115,30 @@ class EventsController < ApplicationController
     # type = params[:type]
     # @records = search(keyword, type)
 
-    @allevents = Event.published.search(params[:keyword], params[:type]).order(created_at: :desc)
+    keywords = params[:keyword].split(/[[:blank:]]+/)
+
+    # p '---------'
+    # p keywords
+
+    # @allevents = []
+    # keywords.each do |keyword|
+    #   @allevents += Event.published.search(params[:keyword], params[:type]).order(created_at: :desc)
+    # end
+
+    # @allevents = Event.published.search(params[:keyword], params[:type]).order(created_at: :desc)
+
+    @allevents = Event.published
+    # binding.irb
+    if params[:type] == 'all'
+      keywords.each do |keyword|
+        @allevents = @allevents.where(["name LIKE ? OR address LIKE ?", "%#{keyword}%", "%#{keyword}%"])
+      end
+    else
+      keywords.each do |keyword|
+        @allevents = @allevents.where(["date > ? AND (name LIKE ? OR address LIKE ?)", Date.current, "%#{keyword}%", "%#{keyword}%"])
+      end
+    end
+
 
     @events = @allevents.page(params[:page]).per(9)
 

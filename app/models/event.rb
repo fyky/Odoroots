@@ -45,13 +45,17 @@ class Event < ApplicationRecord
     self.where(publish: true)
   end
 
-  def self.search(keyword, type)
-    if type == 'all'
-      where(["name LIKE ? OR address LIKE ?", "%#{keyword}%", "%#{keyword}%"])
-    else
-      where(["date > ? AND (name LIKE ? OR address LIKE ?)", Date.current, "%#{keyword}%", "%#{keyword}%"])
-    end
-  end
+  # 　def self.search(keyword, type)
+    # keyword_array = keywords.split(/[[:blank:]]+/)
+
+  #   if type == 'all'
+  #     # keyword_array.each do |keyword|
+  #       where(["name LIKE ? OR address LIKE ?", "%#{keyword}%", "%#{keyword}%"])
+  #     # end
+  #   else
+  #     where(["date > ? AND (name LIKE ? OR address LIKE ?)", Date.current, "%#{keyword}%", "%#{keyword}%"])
+  #   end
+  # end
 
   # def self.search(method)
   # self.published.where(['date > ?', Date.current])

@@ -1,5 +1,5 @@
 <%= month_calendar(attribute: :date, end_attribute: :date, events: attends) do |date, attends| %>
-  <%= date %>
+  <%= date.strftime('%d') %>
 
     <% attends.each do |event| %>
       <div>
