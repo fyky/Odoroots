@@ -20,6 +20,11 @@
   padding: 0;
   box-sizing: border-box;
 }
+.img-responsive {
+  width:100%;
+  max-width: 100%;
+  height:auto;
+}
 
 body{
 /*font-family: "Yu Gothic", YuGothic, Verdana, Meiryo, "M+ 1p", sans-serif;*/
@@ -194,11 +199,49 @@ main{
 .event_index{
   width:30%;
   border:1px solid #d3cfd9;
-  height:500px;
+  // height:510px;
   text-align: center;
   margin:1%;
   background-color: #fff;
 }
+
+/* タブレット横置きサイズ（1024px）以下の際に適用される設定 */
+@media screen and (max-width:1024px) {
+  .event_index {
+    color: green;
+    width:48%;
+  }
+
+}
+/* タブレット縦置きサイズ（768px）以下の際に適用される設定 */
+@media screen and (max-width:768px) {
+  .event_index {
+    color: red;
+    width:48%;
+  }
+}
+
+/* スマートフォンサイズ（425px）以下の際に適用される設定 */
+@media screen and (max-width:425px) {
+  .event_index {
+    color: blue;
+    width:93%;
+  }
+}
+
+// .event_index_img{
+//   height:300px;
+// }
+
+
+
+
+
+
+
+
+
+
 
 .event_index_text{
   width:95%;
@@ -207,11 +250,31 @@ main{
   background-color: #eee;
   height:170px;
   padding: 10px;
+  margin-bottom:10px;
 }
 
 .event_title{
   font-size:25px;
 }
+
+// /* タブレット横置きサイズ（1024px）以下の際に適用される設定 */
+// @media screen and (max-width:1024px) {
+
+// }
+/* タブレット縦置きサイズ（768px）以下の際に適用される設定 */
+@media screen and (max-width:768px) {
+  .event_title{
+    font-size:20px;
+  }
+}
+
+/* スマートフォンサイズ（425px）以下の際に適用される設定 */
+@media screen and (max-width:425px) {
+  .event_title{
+    font-size:25px;
+  }
+}
+
 
 
 .search_form{
