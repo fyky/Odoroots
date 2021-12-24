@@ -10,6 +10,9 @@ class Event < ApplicationRecord
 
   has_many :notifications, dependent: :destroy
 
+  # has_many :followings, through: :relationships, source: :followed
+  # has_many :followers, through: :reverse_of_relationships, source: :following
+
   # バリデーション
   validates :name, presence: true
   validates :address, presence: true

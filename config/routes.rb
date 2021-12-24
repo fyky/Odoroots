@@ -18,6 +18,7 @@ Rails.application.routes.draw do
       get "host"
       get "attend"
       get "calendar"
+      get "follow"
     end
 
     resource :relationships, only: [:create, :destroy]

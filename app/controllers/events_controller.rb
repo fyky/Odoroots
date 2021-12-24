@@ -170,6 +170,7 @@ class EventsController < ApplicationController
     end
   end
 
+
   # ストロングパラメータ
   private
   def event_params
@@ -193,7 +194,6 @@ class EventsController < ApplicationController
   #     end
 
   # end
-
 
 
 end

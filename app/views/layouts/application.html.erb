@@ -62,6 +62,9 @@
               <%= link_to calendar_user_path(current_user) do %><i class="fas fa-calendar-alt"></i>イベントカレンダー<% end %>
             </li>
             <li>
+              <%= link_to do %><i class="fas fa-handshake"></i>フォローしたユーザーの投稿<% end %>
+            </li>
+            <li>
               <%= link_to user_path(current_user) do %><i class="fas fa-user"></i>マイページ<% end %>
             </li>
             <li>
@@ -106,6 +109,9 @@
             </li>
             <li>
               <%= link_to calendar_user_path(current_user) do %><i class="fas fa-calendar-alt"></i><% end %>
+            </li>
+            <li>
+              <%= link_to do %><i class="fas fa-handshake"></i><% end %>
             </li>
             <li>
               <%= link_to user_path(current_user) do %><i class="fas fa-user"></i><% end %>

@@ -85,6 +85,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def follow
+    @user = User.find(params[:id])
+    @allevents = Event.where(user_id: [current_user, @user.followings])
+    #@users = current_user.followings
+    #@events =
+    # @users = current_user.followings
+    # @events = current_user.followings.events.published.order(created_at: :desc).page(params[:page]).per(10)
+    @events = @allevents.page(params[:page]).per(9)
+  end
+
+
   private
     def user_params
       params.require(:user).permit(:name, :address, :address_detail, :phone_number, :genre, :image, :introduction,

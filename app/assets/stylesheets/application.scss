@@ -550,9 +550,32 @@ a.btn03:hover, .btn03:hover {
 .dm_index{
   background-color:#fff;
   width: calc(40% - 70px);
-  height:80px;
+  height:auto;
   padding:5px;
 }
+/* タブレット横置きサイズ（1024px）以下の際に適用される設定 */
+@media screen and (max-width:1024px) {
+  .dm_index {
+
+    color: green;
+  }
+}
+/* タブレット縦置きサイズ（768px）以下の際に適用される設定 */
+@media screen and (max-width:768px) {
+  .dm_index {
+    color: red;
+  }
+}
+/* スマートフォンサイズ（425px）以下の際に適用される設定 */
+@media screen and (max-width:425px) {
+  .dm_index {
+    color: blue;
+  }
+}
+
+
+
+
 
 .dm_image{
     display: inline-block;
@@ -703,8 +726,7 @@ header a {
 
 
 /*ハンバーガーメニュー（レスポンシブ900px~）*/
-@media (max-width: 900px) {
-
+@media (max-width: 980px) {
   .pc {
     display: none;
   }
