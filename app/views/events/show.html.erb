@@ -53,7 +53,7 @@
   <div class="container">
     <!-- イベント写真 -->
     <div class="event_image">
-      <%= attachment_image_tag @event, :image, :fill, 600, 400, fallback: "/assets/noimage_event.jpg", size:'600x400' %>
+      <%= attachment_image_tag @event, :image, :fill, 600, 400, fallback: "/assets/noimage_event.jpg", size:'600x400', class:"img-responsive" %>
     </div>
 
 
@@ -122,7 +122,7 @@
       </div>
 
       <script async defer
-              src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
+        src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
       </script>
 
 

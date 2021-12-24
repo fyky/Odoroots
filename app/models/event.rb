@@ -61,6 +61,15 @@ class Event < ApplicationRecord
   # self.published.where(['date > ?', Date.current])
   # end
 
+  # def self.search(keyword)
+  #   # あいまい検索
+  #   #   “?”に対してkeywordが順番に入る
+  #   #   LIKEは、あいまい検索の意味で、“%”は、前後のあいまいという意味
+  #   #   “#{keyword}”は、Rubyの式展開
+  #   where('name LIKE ? OR address LIKE ?', "%#{keyword}%", "%#{keyword}%")
+  # end
+
+
   def favorited_by?(user)
     unless user==nil
       favorites.where(user_id: user.id).exists?

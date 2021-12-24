@@ -74,39 +74,6 @@ header{
   text-decoration: none;
 }
 
-/*ヘッダーメニュー*/
-.nav {
-  list-style: none;
-  justify-content: flex-end;
-}
-
-.nav li {
-  margin-top:15px;
-  width: 50px;
-  text-align: center;
-  display: inline-block;
-}
-
-.nav li a {
-  text-decoration: none;
-  color: #000;
-  font-weight: bold;
-}
-
-.nav li:first-child {
-  margin-top:15px;
-  width: 150px;
-  text-align: center;
-  display: inline-block;
-}
-.nav li:nth-of-type(2) {
-  margin-top:15px;
-  width: 150px;
-  text-align: center;
-  display: inline-block;
-}
-
-
 
 /* 見出し関連 */
 h1 {
@@ -179,6 +146,16 @@ main{
   justify-content: center;
 }
 
+/* タブレット横置きサイズ（1024px）以下の際に適用される設定 */
+@media screen and (max-width: 1024px) {
+  .container{
+    justify-content:left;
+    display: block;
+    width:100%;
+  }
+}
+
+
 /*ユーザーページ */
 .info{
   width:350px;
@@ -208,7 +185,6 @@ main{
 /* タブレット横置きサイズ（1024px）以下の際に適用される設定 */
 @media screen and (max-width:1024px) {
   .event_index {
-    color: green;
     width:48%;
   }
 
@@ -216,15 +192,13 @@ main{
 /* タブレット縦置きサイズ（768px）以下の際に適用される設定 */
 @media screen and (max-width:768px) {
   .event_index {
-    color: red;
     width:48%;
   }
 }
 
-/* スマートフォンサイズ（425px）以下の際に適用される設定 */
-@media screen and (max-width:425px) {
+/* 530px以下の際に適用される設定 */
+@media screen and (max-width:530px) {
   .event_index {
-    color: blue;
     width:93%;
   }
 }
@@ -232,11 +206,6 @@ main{
 // .event_index_img{
 //   height:300px;
 // }
-
-
-
-
-
 
 
 
@@ -257,10 +226,7 @@ main{
   font-size:25px;
 }
 
-// /* タブレット横置きサイズ（1024px）以下の際に適用される設定 */
-// @media screen and (max-width:1024px) {
 
-// }
 /* タブレット縦置きサイズ（768px）以下の際に適用される設定 */
 @media screen and (max-width:768px) {
   .event_title{
@@ -312,12 +278,43 @@ main{
 
 /*イベントページ*/
 .event_image{
-width:650px;
+  width:650px;
 }
+
+/* タブレット横置きサイズ（1024px）以下の際に適用される設定 */
+@media screen and (max-width: 1024px) {
+  .event_image{
+    width: 65%;
+  }
+}
+/* タブレット縦置きサイズ（768px）以下の際に適用される設定 */
+@media screen and (max-width: 768px) {
+  .event_image{
+    width: 65%;
+  }
+}
+/* スマートフォンサイズ（425px）以下の際に適用される設定 */
+@media screen and (max-width: 425px) {
+  .event_image{
+    width: 100%;
+  }
+}
+
+
 
 .event_main{
   width: calc(100% - 650px);
+  padding-left:30px;
 }
+
+/* タブレット横置きサイズ（1024px）以下の際に適用される設定 */
+@media screen and (max-width: 1024px) {
+  .event_main{
+    width:100%;
+    padding:0;
+  }
+}
+
 
 .host_image{
   display:inline-block;
@@ -391,27 +388,34 @@ th {
     vertical-align:  middle;
 }
 
-.balloon2-left:before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: -24px;
-  margin-top: -12px;
-  border: 12px solid transparent;
-  border-right: 12px solid #FFF;
-  z-index: 2;
+
+
+/* スマートフォンサイズ（425px）以下の際に適用される設定 */
+@media screen and (min-width: 539px) {
+  .balloon2-left:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -24px;
+    margin-top: -12px;
+    border: 12px solid transparent;
+    border-right: 12px solid #FFF;
+    z-index: 2;
+  }
+
+  .balloon2-left:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -30px;
+    margin-top: -14px;
+    border: 14px solid transparent;
+    /*border-right: 14px solid #555;*/
+    z-index: 1;
+  }
 }
 
-.balloon2-left:after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: -30px;
-  margin-top: -14px;
-  border: 14px solid transparent;
-  /*border-right: 14px solid #555;*/
-  z-index: 1;
-}
+
 
 /*ボタン*/
 .button01{
@@ -570,12 +574,11 @@ a.btn03:hover, .btn03:hover {
 }
 
 
-main ul{
-  padding-left:40px;
-}
+// main ul{
+//   padding-left:30px;
+// }
 
 /* SNSアイコンの色変更 */
-
 .fa-twitter{
   color:#1da1f2;
 }
@@ -596,6 +599,23 @@ main ul{
   height: 300px;
   width:500px;
 }
+
+/* タブレット縦置きサイズ（768px）以下の際に適用される設定 */
+@media screen and (max-width: 768px) {
+  #map{
+    height: 300px;
+    width:85%;
+  }
+}
+/* スマートフォンサイズ（425px）以下の際に適用される設定 */
+@media screen and (max-width: 425px) {
+  #map{
+    height: 300px;
+    width:85%;
+  }
+}
+
+
 
 
 
@@ -659,3 +679,99 @@ main ul{
   margin:10px;
   padding:10px;
 }
+
+
+
+ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+header a {
+  color: #000;
+  text-decoration: none;
+  display: block;
+  line-height: 60px;
+  padding: 0 20px;
+}
+
+.small {
+  display: none;
+}
+
+
+/*ハンバーガーメニュー（レスポンシブ900px~）*/
+@media (max-width: 900px) {
+
+  .pc {
+    display: none;
+  }
+
+  #hamburger {
+    background-color: transparent;
+    position: relative;
+    cursor: pointer;
+    margin: 0 0 0 auto;
+    height: 60px;
+    width: 60px;
+  }
+
+  .icon span {
+    position: absolute;
+    left: 15px;
+    width: 30px;
+    height: 4px;
+    background-color: #191970;
+    border-radius: 15px;
+    transition: ease 0.75s;
+  }
+
+  .icon span:nth-of-type(1) {
+    top: 16px;
+  }
+  .icon span:nth-of-type(2) {
+    top: 28px;
+  }
+  .icon span:nth-of-type(3) {
+    bottom: 16px;
+  }
+
+  .close span:nth-of-type(1) {
+    transform: rotate(45deg);
+    top: 28px;
+  }
+
+  .close span:nth-of-type(2) {
+    opacity: 0;
+  }
+
+  .close span:nth-of-type(3) {
+      transform: rotate(-45deg);
+      top: 28px;
+  }
+
+  .small {
+      top: 60px;
+      left: 0px;
+      position: absolute;
+      z-index: 10;
+      width: 100%;
+      background-color: #778899;
+  }
+
+  ul {
+    flex-direction: column;
+  }
+
+  header a {
+    text-align: center;
+    border-top: solid 0.5px rgba(255, 255, 255, 0.6);
+    color:#fff;
+  }
+}
+
+
+
+
