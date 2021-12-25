@@ -8,26 +8,13 @@ table{
   margin:auto;
 }
 th{
-width:15%;
+width:13%;
 
 }
 td{
   height:120px;
 }
 
-@media screen and (max-width: 640px) {
-  .scroll {
-    overflow-x: auto;
-  }
-  .tbl {
-    min-width: 640px;
-    margin: 0 10px 50px;
-  }
-  .tbl td {
-    border-top: solid 1px #ccc;
-    border-bottom: solid 1px #ccc;
-  }
-}
 
   .wday-0 {}
   .wday-1 {}
