@@ -2,7 +2,9 @@
   <%= date.strftime('%d') %>
     <% hosts.each do |event| %>
       <div>
-        <%= event.name %>
+        <%= link_to event_path(event) do %>
+          <%= event.name %>
+        <% end %>
       </div>
     <% end %>
 

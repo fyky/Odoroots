@@ -3,7 +3,9 @@
 
     <% attends.each do |event| %>
       <div>
-        <%= event.event.name %>
+        <%= link_to event_path(event) do %>
+          <%= event.event.name %>
+        <% end %>
       </div>
     <% end %>
 

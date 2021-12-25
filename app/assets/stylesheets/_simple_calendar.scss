@@ -1,0 +1,53 @@
+.simple-calendar {
+  .day {
+    vertical-align:top;
+    // width:10%;
+  }
+
+table{
+  margin:auto;
+}
+th{
+width:15%;
+
+}
+td{
+  height:120px;
+}
+
+@media screen and (max-width: 640px) {
+  .scroll {
+    overflow-x: auto;
+  }
+  .tbl {
+    min-width: 640px;
+    margin: 0 10px 50px;
+  }
+  .tbl td {
+    border-top: solid 1px #ccc;
+    border-bottom: solid 1px #ccc;
+  }
+}
+
+  .wday-0 {}
+  .wday-1 {}
+  .wday-2 {}
+  .wday-3 {}
+  .wday-4 {}
+  .wday-5 {}
+  .wday-6 {}
+
+  .today {
+    background-color:#8fbc8f;
+  }
+  .past {}
+  .future {}
+
+  .start-date {}
+
+  .prev-month {}
+  .next-month { }
+  .current-month {}
+
+  .has-events {}
+}
