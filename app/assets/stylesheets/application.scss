@@ -171,6 +171,33 @@ main{
   /*box-shadow: 5px 5px 2px gray;*/
 }
 
+/* タブレット横置きサイズ（1024px）以下の際に適用される設定 */
+@media screen and (max-width:1024px) {
+  .info{
+    width:100%;
+    background-color: #b0c4de;
+    height:auto;
+    border-radius: 0px 0px 10px 10px;
+    /*box-shadow: 5px 5px 2px gray;*/
+    display: flex;
+    justify-content: center;
+  }
+}
+
+/* スマートフォンサイズ（425px）以下の際に適用される設定 */
+@media screen and (max-width:425px) {
+  .info{
+    width:100%;
+    background-color: #b0c4de;
+    height:auto;
+    border-radius: 0px 0px 10px 10px;
+    /*box-shadow: 5px 5px 2px gray;*/
+    display: flex;
+    justify-content: center;
+  }
+}
+
+
 /*イベント一覧表示*/
 .event_container{
   width:100%;
@@ -212,9 +239,6 @@ main{
 // .event_index_img{
 //   height:300px;
 // }
-
-
-
 
 
 
@@ -265,10 +289,24 @@ main{
   padding:20px;
   margin:auto;
   width:90%;
-  height:330px;
+  height:auto;
   background-color: #fff;
   text-align: center;
 }
+
+/* スマートフォンサイズ（425px）以下の際に適用される設定 */
+@media screen and (max-width:425px) {
+  .profile_image{
+    padding:5px;
+    margin:auto;
+    width:90%;
+    height:auto;
+    background-color: #fff;
+    text-align: center;
+  }
+}
+
+
 
 .profile_text{
   padding:20px;
@@ -281,6 +319,18 @@ main{
   margin-left:20px;
   background-color: #eee;
 }
+
+/* タブレット横置きサイズ（1024px）以下の際に適用される設定 */
+@media screen and (max-width:1024px) {
+  .content {
+    width:100%;
+  }
+}
+
+
+
+
+
 
 /*イベントページ*/
 .event_image{
@@ -349,7 +399,7 @@ main{
 .comment_text{
   background-color: #fff;
   /*border:1px solid;*/
-  width: calc(60% - 60px);
+  width: calc(90% - 60px);
   padding:10px;
 }
 
@@ -366,7 +416,8 @@ main{
 /* テーブル設定 */
 table{
   border-collapse: collapse;
-  width: 85%;
+  width: 90%;
+  text-align:left;
 }
 th,td{
   padding: 10px;
@@ -865,5 +916,18 @@ header a {
   }
 }
 
+@media screen and (max-width: 640px) {
+  .scroll {
+    overflow-x: auto;
+  }
+  .tbl {
+    min-width: 640px;
+    margin: 0 10px 50px;
+  }
+  .tbl td {
+    border-top: solid 1px #ccc;
+    border-bottom: solid 1px #ccc;
+  }
+}
 
 

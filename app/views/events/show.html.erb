@@ -176,38 +176,38 @@
       <h2 style="margin-top:15px;">参加承認</h2>
         <div class="text">
           <h5>※以下項目は主催者にのみ表示されています</h5>
-          <table>
-            <tr>
-              <th>予約したユーザー</th>
-              <th>予約時のコメント</th>
-              <th>承認ステータス状態</th>
-            </tr>
-          <% @reservations.each do |reservation| %>
-            <tr>
-              <td>
-                <%= link_to user_path(reservation.user) do %>
-                  <%= reservation.user.name %>
+            <div class="scroll">
+              <table class="tbl", style="width:700px;">
+                <tr>
+                  <th>予約したユーザー</th>
+                  <th>予約時のコメント</th>
+                  <th width="260">承認ステータス状態</th>
+                </tr>
+              <% @reservations.each do |reservation| %>
+                <tr>
+                  <td>
+                    <%= link_to user_path(reservation.user) do %>
+                      <%= reservation.user.name %>
+                    <% end %>
+                  </td>
+                  <td><%= reservation.comment %></td>
+                  <td>
+                <% if reservation.permission != "done" %>
+                    <%= form_with model: reservation, url: event_reservation_path(reservation.event, reservation), local: true do |f| %>
+                      <%= f.select :permission, Reservation.permissions.keys.map {|k| [I18n.t("enums.reservation.permission.#{k}"), k]} %>
+                      <%= f.hidden_field :event_id, value: @event.id %>
+                      <%= f.submit "更新", class: "" %>
+                    <% end %>
+                <% else %>
+                    <%= reservation.permission_i18n %>済
+                    <small>承認後は変更できません</small>
                 <% end %>
-              </td>
-              <td><%= reservation.comment %></td>
-              <td>
-            <% if reservation.permission != "done" %>
-                <%= form_with model: reservation, url: event_reservation_path(reservation.event, reservation), local: true do |f| %>
-                  <%= f.select :permission, Reservation.permissions.keys.map {|k| [I18n.t("enums.reservation.permission.#{k}"), k]} %>
-                  <%= f.hidden_field :event_id, value: @event.id %>
-                  <%= f.submit "更新", class: "" %>
-                <% end %>
-            <% else %>
-                <%= reservation.permission_i18n %>済
-                <small>承認後は変更できません</small>
-            <% end %>
-
-
-              </td>
-            </tr>
-          <% end %>
-          </table>
-        </div>
+                  </td>
+                </tr>
+              <% end %>
+              </table>
+            </div>
+          </div>
     <% end %>
   </div>
   </div>

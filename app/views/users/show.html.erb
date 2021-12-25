@@ -88,48 +88,52 @@
     </div>
 
     <div class="content">
-      <h1>主催イベント</h1>（開催前・直近3件まで）
+      <h1>主催イベント</h1>（開催前・直近3件）
         <p><h5>参加承認を必ずしてください</h5></p>
-        <table>
-          <tr>
-            <th>開催日</th>
-            <th>開始時刻</th>
-            <th>イベント名</th>
-            <th>集合場所</th>
-          </tr>
-          <% @events.each do |event| %>
-            <% if Date.current < event.date %>
-              <tr>
-                <td><%= event.date.strftime( "%Y/%m/%d" )  %></td>
-                <td><%= event.start_time.strftime( "%H:%M" ) %></td>
-                <td><%= link_to event_path(event.id) do %><%= event.name %><% end %></td>
-                <td><%= event.meeting_place %></td>
-              </tr>
+        <div class="scroll">
+          <table class="tbl">
+            <tr>
+              <th width="120">開催日</th>
+              <th width="90">開始時刻</th>
+              <th>イベント名</th>
+              <th>開催場所</th>
+            </tr>
+            <% @events.each do |event| %>
+              <% if Date.current < event.date %>
+                <tr>
+                  <td><%= event.date.strftime( "%Y/%m/%d" )  %></td>
+                  <td><%= event.start_time.strftime( "%H:%M" ) %>〜</td>
+                  <td><%= link_to event_path(event.id) do %><%= event.name %><% end %></td>
+                  <td><%= event.address %></td>
+                </tr>
+              <% end %>
             <% end %>
-          <% end %>
-        </table>
+          </table>
+        </div>
         <p><%= link_to "主催イベントをすべて見る", host_user_path %></p>
 
-      <h1>参加予定イベント</h1>（開催前・直近3件まで）
+      <h1>参加予定イベント</h1>（開催前・直近3件）
         <p><h5>集合場所、持ち物などの詳細を必ずご確認ください</h5></p>
-        <table>
-          <tr>
-            <th>開催日</th>
-            <th>開始時刻</th>
-            <th>イベント名</th>
-            <th>集合場所</th>
-          </tr>
-          <% @attends.each do |attend| %>
-            <% if Date.current < attend.event.date %>
-              <tr>
-                <td><%= attend.event.date.strftime( "%Y/%m/%d" )  %></td>
-                <td><%= attend.event.start_time.strftime( "%H:%M" ) %></td>
-                <td><%= link_to event_path(attend.event.id) do %><%= attend.event.name %><% end %></td>
-                <td><%= attend.event.meeting_place %></td>
-              </tr>
+        <div class="scroll">
+          <table class="tbl">
+            <tr>
+              <th width="120">開催日</th>
+              <th width="90">開始時刻</th>
+              <th>イベント名</th>
+              <th>集合場所</th>
+            </tr>
+            <% @attends.each do |attend| %>
+              <% if Date.current < attend.event.date %>
+                <tr>
+                  <td><%= attend.event.date.strftime( "%Y/%m/%d" )  %></td>
+                  <td><%= attend.event.start_time.strftime( "%H:%M" ) %></td>
+                  <td><%= link_to event_path(attend.event.id) do %><%= attend.event.name %><% end %></td>
+                  <td><%= attend.event.meeting_place %></td>
+                </tr>
+              <% end %>
             <% end %>
-          <% end %>
-        </table>
+          </table>
+        </div>
         <p><%= link_to "参加イベントをすべて見る", attend_user_path %></p>
 
         <%= link_to reservations_path do %>
