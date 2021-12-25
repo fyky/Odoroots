@@ -317,6 +317,7 @@ main{
 .content{
   width: calc(100% - 350px);
   margin-left:20px;
+  margin-right:20px;
   background-color: #eee;
 }
 
@@ -324,6 +325,8 @@ main{
 @media screen and (max-width:1024px) {
   .content {
     width:100%;
+      margin-left:20px;
+  margin-right:20px;
   }
 }
 
