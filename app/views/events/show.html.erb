@@ -107,7 +107,7 @@
     <h3>主催者</h3>
     <div class="text">
       <div class="host_image">
-        <%= attachment_image_tag @event.user, :image, :fill, 200, 200, style: "border-radius:100px;",
+        <%= attachment_image_tag @event.user, :image, :fill, 200, 200, style: "border-radius:100px;", class:"img-responsive",
         fallback: "/assets/noimage.png", size:'200x200' %><br>
         <%= link_to user_path(@event.user.id) do %><%= @event.user.name %><% end %>
       </div>

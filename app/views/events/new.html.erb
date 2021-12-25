@@ -32,9 +32,10 @@
     <h3>持ち物</h3>
       <p><%= f.text_field :belongings, class: "form" %></p>
     <h3>集合場所</h3>
-      <p>※現地集合の場合は開催場所と同じ住所を入力してください</p>
+      <p>※現地集合の場合は現地集合と入力してください</p>
       <p><%= f.text_field :meeting_place, class: "form" %></p>
     <h3>注意事項</h3>
+      <p>※集合時刻などあればご記入ください</p>
       <p><%= f.text_area :attention, style: "height:100px;", class: "form" %></p>
 
       <!-- event id を渡す -->

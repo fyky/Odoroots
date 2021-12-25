@@ -13,7 +13,9 @@
  *= require_tree .
  *= require_self
  */
- @import "simple_calendar";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Zen+Maru+Gothic:wght@300;400&display=swap');
+  @import "simple_calendar";
+
 
 *{
   margin: 0;
@@ -26,7 +28,9 @@
   height:auto;
 }
 
-body{
+body, button, input, select, textarea{
+font-family: 'Montserrat', 'Zen Maru Gothic', sans-serif;
+// font-family: 'Zen Maru Gothic', sans-serif;
 /*font-family: "Yu Gothic", YuGothic, Verdana, Meiryo, "M+ 1p", sans-serif;*/
 }
 
@@ -83,6 +87,7 @@ h1 {
   margin-bottom: 10px;
   border-bottom: 2px solid #ccc;
   font-weight:normal;
+  font-size:22px;
 }
 
 h1:before{
@@ -144,6 +149,7 @@ main{
   width:100%;
   display: flex;
   justify-content: center;
+  padding:0 10px 0 10px;
 }
 
 /* タブレット横置きサイズ（1024px）以下の際に適用される設定 */
@@ -376,7 +382,7 @@ th {
 .balloon2-left {
   position: relative;
   display: inline-block;
-  margin: 10px 0px 60px 10px;
+  margin: 10px 10px 60px 30px;
   padding: 10px 15px;
   width: 55%;
   font-size: 16px;
@@ -384,14 +390,10 @@ th {
   /*border: solid 3px #555;*/
   box-sizing: border-box;
   border-radius: 15px;
-  height:180px;
-    vertical-align:  middle;
+  height:auto;
+  vertical-align:  middle;
 }
 
-
-
-/* スマートフォンサイズ（425px）以下の際に適用される設定 */
-@media screen and (min-width: 539px) {
   .balloon2-left:before {
     content: "";
     position: absolute;
@@ -412,6 +414,59 @@ th {
     border: 14px solid transparent;
     /*border-right: 14px solid #555;*/
     z-index: 1;
+  }
+
+/* スマートフォンサイズ（425px）以下の際に適用される設定 */
+@media screen and (max-width: 1024px) {
+  .balloon2-left {
+    position: relative;
+    display: inline-block;
+    margin: 10px 10px 60px 30px;
+    padding: 10px 15px;
+    width: 40%;
+    font-size: 16px;
+    background: #FFF;
+    /*border: solid 3px #555;*/
+    box-sizing: border-box;
+    border-radius: 15px;
+    height:auto;
+      vertical-align:  middle;
+  }
+}
+
+/* タブレット縦置きサイズ（768px）以下の際に適用される設定 */
+@media screen and (max-width:768px) {
+.balloon2-left {
+    position: relative;
+    display: inline-block;
+    margin: 10px 10px 60px 30px;
+    padding: 10px 15px;
+    width: 30%;
+    font-size: 16px;
+    background: #FFF;
+    /*border: solid 3px #555;*/
+    box-sizing: border-box;
+    border-radius: 15px;
+    height:auto;
+    vertical-align:  middle;
+  }
+}
+
+/* スマートフォンサイズ（425px）以下の際に適用される設定 */
+@media screen and (max-width:425px) {
+.balloon2-left {
+    position: relative;
+    display: inline-block;
+    margin: 10px 10px 50px 10px;
+    padding: 10px 15px;
+    width: 200px;
+    font-size: 16px;
+    background: #FFF;
+    /*border: solid 3px #555;*/
+    box-sizing: border-box;
+    border-radius: 15px;
+    height:auto;
+    vertical-align:  middle;
   }
 }
 
@@ -517,6 +572,26 @@ a.btn03:hover, .btn03:hover {
   padding:10px;
 }
 
+/* タブレット横置きサイズ（1024px）以下の際に適用される設定 */
+@media screen and (max-width:1024px) {
+  .comment_form {
+    color: green;
+  }
+}
+/* タブレット縦置きサイズ（768px）以下の際に適用される設定 */
+@media screen and (max-width:768px) {
+  .comment_form {
+    color: red;
+  }
+}
+/* スマートフォンサイズ（425px）以下の際に適用される設定 */
+@media screen and (max-width:425px) {
+  .comment_form {
+    width:70%;
+  }
+}
+
+
 
 .send {
   display:inline-block;
@@ -549,31 +624,28 @@ a.btn03:hover, .btn03:hover {
 
 .dm_index{
   background-color:#fff;
-  width: calc(40% - 70px);
+  width: calc(45% - 70px);
   height:auto;
   padding:5px;
 }
 /* タブレット横置きサイズ（1024px）以下の際に適用される設定 */
 @media screen and (max-width:1024px) {
   .dm_index {
-
-    color: green;
+    width: calc(60% - 70px);
   }
 }
 /* タブレット縦置きサイズ（768px）以下の際に適用される設定 */
 @media screen and (max-width:768px) {
   .dm_index {
-    color: red;
+    width: calc(70% - 70px);
   }
 }
 /* スマートフォンサイズ（425px）以下の際に適用される設定 */
 @media screen and (max-width:425px) {
   .dm_index {
-    color: blue;
+    width: calc(95% - 70px);
   }
 }
-
-
 
 
 
@@ -635,11 +707,9 @@ a.btn03:hover, .btn03:hover {
   #map{
     height: 300px;
     width:85%;
+
   }
 }
-
-
-
 
 
 .tab_container {
@@ -686,6 +756,7 @@ a.btn03:hover, .btn03:hover {
 
 .text{
   margin-left:20px;
+  margin-right:20px;
 }
 
 .user-view{
@@ -793,7 +864,6 @@ header a {
     color:#fff;
   }
 }
-
 
 
 

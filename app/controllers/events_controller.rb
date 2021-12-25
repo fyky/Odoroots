@@ -132,7 +132,7 @@ class EventsController < ApplicationController
 
     # @allevents = Event.published.search(params[:keyword], params[:type]).order(created_at: :desc)
 
-    @allevents = Event.published
+    @allevents = Event.published.order(created_at: :desc)
     # binding.irb
     if params[:type] == 'all'
       keywords.each do |keyword|
@@ -163,6 +163,7 @@ class EventsController < ApplicationController
 
   end
 
+  #なに？
   def correct_event
     @event = Event.find(params[:id])
     unless @event.user == current_user

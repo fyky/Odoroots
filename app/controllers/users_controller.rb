@@ -72,22 +72,22 @@ class UsersController < ApplicationController
   end
 
   def calendar
-    @user = User.find(params[:id])
+    @user = current_user
     @hosts = @user.events.published
     @attends = @user.reservations.where(permission: "done")
     # @allevents = (attends + hosts) #エラー
   end
 
   def correct_user
-    @user = User.find(params[:id])
-    unless @user.id == current_user.id
-      redirect_to user_path(@user)
-    end
+    # @user = current_user
+    # unless @user.id == current_user.id
+    #   redirect_to user_path(@user)
+    # end
   end
 
   def follow
-    @user = User.find(params[:id])
-    @allevents = Event.where(user_id: [current_user, @user.followings])
+    @user = current_user
+    @allevents = Event.where(user_id: [@user.id, *@user.followings])
     #@users = current_user.followings
     #@events =
     # @users = current_user.followings

@@ -59,10 +59,10 @@
               <%= link_to rooms_path do %><i class="fas fa-envelope"></i>DM<% end %>
             </li>
             <li>
-              <%= link_to calendar_user_path(current_user) do %><i class="fas fa-calendar-alt"></i>イベントカレンダー<% end %>
+              <%= link_to calendar_path do %><i class="fas fa-calendar-alt"></i>イベントカレンダー<% end %>
             </li>
             <li>
-              <%= link_to do %><i class="fas fa-handshake"></i>フォローしたユーザーの投稿<% end %>
+              <%= link_to follow_path do %><i class="fas fa-handshake"></i>タイムライン<% end %>
             </li>
             <li>
               <%= link_to user_path(current_user) do %><i class="fas fa-user"></i>マイページ<% end %>
@@ -108,10 +108,10 @@
               <%= link_to rooms_path do %><i class="fas fa-envelope"></i><% end %>
             </li>
             <li>
-              <%= link_to calendar_user_path(current_user) do %><i class="fas fa-calendar-alt"></i><% end %>
+              <%= link_to calendar_path do %><i class="fas fa-calendar-alt"></i><% end %>
             </li>
             <li>
-              <%= link_to do %><i class="fas fa-handshake"></i><% end %>
+              <%= link_to follow_path do %><i class="fas fa-handshake"></i><% end %>
             </li>
             <li>
               <%= link_to user_path(current_user) do %><i class="fas fa-user"></i><% end %>

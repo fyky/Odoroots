@@ -11,15 +11,20 @@ Rails.application.routes.draw do
     sessions: 'user/sessions'
   }
 
+  get "calendar" => "users#calendar"
+  get "follow" => "users#follow"
+
+
   resources :users, only: [:show, :edit, :update] do
     member do
       get "unsubscribe"
       patch "withdraw"
       get "host"
       get "attend"
-      get "calendar"
-      get "follow"
     end
+
+
+
 
     resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
