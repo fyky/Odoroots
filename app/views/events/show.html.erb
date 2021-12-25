@@ -87,7 +87,7 @@
             <button class="btn03">予約へ進む</button>
           <% end %>
         <% end %>
-      <i class="fas fa-hourglass"></i> 募集締め切り <%= @event.deadline.strftime('%Y/%m/%d') %> 23:59
+      　<i class="fas fa-hourglass"></i> 募集〆 <%= @event.deadline.strftime('%Y/%m/%d') %> 23:59
 
       <!-- 現在のユーザーがイベントの主催ユーザーだったら-->
       <% elsif  user_signed_in? && current_user == @event.user && @event.date > Date.current %>

@@ -29,9 +29,8 @@
 }
 
 body, button, input, select, textarea{
-font-family: 'Montserrat', 'Zen Maru Gothic', sans-serif;
-// font-family: 'Zen Maru Gothic', sans-serif;
-/*font-family: "Yu Gothic", YuGothic, Verdana, Meiryo, "M+ 1p", sans-serif;*/
+  font-family: 'Montserrat', 'Zen Maru Gothic', sans-serif;
+  color:black;
 }
 
 
@@ -331,10 +330,6 @@ main{
 }
 
 
-
-
-
-
 /*イベントページ*/
 .event_image{
   width:650px;
@@ -632,25 +627,12 @@ a.btn03:hover, .btn03:hover {
   padding:10px;
 }
 
-/* タブレット横置きサイズ（1024px）以下の際に適用される設定 */
-@media screen and (max-width:1024px) {
-  .comment_form {
-    color: green;
-  }
-}
-/* タブレット縦置きサイズ（768px）以下の際に適用される設定 */
-@media screen and (max-width:768px) {
-  .comment_form {
-    color: red;
-  }
-}
 /* スマートフォンサイズ（425px）以下の際に適用される設定 */
 @media screen and (max-width:425px) {
   .comment_form {
     width:70%;
   }
 }
-
 
 
 .send {
@@ -706,8 +688,6 @@ a.btn03:hover, .btn03:hover {
     width: calc(95% - 70px);
   }
 }
-
-
 
 .dm_image{
     display: inline-block;
