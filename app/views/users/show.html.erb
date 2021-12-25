@@ -14,13 +14,16 @@
         <% end %>
       <% end %>
     <% end %>
+        <button class="btn_04">
         <i class="fas fa-user"></i>
         <%= link_to user_followings_path(@user.id) do %><%= @user.followings.count %><% end %>
-        follow
-
+        <font style="font-size:11px">follow</font>
+        </button>
+        <button class="btn_04">
         <i class="fas fa-user"></i>
         <%= link_to user_followers_path(@user.id) do %><%= @user.followers.count %><% end %>
-        follower<br>
+        <font style="font-size:11px">follower</font>
+        </button><br>
 
       <!-- SNSアイコンここから -->
       <% if @user.twitter.present? %>
@@ -50,10 +53,10 @@
 
       </div>
       <div class="profile_text">
-        <p><i class="fas fa-map-marker"></i>
+        <p><i class="fas fa-globe-asia"></i>
           <%= @user.address %>
         </p>
-        <p><i class="fas fa-id-badge"></i>
+        <p><i class="fas fa-user-circle"></i>
           <%= @user.age %>歳
         </p>
         <p><i class="fas fa-star"></i>
@@ -112,7 +115,7 @@
         </div>
         <p><%= link_to "主催イベントをすべて見る", host_user_path %></p>
 
-      <h1>参加予定イベント</h1>（開催前・直近3件）
+      <h1>参加イベント</h1>（開催前・直近3件）
         <p><h5>集合場所、持ち物などの詳細を必ずご確認ください</h5></p>
         <div class="scroll">
           <table class="tbl">
