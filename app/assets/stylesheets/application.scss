@@ -255,6 +255,19 @@ main{
   font-size:25px;
 }
 
+@media screen and (max-width:1030px) {
+  .event_index_text{
+    height:200px;
+  }
+}
+@media screen and (max-width:768px) {
+  .event_index_text{
+    height:200px;
+  }
+}
+
+
+
 
 /* タブレット縦置きサイズ（768px）以下の際に適用される設定 */
 @media screen and (max-width:768px) {
@@ -269,7 +282,6 @@ main{
     font-size:25px;
   }
 }
-
 
 
 .search_form{
@@ -669,6 +681,7 @@ a.btn03:hover, .btn03:hover {
   width: calc(45% - 70px);
   height:auto;
   padding:5px;
+  border: 1px solid #ccc;
 }
 /* タブレット横置きサイズ（1024px）以下の際に適用される設定 */
 @media screen and (max-width:1024px) {

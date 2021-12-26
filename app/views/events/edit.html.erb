@@ -1,4 +1,10 @@
 <h1>投稿イベントを編集する</h1>
+  <% if @event.errors.any? %>
+    <% @event.errors.full_messages.each do |message| %>
+      <div style="color:red"><%= message %></div>
+    <% end %>
+  <% end %>
+
   <div class="text">
   <%= form_with model: @event, url: event_path, local:true do |f| %>
 

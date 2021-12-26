@@ -16,7 +16,7 @@
             <% end %>
             とのトーク
             <% if Message.exists?(room_id: cu.room.id) %>
-            <p style="color:#808080;"><%= Message.where(room_id: cu.room.id).last.user.name %> : <%= Message.where(room_id: cu.room.id).last.body %>
+            <p style="color:#808080;"><%= Message.where(room_id: cu.room.id).last.user.name %> : <%= Message.where(room_id: cu.room.id).last.body.truncate(23) %>
             <small><%= Message.where(room_id: cu.room.id).last.created_at.strftime('%Y/%m/%d %H:%M:%S') %></small></p>
              <% end %>
           </div>

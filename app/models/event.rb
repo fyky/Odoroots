@@ -14,7 +14,7 @@ class Event < ApplicationRecord
   # has_many :followers, through: :reverse_of_relationships, source: :following
 
   # バリデーション
-  validates :name, presence: true
+  validates :name, presence: true, length: { minimum: 3, maximum: 19 }
   validates :address, presence: true
   validates :address_detail, presence: true
   validates :date, presence: true
@@ -26,8 +26,6 @@ class Event < ApplicationRecord
   validates :belongings, presence: true
   validates :meeting_place, presence: true
   validates :number, presence: true
-  validates :attention, presence: true
-
 
   # 住所を一行で取得
   def full_address
