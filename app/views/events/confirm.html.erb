@@ -2,7 +2,7 @@
 <%= form_with model: @event, url: events_path, method: :post, local:true do |form| %>
   <div class="text">
     <h3>写真</h3>
-      <p><%= attachment_image_tag @event, :image, :fill, 600, 400, fallback: "/assets/noimage.png" %></p>
+      <p><%= attachment_image_tag @event, :image, :fill, 600, 400, fallback: "noimage.png" %></p>
     <h3>イベントタイトル</h3> ※19文字以下
       <p><%= @event.name %></p>
     <h3>ダンスジャンル</h3>
