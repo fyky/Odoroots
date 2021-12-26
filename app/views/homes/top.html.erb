@@ -2,10 +2,11 @@
   <div class="text">
     odorootsとは、ダンサーが気軽に集まれるコミュニティサイトです。<br>
     イベントを主催したり、参加したりして、みんなでたくさん踊りましょう！<br>
-    イベントへの参加予約・主催には会員登録が必要です。
+    イベントへの参加申し込み・主催には会員登録が必要です。
     <br>
-    詳しい使い方はこちら
+    詳しい使い方は<%= link_to "こちら", about_path %>
   </div>
+
 
 <%= render "events/search", keyword: @keyword, genres: @genres %>
 

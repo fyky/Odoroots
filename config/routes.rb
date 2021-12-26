@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
 
   root to: 'homes#top'
-
+  get "about" => "homes#about"
 
   devise_for :users, controllers: {
     registrations: 'user/registrations',

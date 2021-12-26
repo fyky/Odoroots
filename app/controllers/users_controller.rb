@@ -79,10 +79,10 @@ class UsersController < ApplicationController
   end
 
   def correct_user
-    # @user = current_user
-    # unless @user.id == current_user.id
-    #   redirect_to user_path(@user)
-    # end
+    @user = current_user
+    unless @user.id == current_user.id
+      redirect_to user_path(@user)
+    end
   end
 
   def follow

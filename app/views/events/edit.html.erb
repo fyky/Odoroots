@@ -10,13 +10,13 @@
 
     <h3>写真</h3>
       <p><%= f.attachment_field :image, placeholder: "プロフィール画像" %></p>
-    <h3>イベントタイトル</h3>
+    <h3>イベントタイトル</h3> ※19文字以下
       <p><%= f.text_field :name, class: "form" %></p>
     <h3>イベントジャンル</h3>
       <p><%= f.select :genre_id, Genre.all.map{|pf| [pf.name, pf.id]} %></p>
     <h3>開催地（市まで）</h3>
       <p><%= f.text_field :address, class: "form" %></p>
-    <h3>開催地（市以降）</h3>
+    <h3>開催地（市より後）</h3>
       <p><%= f.text_field :address_detail, class: "form" %></p>
     <h3>開催日</h3>
       <p><%= f.date_select :date, {start_year: 2020, end_year: 2025,use_month_numbers: true} %></p>
@@ -35,7 +35,8 @@
     <h3>参加条件</h3>
       <p><%= f.text_field :requirement, class: "form" %></p>
     <h3>募集締め切り日</h3>
-      <p><%= f.date_select :deadline, {start_year: 2020, end_year: 2025,use_month_numbers: true} %></p>
+      <p><%= f.date_select :deadline, {start_year: 2020, end_year: 2025,use_month_numbers: true} %></p><br>
+    <h5>以下は参加承認者にのみ公開されます</h5>
     <h3>持ち物</h3>
       <p><%= f.text_field :belongings, class: "form" %></p>
     <h3>集合場所</h3>
