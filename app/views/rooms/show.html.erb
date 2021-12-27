@@ -24,14 +24,8 @@
 
 <br><br><br>
 
-
    <div id="message" class="message" data-room_id="<%= params[:id] %>" data-user_id="<%= current_user.id %>">
-     <%#= form_with model: @message, remote: true do |f| %>
-       <%#= input_field :body, class: "dm_form", data: { behavior: "room_speaker" }, placeholder: "メッセージを入力してください" %>
-       <%#= f.hidden_field :room_id, value: @room.id %>
-       <%#= f.submit "送信する", :class => 'comment_send' %>
-      <input id="chat-input" type="text" style="width:300px;"></input><br>
-     <%# end %>
+    <input id="chat-input" type="text" style="width:300px;"></input><br>
    </div>
 
 

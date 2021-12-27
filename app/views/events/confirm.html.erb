@@ -1,43 +1,42 @@
 <h1>主催イベント投稿確認ページ</h1>
-<%= form_with model: @event, url: events_path, method: :post, local:true do |form| %>
-  <div class="text">
-    <h3>写真</h3>
-      <p><%= attachment_image_tag @event, :image, :fill, 600, 400, fallback: "noimage.png" %></p>
-    <h3>イベントタイトル</h3> ※19文字以下
-      <p><%= @event.name %></p>
-    <h3>ダンスジャンル</h3>
-      <p><%= @event.genre.name %></p>
-    <h3>開催地（市まで）</h3>
-      <p><%= @event.address %></p>
-    <h3>開催地（市より後）</h3>
-      <p><%= @event.address_detail %></p>
-    <h3>開催日</h3>
-      <p><%= @event.date.strftime( "%Y年%m月%d日" ) %></p>
-    <h3>開始時間</h3>
-      <p><%= @event.start_time.strftime( "%H:%M" ) %></p>
-    <h3>終了予定時間</h3>
-      <p><%= @event.end_time.strftime( "%H:%M" ) %></p>
-    <h3>紹介文</h3>
-      <p><%= @event.introduction %></p>
-    <h3>募集人数</h3>
-      <p><%= @event.number %></p>
-    <h3>参加条件</h3>
-      <p><%= @event.requirement %></p>
-    <h3>募集締め切り日</h3>
-      <p><%= @event.deadline %></p><br>
-    <h5>以下は参加承認者にのみ公開されます</h5>
-    <h3>持ち物</h3>
-      <p><%= @event.belongings %></p>
-    <h3>集合場所</h3>
-      <p><%= @event.meeting_place %></p>
-    <h3>注意事項</h3>
-      <p><%= @event.attention %></p>
+  <%= form_with model: @event, url: events_path, method: :post, local:true do |form| %>
+    <div class="text">
+      <h3>写真</h3>
+        <p><%= attachment_image_tag @event, :image, :fill, 600, 400, fallback: "noimage.png" %></p>
+      <h3>イベントタイトル</h3> ※19文字以下
+        <p><%= @event.name %></p>
+      <h3>ダンスジャンル</h3>
+        <p><%= @event.genre.name %></p>
+      <h3>開催地（市まで）</h3>
+        <p><%= @event.address %></p>
+      <h3>開催地（市より後）</h3>
+        <p><%= @event.address_detail %></p>
+      <h3>開催日</h3>
+        <p><%= @event.date.strftime( "%Y年%m月%d日" ) %></p>
+      <h3>開始時間</h3>
+        <p><%= @event.start_time.strftime( "%H:%M" ) %></p>
+      <h3>終了予定時間</h3>
+        <p><%= @event.end_time.strftime( "%H:%M" ) %></p>
+      <h3>紹介文</h3>
+        <p><%= @event.introduction %></p>
+      <h3>募集人数</h3>
+        <p><%= @event.number %></p>
+      <h3>参加条件</h3>
+        <p><%= @event.requirement %></p>
+      <h3>募集締め切り日</h3>
+        <p><%= @event.deadline %></p><br>
+      <h5>以下は参加承認者にのみ公開されます</h5>
+      <h3>持ち物</h3>
+        <p><%= @event.belongings %></p>
+      <h3>集合場所</h3>
+        <p><%= @event.meeting_place %></p>
+      <h3>注意事項</h3>
+        <p><%= @event.attention %></p>
+      <!-- event id を渡す -->
+      <%= form.hidden_field :id, value: @event.id %>
 
-  <!-- event id を渡す -->
-  <%= form.hidden_field :id, value: @event.id %>
+      <%= link_to '修正する', new_event_path(id: @event.id) %>
 
-  <%= link_to '修正する', new_event_path(id: @event.id) %>
-
-	<%= form.submit '送信する', class: "send" %>
-	</div>
-<% end %>
+    	<%= form.submit '送信する', class: "send" %>
+  	</div>
+  <% end %>

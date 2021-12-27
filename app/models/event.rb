@@ -46,31 +46,6 @@ class Event < ApplicationRecord
     self.where(publish: true)
   end
 
-  # 　def self.search(keyword, type)
-    # keyword_array = keywords.split(/[[:blank:]]+/)
-
-  #   if type == 'all'
-  #     # keyword_array.each do |keyword|
-  #       where(["name LIKE ? OR address LIKE ?", "%#{keyword}%", "%#{keyword}%"])
-  #     # end
-  #   else
-  #     where(["date > ? AND (name LIKE ? OR address LIKE ?)", Date.current, "%#{keyword}%", "%#{keyword}%"])
-  #   end
-  # end
-
-  # def self.search(method)
-  # self.published.where(['date > ?', Date.current])
-  # end
-
-  # def self.search(keyword)
-  #   # あいまい検索
-  #   #   “?”に対してkeywordが順番に入る
-  #   #   LIKEは、あいまい検索の意味で、“%”は、前後のあいまいという意味
-  #   #   “#{keyword}”は、Rubyの式展開
-  #   where('name LIKE ? OR address LIKE ?', "%#{keyword}%", "%#{keyword}%")
-  # end
-
-
   def favorited_by?(user)
     unless user==nil
       favorites.where(user_id: user.id).exists?
@@ -108,14 +83,14 @@ class Event < ApplicationRecord
   end
 
   def save_notification_comment!(current_user, comment_id, visited_id)
-    # コメントは複数回することが考えられるため、１つの投稿に複数回通知する
+    # １つの投稿に複数回通知する
     notification = current_user.active_notifications.new(
       event_id: id,
       comment_id: comment_id,
       visited_id: visited_id,
       action: 'comment'
     )
-    # 自分���投稿に対するコメントの場合は、通知済みとする
+    # 自分の投稿に対するコメントの場合は、通知しない（通知済）
     if notification.visitor_id == notification.visited_id
       notification.is_checked = true
     end
@@ -132,7 +107,5 @@ class Event < ApplicationRecord
     )
     notification.save if notification.valid?
   end
-
-
 
 end

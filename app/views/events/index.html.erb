@@ -1,4 +1,5 @@
 <%= render "events/search", keyword: @keyword, genres: @genres %>
+
 <h1>投稿されたイベント</h1>
   <%= render "events/index", events: @events, allevents: @allevents %>
 <% if @method == "before" %>

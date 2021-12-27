@@ -1,95 +1,99 @@
-  <div class="container">
-    <div class="info">
-      <div class="profile_image">
-        <%= attachment_image_tag @user, :image, :fill, 160, 160, fallback: "noimage.png", size:'160x160' %>
-        <p class="event_title"><%= @user.name %></p>
+<div class="container">
+  <div class="info">
+    <div class="profile_image">
+      <%= attachment_image_tag @user, :image, :fill, 160, 160, fallback: "noimage.png", size:'160x160' %>
+      <p class="event_title"><%= @user.name %></p>
 
-    <!-- フォローボタン（ログイン中かつマイページではない） -->
-    <% if user_signed_in? %>
-      <% unless @user == current_user %>
-        <% if current_user.following?(@user) %>
-          <%= link_to user_relationships_path(@user.id), method: :delete do %><i class="fas fa-user-alt"></i> フォロー中<% end %><br/>
-        <% else %>
-          <%= link_to user_relationships_path(@user.id), method: :post do %><i class="fas fa-plus"></i> フォローする<% end %><br/>
-        <% end %>
-      <% end %>
-    <% end %>
-        <button class="btn_04">
-        <i class="fas fa-user"></i>
-        <%= link_to user_followings_path(@user.id) do %><%= @user.followings.count %><% end %>
-        <font style="font-size:11px">follow</font>
-        </button>
-        <button class="btn_04">
-        <i class="fas fa-user"></i>
-        <%= link_to user_followers_path(@user.id) do %><%= @user.followers.count %><% end %>
-        <font style="font-size:11px">follower</font>
-        </button><br>
-
-      <!-- SNSアイコンここから -->
-      <% if @user.twitter.present? %>
-        <%= link_to @user.twitter, target: :_blank do %>
-          <i class="fab fa-twitter-square fa-2x"></i>
-        <% end %>
-      <% end %>
-
-      <% if @user.facebook.present? %>
-        <%= link_to @user.facebook, target: :_blank do %>
-          <i class="fab fa-facebook-square fa-2x"></i>
-        <% end %>
-      <% end %>
-
-      <% if @user.instagram.present? %>
-        <%= link_to @user.instagram, target: :_blank do %>
-          <i class="fab fa-instagram fa-2x"></i>
-        <% end %>
-      <% end %>
-
-      <% if @user.youtube.present? %>
-        <%= link_to @user.youtube, target: :_blank do %>
-          <i class="fab fa-youtube fa-2x"></i>
-        <% end %>
-      <% end %>
-      <!-- ここまで -->
-
-      </div>
-      <div class="profile_text">
-        <p><i class="fas fa-globe-asia"></i>
-          <%= @user.address %>
-        </p>
-        <p><i class="fas fa-user-circle"></i>
-          <%= @user.age %>歳
-        </p>
-        <p><i class="fas fa-star"></i>
-          <%= @user.genre %>
-        </p>
-        <p><i class="fas fa-hand-paper"></i>
-          <%= @user.introduction %>
-        </p>
-
-
-
-      <% if @user == current_user %>
-        <p><%= link_to "ユーザー情報を編集する",edit_user_path(@user) %></p>
-      <% end %>
-
-  <!--現在ログインしているユーザーではない場合 -->
-  <% if current_user != nil && @user.id != current_user.id %>
-    <!-- 既にルームが作成されている場合はそのチャットルームに遷移するボタンを表示 -->
-    <% if @have_room == true %>
-     <%= link_to "ダイレクトメッセージ", room_path(@room_id) %>
-    <% else %>
-      <!-- roomsテーブルに情報を送信 -->
-      <%= form_with model: @room, local: true do |f|%>
-      <!-- room_usersテーブルに情報を送信 -->
-        <%= hidden_field_tag 'room_user[user_id]', @user.id %>
-        <%= f.submit "チャットを始める", class: "send" %>
+  <!-- フォローボタン（ログイン中かつマイページではない） -->
+  <% if user_signed_in? %>
+    <% unless @user == current_user %>
+      <% if current_user.following?(@user) %>
+        <%= link_to user_relationships_path(@user.id), method: :delete do %><i class="fas fa-user-alt"></i> フォロー中<% end %><br/>
+      <% else %>
+        <%= link_to user_relationships_path(@user.id), method: :post do %><i class="fas fa-plus"></i> フォローする<% end %><br/>
       <% end %>
     <% end %>
   <% end %>
+      <button class="btn_04">
+      <i class="fas fa-user"></i>
+      <%= link_to user_followings_path(@user.id) do %><%= @user.followings.count %><% end %>
+      <font style="font-size:11px">follow</font>
+      </button>
+      <button class="btn_04">
+      <i class="fas fa-user"></i>
+      <%= link_to user_followers_path(@user.id) do %><%= @user.followers.count %><% end %>
+      <font style="font-size:11px">follower</font>
+      </button><br>
 
-      </div>
+    <!-- SNSアイコンここから -->
+    <% if @user.twitter.present? %>
+      <%= link_to @user.twitter, target: :_blank do %>
+        <i class="fab fa-twitter-square fa-2x"></i>
+      <% end %>
+    <% end %>
+
+    <% if @user.facebook.present? %>
+      <%= link_to @user.facebook, target: :_blank do %>
+        <i class="fab fa-facebook-square fa-2x"></i>
+      <% end %>
+    <% end %>
+
+    <% if @user.instagram.present? %>
+      <%= link_to @user.instagram, target: :_blank do %>
+        <i class="fab fa-instagram fa-2x"></i>
+      <% end %>
+    <% end %>
+
+    <% if @user.youtube.present? %>
+      <%= link_to @user.youtube, target: :_blank do %>
+        <i class="fab fa-youtube fa-2x"></i>
+      <% end %>
+    <% end %>
+    <!-- ここまで -->
+
     </div>
+    <div class="profile_text">
+      <p><i class="fas fa-globe-asia"></i>
+        <%= @user.address %>
+      </p>
+      <p><i class="fas fa-user-circle"></i>
+        <%= @user.age %>歳
+      </p>
+      <p><i class="fas fa-star"></i>
+        <%= @user.genre %>
+      </p>
+      <p><i class="fas fa-hand-paper"></i>
+        <%= @user.introduction %>
+      </p>
 
+
+
+    <% if @user == current_user %>
+      <p><%= link_to "ユーザー情報を編集する",edit_user_path(@user) %></p>
+    <% end %>
+
+<!--現在ログインしているユーザーではない場合 -->
+<% if current_user != nil && @user.id != current_user.id %>
+  <!-- 既にルームが作成されている場合はそのチャットルームに遷移するボタンを表示 -->
+  <% if @have_room == true %>
+   <%= link_to "ダイレクトメッセージ", room_path(@room_id) %>
+  <% else %>
+    <!-- roomsテーブルに情報を送信 -->
+    <%= form_with model: @room, local: true do |f|%>
+    <!-- room_usersテーブルに情報を送信 -->
+      <%= hidden_field_tag 'room_user[user_id]', @user.id %>
+      <%= f.submit "チャットを始める", class: "send" %>
+    <% end %>
+  <% end %>
+<% end %>
+    </div>
+  </div>
+
+  <% if @user.is_deleted == true %>
+    <div class="content">
+     <b>このアカウントは既に退会されています</b>
+    </div>
+  <% else %>
     <div class="content">
       <h1>主催イベント</h1>（開催前・直近3件）
         <p><h5>必ず参加承認をしてください</h5></p>
@@ -143,4 +147,5 @@
           今までの申し込みイベント一覧を見る
         <% end %>
     </div>
-  </div>
+    <% end %>
+</div>

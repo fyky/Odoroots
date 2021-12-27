@@ -53,6 +53,7 @@ Rails.application.routes.draw do
   resources :reservations, only: [:index]
 
   resources :notifications, only: [:index]
+  
   resources :favorites, only: [:index]
 
   resources :messages, only: [:create]

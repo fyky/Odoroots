@@ -13,90 +13,79 @@
  *= require_tree .
  *= require_self
  */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Zen+Maru+Gothic:wght@300;400&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Zen+Maru+Gothic:wght@300;400&display=swap');
   @import "simple_calendar";
 
-*{
+
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-.img-responsive {
-  width:100%;
-  max-width: 100%;
-  height:auto;
-}
+  }
 
+/* webフォント適用 */
 body, button, input, select, textarea{
   font-family: 'Montserrat', 'Zen Maru Gothic', sans-serif;
   color:black;
 }
 
+/*****/
 
-/*リンク*/
-main a{
-  text-decoration: none;
-  color:#4682b4;
-}
-
-main a:hover{
-  text-decoration: none;
-  color:#fff;
-}
-
-
-p{
-
-}
-
-/*ヘッダー */
-header{
-  height:60px;
-  width:100%;
-  background-color:#b0c4de;
-  position:fixed;
+/* ヘッダー */
+header {
+  height: 60px;
+  width: 100%;
+  background-color: #b0c4de;
+  position: fixed;
   justify-content: space-between;
   display: flex;
   z-index: 3;
-    opacity: 0.8;
+  opacity: 0.8;
 }
 
-/*ヘッダーロゴ*/
+header a {
+  color: #000;
+  text-decoration: none;
+  display: block;
+  line-height: 60px;
+  padding: 0 20px;
+}
+
+/* ヘッダーロゴ */
 .logo {
   font-family: 'Montserrat', sans-serif;
-  // margin-left:20px;
   font-size: 40px;
   display: flex;
-  width:200px;
-  height:60px;
+  margin-left: 10px;
+  width: 200px;
+  height: 60px;
 }
 
-// .logo a {
-//   font-family: monospace;
-//   color: #191970;
-//   text-decoration: none;
-// }
+.logo a {
+  color: #191970;
+  text-decoration: none;
+}
 
+/*****/
 
 /* 見出し関連 */
 h1 {
   display: inline-block;
-  margin-top:20px;
+  margin-top: 20px;
   padding: 10px 0px 10px 10px;
   margin-bottom: 10px;
   border-bottom: 2px solid #ccc;
-  font-weight:normal;
-  font-size:22px;
+  font-weight: normal;
+  font-size: 22px;
 }
 
-h1:before{
+h1:before {
   font-family: "Font Awesome 5 Free";
   content: "\f591";
-  font-weight: 900;
-  padding-right : 5px;
+  font-weight: bold;
+  padding-right: 5px;
   color: #708090;
 }
-
 
 h2 {
   display: inline-block;
@@ -105,52 +94,136 @@ h2 {
   border-radius: 4px;
   background-color:#d7e0ea;
   font-size: 20px;
-  margin-left:10px;
+  margin: 5px 5px 5px 8px;
   font-weight: normal;
-  margin:5px;
 }
 
-h3{
+h3 {
   display: inline;
-  background-image: linear-gradient(rgba(0,0,0,0) 70%, #4682b4 70%);
+  background-image: linear-gradient(#eee 70%, #4682b4 70%);
   margin-left: -10px;
   font-weight: normal;
 }
-h3 a{
-  color:#000;
-  text-decoration: none;
-}
 
-h3 a:hover{
-  color:#eee;
-  text-decoration: none;
-}
-
-h4{
-  border:1px solid;
+h4 {
+  border: 1px solid;
   font-size: 20px;
   border-radius: 4px;
-  background-color:#4682b4;
-  padding:8px;
+  background-color: #4682b4;
+  padding: 8px;
   display: inline-block;
 }
 
+/*****/
+
+/* imgレスポンシブ */
+.img-responsive {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+/* 小文字 */
+.small {
+  display: none;
+}
+
+
+
+/*****/
+
 /*　メイン */
-main{
+main {
   padding: 60px 0px 30px 10px;
   background-color: #eee;
   line-height: 25pt;
   min-height: 100vh;
 }
 
-/*横並び2カラム記事まとめ*/
-.container{
-  width:100%;
-  display: flex;
-  justify-content: center;
-  padding:0 10px 0 10px;
+/*****/
+
+/* テーブル設定 */
+table {
+  border-collapse: collapse;
+  width: 90%;
+  text-align: left;
 }
 
+th,td {
+  padding: 10px;
+  border: solid 1px #ccc;
+  box-sizing: border-box;
+}
+th {
+  background: #b0c4de;
+  color: #fff;
+}
+
+/*****/
+
+/* フォーム指定 */
+
+// .search_form{
+//   width: 300px;
+//   height: 25px;
+//   border:none;
+//   padding:10px;
+// }
+
+.form {
+  width: 300px;
+  height: 25px;
+  border: none;
+  padding: 10px;
+}
+
+.select{
+  padding:5px;
+  border: 0;
+}
+
+.send {
+  display:inline-block;
+  border-radius:5px;
+  text-align:center;
+  padding:8px;
+  background:#000000;
+  color:#ffffff;
+  line-height:10px;
+  transition: .3s;
+  border: 2px solid #000000;
+  cursor: pointer;
+}
+
+/*****/
+
+/*リンク*/
+main a {
+  text-decoration: none;
+  color: #4682b4;
+}
+
+main a:hover {
+  text-decoration: none;
+  color: #fff;
+}
+
+/*****/
+
+/* 横並び2カラム記事 */
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 0 10px 0 10px;
+}
 /* タブレット横置きサイズ（1024px）以下の際に適用される設定 */
 @media screen and (max-width: 1024px) {
   .container{
@@ -160,287 +233,256 @@ main{
   }
 }
 
+/*****/
 
-/*ユーザーページ */
-.info{
-  width:350px;
+/* ユーザーページ */
+
+/* プロフ部分*/
+.info {
+  width: 350px;
   background-color: #b0c4de;
-  height:100%;
+  height: 100%;
   border-radius: 0px 0px 10px 10px;
-  /*box-shadow: 5px 5px 2px gray;*/
 }
-
 /* タブレット横置きサイズ（1024px）以下の際に適用される設定 */
-@media screen and (max-width:1024px) {
-  .info{
-    width:100%;
+@media screen and (max-width: 1024px) {
+  .info {
+    width: 100%;
     background-color: #b0c4de;
-    height:auto;
+    height: auto;
     border-radius: 0px 0px 10px 10px;
-    /*box-shadow: 5px 5px 2px gray;*/
     display: flex;
     justify-content: center;
   }
 }
-
 /* スマートフォンサイズ（425px）以下の際に適用される設定 */
-@media screen and (max-width:425px) {
-  .info{
-    width:100%;
+@media screen and (max-width: 425px) {
+  .info {
+    width: 100%;
     background-color: #b0c4de;
-    height:auto;
+    height: auto;
     border-radius: 0px 0px 10px 10px;
-    /*box-shadow: 5px 5px 2px gray;*/
     display: flex;
     justify-content: center;
   }
 }
 
-
-/*イベント一覧表示*/
-.event_container{
-  width:100%;
-  display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-}
-
-.event_index{
-  width:30%;
-  border:1px solid #d3cfd9;
-  // height:510px;
-  text-align: center;
-  margin:1%;
-  background-color: #fff;
-}
-
-/* タブレット横置きサイズ（1024px）以下の際に適用される設定 */
-@media screen and (max-width:1024px) {
-  .event_index {
-    width:48%;
-  }
-
-}
-/* タブレット縦置きサイズ（768px）以下の際に適用される設定 */
-@media screen and (max-width:768px) {
-  .event_index {
-    width:48%;
-  }
-}
-
-/* 530px以下の際に適用される設定 */
-@media screen and (max-width:530px) {
-  .event_index {
-    width:93%;
-  }
-}
-
-// .event_index_img{
-//   height:300px;
-// }
-
-
-
-.event_index_text{
-  width:95%;
+.profile_image {
+  padding: 20px;
   margin: auto;
-  text-align:left;
-  background-color: #eee;
-  height:170px;
-  padding: 10px;
-  margin-bottom:10px;
-}
-
-.event_title{
-  font-size:25px;
-}
-
-@media screen and (max-width:1030px) {
-  .event_index_text{
-    height:200px;
-  }
-}
-@media screen and (max-width:768px) {
-  .event_index_text{
-    height:200px;
-  }
-}
-
-
-
-
-/* タブレット縦置きサイズ（768px）以下の際に適用される設定 */
-@media screen and (max-width:768px) {
-  .event_title{
-    font-size:20px;
-  }
-}
-
-/* スマートフォンサイズ（425px）以下の際に適用される設定 */
-@media screen and (max-width:425px) {
-  .event_title{
-    font-size:25px;
-  }
-}
-
-
-.search_form{
-  width: 300px;
-  height: 25px;
-  border:none;
-  padding:10px;
-}
-
-.select{
-  padding:5px;
-  border: 0;
-}
-
-.profile_image{
-  padding:20px;
-  margin:auto;
-  width:90%;
-  height:auto;
+  width: 90%;
+  height: auto;
   background-color: #fff;
   text-align: center;
 }
-
 /* スマートフォンサイズ（425px）以下の際に適用される設定 */
-@media screen and (max-width:425px) {
-  .profile_image{
-    padding:5px;
-    margin:auto;
-    width:90%;
-    height:auto;
+@media screen and (max-width: 425px) {
+  .profile_image {
+    padding: 5px;
+    margin: auto;
+    width: 90%;
+    height: auto;
     background-color: #fff;
     text-align: center;
   }
 }
 
-
-
-.profile_text{
-  padding:20px;
-  margin:auto;
-  width:90%;
+.profile_text {
+  padding: 20px;
+  margin: auto;
+  width: 90%;
 }
 
-.content{
-  width: calc(100% - 350px);
-  margin-left:20px;
-  margin-right:20px;
-  background-color: #eee;
+/* SNSアイコンの色変更 */
+.fa-twitter{
+  color:#1da1f2;
 }
 
+.fa-facebook-square{
+  color:#3b5998;
+}
+
+.fa-instagram{
+  color:#e1306c;
+}
+
+.fa-youtube{
+  color:#ff0000;
+}
+
+/*****/
+
+/* イベント関連 */
+.event_container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.event_index {
+  width: 30%;
+  border: 1px solid #d3cfd9;
+  text-align: center;
+  margin: 1%;
+  background-color: #fff;
+}
 /* タブレット横置きサイズ（1024px）以下の際に適用される設定 */
-@media screen and (max-width:1024px) {
-  .content {
-    width:100%;
-    margin-left:0px;
-    margin-right:0px;
+@media screen and (max-width: 1024px) {
+  .event_index {
+    width: 48%;
+  }
+}
+/* タブレット縦置きサイズ（768px）以下の際に適用される設定 */
+@media screen and (max-width: 768px) {
+  .event_index {
+    width: 48%;
+  }
+}
+/* 530px以下の際に適用される設定 */
+@media screen and (max-width: 530px) {
+  .event_index {
+    width: 93%;
   }
 }
 
-
-/*イベントページ*/
-.event_image{
-  width:650px;
+.event_index_text {
+  width: 95%;
+  margin: auto;
+  text-align: left;
+  background-color: #eee;
+  height: 170px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+@media screen and (max-width: 1030px) {
+  .event_index_text {
+    height: 200px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .event_index_text {
+    height: 200px;
+  }
 }
 
+.event_title {
+  font-size: 25px;
+}
+/* タブレット縦置きサイズ（768px）以下の際に適用される設定 */
+@media screen and (max-width: 768px) {
+  .event_title {
+    font-size: 20px;
+  }
+}
+/* スマートフォンサイズ（425px）以下の際に適用される設定 */
+@media screen and (max-width: 425px) {
+  .event_title {
+    font-size: 25px;
+  }
+}
+
+.content {
+  width: calc(100% - 350px);
+  margin-left: 20px;
+  margin-right: 20px;
+  background-color: #eee;
+}
 /* タブレット横置きサイズ（1024px）以下の際に適用される設定 */
 @media screen and (max-width: 1024px) {
-  .event_image{
+  .content {
+    width: 100%;
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+}
+
+.event_image{
+  width: 650px;
+}
+/* タブレット横置きサイズ（1024px）以下の際に適用される設定 */
+@media screen and (max-width: 1024px) {
+  .event_image {
     width: 65%;
   }
 }
 /* タブレット縦置きサイズ（768px）以下の際に適用される設定 */
 @media screen and (max-width: 768px) {
-  .event_image{
+  .event_image {
     width: 65%;
   }
 }
 /* スマートフォンサイズ（425px）以下の際に適用される設定 */
 @media screen and (max-width: 425px) {
-  .event_image{
+  .event_image {
     width: 100%;
   }
 }
 
-
-
-.event_main{
+.event_main {
   width: calc(100% - 650px);
-  padding-left:30px;
+  padding-left: 30px;
 }
-
 /* タブレット横置きサイズ（1024px）以下の際に適用される設定 */
 @media screen and (max-width: 1024px) {
-  .event_main{
-    width:100%;
-    padding:0;
+  .event_main {
+    width: 100%;
+    padding: 0;
   }
 }
 
-
-.host_image{
-  display:inline-block;
-  width:200px;
-  height:250px;
+.host_image {
+  display: inline-block;
+  width: 200px;
+  height: 250px;
   text-align: center;
   vertical-align:  middle;
 }
-.event_detail{
-  margin-left:20px;
+
+.event_detail {
+  margin-left: 20px;
 }
 
-.comment, .dm{
-  width:100%;
+.comment, .dm {
+  width: 100%;
   display: flex;
-  padding:10px;
+  padding: 10px;
 }
 
 .comment_image{
-  /*border:1px solid;*/
   background-color: #fff;
-  width:60px;
-  padding:10px;
+  width: 60px;
+  padding: 10px;
 }
 
 .comment_text{
   background-color: #fff;
-  /*border:1px solid;*/
   width: calc(90% - 60px);
   padding:10px;
 }
 
-.form{
-  width: 300px;
-  height: 25px;
-  border:none;
-  padding:10px;
+#map{
+  height: 300px;
+  width:500px;
+}
+/* タブレット縦置きサイズ（768px）以下の際に適用される設定 */
+@media screen and (max-width: 768px) {
+  #map{
+    height: 300px;
+    width:85%;
+  }
+}
+/* スマートフォンサイズ（425px）以下の際に適用される設定 */
+@media screen and (max-width: 425px) {
+  #map{
+    height: 300px;
+    width:85%;
+
+  }
 }
 
-
-
-
-/* テーブル設定 */
-table{
-  border-collapse: collapse;
-  width: 90%;
-  text-align:left;
-}
-th,td{
-  padding: 10px;
-  border: solid 1px #ccc;
-  box-sizing:border-box;
-}
-th {
-  background: #b0c4de;
-  color: #fff;
-}
-
-
-.balloon2-left {
+/* イベント主催者コメント */
+.bl-left {
   position: relative;
   display: inline-block;
   margin: 10px 10px 60px 30px;
@@ -455,7 +497,8 @@ th {
   vertical-align:  middle;
 }
 
-  .balloon2-left:before {
+@media screen and (min-width: 426px) {
+  .bl-left:before {
     content: "";
     position: absolute;
     top: 50%;
@@ -465,8 +508,7 @@ th {
     border-right: 12px solid #FFF;
     z-index: 2;
   }
-
-  .balloon2-left:after {
+  .bl-left:after {
     content: "";
     position: absolute;
     top: 50%;
@@ -476,10 +518,9 @@ th {
     /*border-right: 14px solid #555;*/
     z-index: 1;
   }
-
-/* スマートフォンサイズ（425px）以下の際に適用される設定 */
+}
 @media screen and (max-width: 1024px) {
-  .balloon2-left {
+  .bl-left {
     position: relative;
     display: inline-block;
     margin: 10px 10px 60px 30px;
@@ -494,10 +535,9 @@ th {
       vertical-align:  middle;
   }
 }
-
 /* タブレット縦置きサイズ（768px）以下の際に適用される設定 */
 @media screen and (max-width:768px) {
-.balloon2-left {
+.bl-left {
     position: relative;
     display: inline-block;
     margin: 10px 10px 60px 30px;
@@ -512,10 +552,9 @@ th {
     vertical-align:  middle;
   }
 }
-
 /* スマートフォンサイズ（425px）以下の際に適用される設定 */
 @media screen and (max-width:425px) {
-.balloon2-left {
+.bl-left {
     position: relative;
     display: inline-block;
     margin: 10px 10px 50px 10px;
@@ -531,24 +570,24 @@ th {
   }
 }
 
-
+/*****/
 
 /*ボタン*/
-.button01{
-  border:1px dotted #eee;
+.btn01 {
+  border: 1px dotted #eee;
   background-color:#808080;
   font-size: 15px;
-  padding:3px;
-  margin-bottom:10px;
+  padding: 3px;
+  margin-bottom: 10px;
   margin-left: 20px;
   margin-right: 20px;
 }
 
-.button02{
-  border:1px solid #eee;
+.btn02 {
+  border: 1px solid #eee;
   background-color:#d4c9de;
   font-size: 15px;
-  padding:10px;
+  padding: 10px;
   margin: 0px 10px 10px 10px;
   border-radius: 50%;
 }
@@ -556,124 +595,69 @@ th {
 a.btn03, .btn03 {
   border: 1px dashed #000;
   background-color: #fff;
-  padding:10px;
-  font-size:18px;
+  padding: 10px;
+  font-size: 18px;
   color: #4682b4;
 }
+
 a.btn03:hover, .btn03:hover {
   border: 1px dashed #000;
   background-color: #b0c4de;
-  padding:10px;
+  padding: 10px;
   cursor: pointer;
   color:#eee;
 }
 
 .btn_04{
   border: none;
-  font-size:20px;
+  font-size: 20px;
   background-color:#fff;
 }
 
+/* フォロー関連 */
+.follow{
+  width: 200px;
+  height: 100px;
+  background-color: #fff;
+  margin: 10px;
+  padding: 10px;
+}
+
 /* ダンスジャンル */
-.btn_tag{
+.btn_tag {
   border: 1px solid;
   font-size: 13px;
   padding: 8px;
   margin: 10px;
 }
 
-/*イベントページのページネーション*/
-.pagination{
+/*****/
+
+/* ページネーション */
+.pagination {
   background-color:#fff;
-  text-align:center;
+  text-align: center;
 }
 
-.pagination a{
-  color:#000;
+.pagination a {
+  color: #000;
 }
-.pagination a:hover{
-  color:#b0c4de;
-}
-
-
-.current_user {
-    color: black;
-    text-align: right;
-    background-color: #fff;
-    width: fit-content;
-    margin: 10px 0 0 auto;
-    border-radius: 20px;
-    /* Google Chrome、Safari*/
-    -webkit-border-radius: 20px;
-    /* Firefox */
-    -moz-border-radius: 30px;
-    /* IE */
-    -ms-border-radius: 30px;
-    box-sizing: border-box;
-    padding: 8px;
+.pagination a:hover {
+  color: #b0c4de;
 }
 
-.visited_user {
-    color: #fff;
-    margin: 10px;
-    background-color: #4682b4;
-    text-align: left;
-    width: fit-content;
-    margin: 10px auto 0 0;
-    border-radius: 20px;
-    /* Google Chrome、Safari*/
-    -webkit-border-radius: 20px;
-    /* Firefox */
-    -moz-border-radius:30px;
-    /* IE */
-    -ms-border-radius:30px;
-    box-sizing: border-box;
-    padding: 8px;
-}
+/*****/
 
-
-.comment_form{
-  width: 300px;
-  height: 100px;
-  border:none;
-  padding:10px;
-}
-
-/* スマートフォンサイズ（425px）以下の際に適用される設定 */
-@media screen and (max-width:425px) {
-  .comment_form {
-    width:70%;
-  }
-}
-
-
-.send {
-  display:inline-block;
-  border-radius:5px;
-  text-align:center;
-  padding:8px;
-  background:#000000;
-  color:#ffffff;
-  line-height:10px;
-  transition: .3s;
-  border: 2px solid #000000;
-  cursor: pointer;
-}
-
-.comment_send:hover {
-  color:#a9a9a9;
-  background-color:#eee;
-}
-
+/* DM関連 */
 .dm_form {
   width: 500px;
   height: 30px;
-  border:none;
-  padding:10px;
+  border: none;
+  padding: 10px;
 }
 
 .dm{
-  justify-content:center;
+  justify-content: center;
 }
 
 .dm_index{
@@ -702,69 +686,85 @@ a.btn03:hover, .btn03:hover {
   }
 }
 
-.dm_image{
+.dm_image {
     display: inline-block;
-    width:70px;
-    height:70px;
-    margin-right:10px;
+    width: 70px;
+    height: 70px;
+    margin-right: 10px;
 }
 
-.message{
-  padding:15px;
+.message {
+  padding: 15px;
   margin-left: -20px;
-  text-align:center;
-  background-color:#808080;
-  height:80px;
-  position:fixed;
-  width:100%;
+  text-align: center;
+  background-color: #808080;
+  height: 80px;
+  position: fixed;
+  width: 100%;
   bottom: 0;
   opacity: 0.5;
 }
 
-
-// main ul{
-//   padding-left:30px;
-// }
-
-/* SNSアイコンの色変更 */
-.fa-twitter{
-  color:#1da1f2;
+/* 自分の吹き出し */
+.current_user {
+  color: black;
+  text-align: right;
+  background-color: #fff;
+  width: fit-content;
+  margin: 10px 0 0 auto;
+  border-radius: 20px;
+  /* Google Chrome、Safari*/
+  -webkit-border-radius: 20px;
+  /* Firefox */
+  -moz-border-radius: 30px;
+  /* IE */
+  -ms-border-radius: 30px;
+  box-sizing: border-box;
+  padding: 8px;
 }
 
-.fa-facebook-square{
-  color:#3b5998;
+/* 相手の吹き出し */
+.visited_user {
+  color: #fff;
+  margin: 10px;
+  background-color: #4682b4;
+  text-align: left;
+  width: fit-content;
+  margin: 10px auto 0 0;
+  border-radius: 20px;
+  /* Google Chrome、Safari*/
+  -webkit-border-radius: 20px;
+  /* Firefox */
+  -moz-border-radius: 30px;
+  /* IE */
+  -ms-border-radius: 30px;
+  box-sizing: border-box;
+  padding: 8px;
 }
 
-.fa-instagram{
-  color:#e1306c;
-}
-
-.fa-youtube{
-  color:#ff0000;
-}
-
-#map{
-  height: 300px;
-  width:500px;
-}
-
-/* タブレット縦置きサイズ（768px）以下の際に適用される設定 */
-@media screen and (max-width: 768px) {
-  #map{
-    height: 300px;
-    width:85%;
-  }
+/* コメント */
+.comment_form {
+  width: 300px;
+  height: 100px;
+  border: none;
+  padding: 10px;
 }
 /* スマートフォンサイズ（425px）以下の際に適用される設定 */
 @media screen and (max-width: 425px) {
-  #map{
-    height: 300px;
-    width:85%;
-
+  .comment_form {
+    width: 70%;
   }
 }
 
+.comment_send:hover {
+  color: #a9a9a9;
+  background-color: #eee;
+}
 
+/*****/
+
+
+/* カレンダー */
 .tab_container {
   margin: 10px;
   border: 1px solid #ccc;
@@ -772,7 +772,7 @@ a.btn03:hover, .btn03:hover {
 
 .tab_container ul{
   list-style: none;
-  padding-left:0;
+  padding-left: 0;
 }
 
 .tab-list {
@@ -793,7 +793,7 @@ a.btn03:hover, .btn03:hover {
 }
 
 .tab-active {
-  color: #FFF;
+  color: #fff;
   background: #a9a9a9;
   transition: all 0.2s ease-in-out;
 }
@@ -808,53 +808,24 @@ a.btn03:hover, .btn03:hover {
 }
 
 .text{
-  margin-left:20px;
-  margin-right:20px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .user-view{
-  background-color:#fff;
-  margin:20px;
-  border:1px solid #d3cfd9;
-  padding:10px;
-}
-
-.follow{
-  width:200px;
-  height:100px;
   background-color: #fff;
-  margin:10px;
-  padding:10px;
+  margin: 20px;
+  border: 1px solid #d3cfd9;
+  padding: 10px;
 }
 
+/*****/
 
-
-ul {
-  display: flex;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-header a {
-  color: #000;
-  text-decoration: none;
-  display: block;
-  line-height: 60px;
-  padding: 0 20px;
-}
-
-.small {
-  display: none;
-}
-
-
-/*ハンバーガーメニュー（レスポンシブ900px~）*/
+/*ハンバーガーメニュー（レスポンシブ980px~）*/
 @media (max-width: 980px) {
   .pc {
     display: none;
   }
-
   #hamburger {
     background-color: transparent;
     position: relative;
@@ -863,7 +834,6 @@ header a {
     height: 60px;
     width: 60px;
   }
-
   .icon span {
     position: absolute;
     left: 15px;
@@ -873,7 +843,6 @@ header a {
     border-radius: 15px;
     transition: ease 0.75s;
   }
-
   .icon span:nth-of-type(1) {
     top: 16px;
   }
@@ -883,41 +852,29 @@ header a {
   .icon span:nth-of-type(3) {
     bottom: 16px;
   }
-
   .close span:nth-of-type(1) {
     transform: rotate(45deg);
     top: 28px;
   }
-
   .close span:nth-of-type(2) {
     opacity: 0;
   }
-
   .close span:nth-of-type(3) {
-      transform: rotate(-45deg);
-      top: 28px;
+    transform: rotate(-45deg);
+    top: 28px;
   }
-
   .small {
-      top: 60px;
-      left: 0px;
-      position: absolute;
-      z-index: 10;
-      width: 100%;
-      background-color: #778899;
+    top: 60px;
+    left: 0px;
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    background-color: #778899;
   }
-
   ul {
     flex-direction: column;
   }
-
-  header a {
-    text-align: center;
-    border-top: solid 0.5px rgba(255, 255, 255, 0.6);
-    color:#fff;
-  }
 }
-
 @media screen and (max-width: 640px) {
   .scroll {
     overflow-x: auto;
@@ -932,4 +889,4 @@ header a {
   }
 }
 
-
+/*****/

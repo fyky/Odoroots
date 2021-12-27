@@ -4,34 +4,32 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-
     @events = @user.events.published.order(created_at: :desc).limit(3)
     @reservations = @user.reservations
     @attends = @reservations.where(permission: "done").order(created_at: :desc).limit(3)
 
-  unless current_user == nil
+    unless current_user == nil
       @current_user_room_user=RoomUser.where(user_id: current_user.id)
-
-    @user_room_user=RoomUser.where(user_id: @user.id)
-    # もしuseridが現在のユーザーじゃなかったら
-    unless @user.id == current_user.id
-      @current_user_room_user.each do |cu|
-        @user_room_user.each do |u|
-          # ルームIDの特定
-          if cu.room_id == u.room_id then
-            @have_room = true
-            @room_id = cu.room_id
+      @user_room_user=RoomUser.where(user_id: @user.id)
+       # もしuseridが現在のユーザーじゃなかったら
+        unless @user.id == current_user.id
+          @current_user_room_user.each do |cu|
+            @user_room_user.each do |u|
+              # ルームIDの特定
+              if cu.room_id == u.room_id then
+                @have_room = true
+                @room_id = cu.room_id
+              end
+            end
+          end
+          unless @have_room    #ルームが同じじゃなければ
+            #新しいインスタンスを生成
+            @room = Room.new
+            @RoomUser = RoomUser.new
+            #//新しいインスタンスを生成
           end
         end
-      end
-      unless @have_room    #ルームが同じじゃなければ
-        #新しいインスタンスを生成
-        @room = Room.new
-        @RoomUser = RoomUser.new
-        #//新しいインスタンスを生成
-      end
     end
-  end
   end
 
   def edit
@@ -75,7 +73,6 @@ class UsersController < ApplicationController
     @user = current_user
     @hosts = @user.events.published
     @attends = @user.reservations.where(permission: "done")
-    # @allevents = (attends + hosts) #エラー
   end
 
   def correct_user
@@ -88,10 +85,6 @@ class UsersController < ApplicationController
   def follow
     @user = current_user
     @allevents = Event.where(user_id: [@user.id, *@user.followings])
-    #@users = current_user.followings
-    #@events =
-    # @users = current_user.followings
-    # @events = current_user.followings.events.published.order(created_at: :desc).page(params[:page]).per(10)
     @events = @allevents.page(params[:page]).per(9)
   end
 

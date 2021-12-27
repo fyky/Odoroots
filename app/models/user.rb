@@ -6,8 +6,6 @@ class User < ApplicationRecord
 
   attachment :image
 
-
-
   # アソシエーション
   has_many :events, dependent: :destroy
   has_many :reservations, dependent: :destroy
@@ -72,7 +70,5 @@ class User < ApplicationRecord
       notification.save if notification.valid?
     end
   end
-
-
 
 end

@@ -6,7 +6,6 @@ class FavoritesController < ApplicationController
     # 通知
     @event.create_notification_favorite!(current_user)
     # ここまで
-    # redirect_to event_path(event)
   end
 
   def destroy

@@ -1,13 +1,13 @@
-        <% if message.user_id == current_user_id %>
-          <div class="current_user">
-            <strong class="current_user"><%= message.body %></strong>
-            <small class="current_user"><%= message.user.name %>さん</small>
-            <small class="current_user"><%= message.created_at.strftime("%Y-%m-%d %H:%M") %></small>
-          </div>
-        <% else %>
-          <div class="visited_user">
-            <strong class="visited_user"><%= message.body %></strong>
-            <small class="visited_user"><%= message.user.name %>さん</small>
-            <small class="visited_user"><%= message.created_at.strftime("%Y-%m-%d %H:%M") %></small>
-          </div>
-        <% end %>
+<% if message.user_id == current_user_id %>
+  <div class="current_user">
+    <strong class="current_user"><%= message.body %></strong>
+    <small class="current_user"><%= message.user.name %>さん</small>
+    <small class="current_user"><%= message.created_at.strftime("%Y-%m-%d %H:%M") %></small>
+  </div>
+<% else %>
+  <div class="visited_user">
+    <strong class="visited_user"><%= message.body %></strong>
+    <small class="visited_user"><%= message.user.name %>さん</small>
+    <small class="visited_user"><%= message.created_at.strftime("%Y-%m-%d %H:%M") %></small>
+  </div>
+<% end %>

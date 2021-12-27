@@ -30,24 +30,23 @@
   <h1><%= @event.name %></h1>
   <button class="btn_tag"><%= @event.genre.name %></button>
 
+  <!-- いいね -->
+  <div class="<%= "event_" + @event.id.to_s %>", style="display:inline-block;">
+    <%= render "favorites/favorite", event: @event %>
+  </div>
 
-    <!-- いいね -->
-    <div class="<%= "event_" + @event.id.to_s %>", style="display:inline-block;">
-      <%= render "favorites/favorite", event: @event %>
-    </div>
-
-    <!-- イベント開催、参加ボタン -->
-    <% unless Date.current > @event.date %>
-      <button class="button02">開催前</button>
-        <!-- もしイベントが募集中だったら-->
-        <% if @event.recruitment == true %>
-          <button class="button02">参加募集中</button>
-        <% else %>
-          <button class="button01">募集終了しました</button>
-        <% end %>
-    <% else %>
-      <button class="button01">開催終了</button>
-    <% end %>
+  <!-- イベント開催、参加ボタン -->
+  <% unless Date.current > @event.date %>
+    <button class="btn02">開催前</button>
+      <!-- もしイベントが募集中だったら-->
+      <% if @event.recruitment == true %>
+        <button class="btn02">参加募集中</button>
+      <% else %>
+        <button class="btn01">募集終了しました</button>
+      <% end %>
+  <% else %>
+    <button class="btn01">開催終了</button>
+  <% end %>
 
 
   <div class="container">
@@ -55,7 +54,6 @@
     <div class="event_image">
       <%= attachment_image_tag @event, :image, :fill, 600, 400, fallback: "noimage_event.jpg", size:'600x400', class:"img-responsive" %>
     </div>
-
 
     <div class="event_main">
       <p>
@@ -96,9 +94,8 @@
       <% end %>
 
     <% else %>
-    ※予約にはログインが必要です。
+      ※予約にはログインが必要です。
     <% end %>
-
 
     </div>
   </div>
@@ -111,7 +108,7 @@
         fallback: "noimage.png", size:'200x200' %><br>
         <%= link_to user_path(@event.user.id) do %><%= @event.user.name %><% end %>
       </div>
-      <div class="balloon2-left">
+      <div class="bl-left">
         <%= @event.introduction %>
       </div>
     </div>
@@ -125,52 +122,48 @@
         src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
       </script>
 
-
     <!--以下はログイン中のみ-->
-
     <% if user_signed_in? %>
     <!-- コメント -->
     <div class="comment_ajax">
       <%= render "comments/comment", event: @event, comment: @comment %>
     </div>
 
-        <div class="text">
-          <h5>コメントを投稿する</h5>
-          <%= form_with(model:[@event, @comment]) do |f| %>
-              <%= f.text_area :comment, class: "comment_form", class: "comment_form",placeholder: "コメントをここに" %>
-              <%= f.submit "送信する", class: "send" %>
-          <% end %>
-        </div>
-
-
-      <h3>参加予定者</h3>
-        <ul>
-          <% @attendreservations.each do |attendreservations| %>
-            <li>
-              <%= link_to user_path(attendreservations.user) do %>
-                <%= attendreservations.user.name %>
-              <% end %>
-            </li>
-          <% end %>
-        </ul>
-    <% end %>
+    <div class="text">
+      <h5>コメントを投稿する</h5>
+      <%= form_with(model:[@event, @comment]) do |f| %>
+          <%= f.text_area :comment, class: "comment_form", class: "comment_form",placeholder: "コメントをここに" %>
+          <%= f.submit "送信する", class: "send" %>
+      <% end %>
     </div>
 
 
-<!--もしこのイベントの自分の予約がtrueだったら -->
+    <h3>参加予定者</h3>
+      <ul>
+        <% @attendreservations.each do |attendreservations| %>
+          <li>
+            <%= link_to user_path(attendreservations.user) do %>
+              <%= attendreservations.user.name %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+  <% end %>
+  </div>
 
-    <% if @attend.present? || current_user != nil && @event.user == current_user %>
-    <h2 style="margin-top:15px;">参加者への連絡事項</h2>
-      <div class="text">
-        <h5>※以下項目は参加者にのみ表示されています</h5>
-        <h3>待ち合わせ場所</h3>
-        <p><%= @event.meeting_place %></p>
-        <h3>持ち物</h3>
-        <p><%= @event.belongings %></p>
-        <h3>注意事項</h3>
-        <p><%= @event.attention %></p>
-      </div>
-    <% end %>
+  <!--もしこのイベントの自分の予約がtrueだったら -->
+  <% if @attend.present? || current_user != nil && @event.user == current_user %>
+  <h2 style="margin-top:15px;">参加者への連絡事項</h2>
+    <div class="text">
+      <h5>※以下項目は参加者にのみ表示されています</h5>
+      <h3>待ち合わせ場所</h3>
+      <p><%= @event.meeting_place %></p>
+      <h3>持ち物</h3>
+      <p><%= @event.belongings %></p>
+      <h3>注意事項</h3>
+      <p><%= @event.attention %></p>
+    </div>
+  <% end %>
 
     <% if current_user != nil && @event.user == current_user %>
       <h2 style="margin-top:15px;">参加承認</h2>
@@ -209,5 +202,5 @@
             </div>
           </div>
     <% end %>
-  </div>
+    </div>
   </div>

@@ -1,6 +1,5 @@
 class Notification < ApplicationRecord
-  # 並び順を新着順で指定
-  default_scope -> { order(created_at: :desc) }
+  # アソシエーション
   belongs_to :event, optional: true
   belongs_to :comment, optional: true
 
@@ -12,5 +11,8 @@ class Notification < ApplicationRecord
   belongs_to :visited, class_name: 'User', foreign_key: 'visited_id', optional: true
 
   belongs_to :reservation, optional: true
+
+  # 並び順を新着順で指定
+  default_scope -> { order(created_at: :desc) }
 
 end

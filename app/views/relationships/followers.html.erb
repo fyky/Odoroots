@@ -6,8 +6,6 @@
         <%= attachment_image_tag user, :image, :fill, 80, 80, fallback: "/assets/noimage.png", size:'80x80' %>
         <%= user.name %>
       <% end %>
-      <!--follow：<%#= user.followings.count %>
-      followers：<%#= user.followers.count %> -->
     </div>
     <% end %>
 <% else %>

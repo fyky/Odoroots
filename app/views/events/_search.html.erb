@@ -1,13 +1,11 @@
 <h1>イベントを検索</h1>
   <div class="text">
-
     <h3>フリーワードで検索</h3>
     <%= form_with url: search_events_path, method: :get, local: true do |f| %>
-      <%= f.text_field :keyword, class: "search_form", value: keyword %>
+      <%= f.text_field :keyword, class: "form", value: keyword %>
       <%= select_tag 'type', options_for_select({ "開催前のみ" => "before", "開催終了を含む" => "all" }, { :selected => params[:type] }) %>
       <%= f.submit "検索", class: "send" %>
     <% end %>
-
 
     <!-- genre.idでとってこれるようにする-->
     <h3>ジャンルで検索</h3><br>
