@@ -41,6 +41,6 @@
 - IDE：Cloud9
 
 ## 使用素材
-アイコン [ICOOON MONO](https://icooon-mono.com/)<br>
-写真   [ぱくたそ](https://www.pakutaso.com/)<br>
-イラスト [いらすとや](https://www.irasutoya.com/)
+＊　アイコン:[ICOOON MONO](https://icooon-mono.com/)<br>
+＊　写真:[ぱくたそ](https://www.pakutaso.com/)<br>
+＊　イラスト:[いらすとや](https://www.irasutoya.com/)
