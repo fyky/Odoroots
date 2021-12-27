@@ -85,7 +85,7 @@ class UsersController < ApplicationController
   def follow
     @user = current_user
     @allevents = Event.where(user_id: [@user.id, *@user.followings])
-    @events = @allevents.page(params[:page]).per(9)
+    @events = @allevents.includes(:user, :genre).page(params[:page]).per(9)
   end
 
 

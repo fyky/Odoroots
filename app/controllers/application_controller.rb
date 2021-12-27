@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  #ログイン認証の前
+  # ログイン認証の前
   before_action :configure_permitted_parameters, if: :devise_controller?
   
   def configure_permitted_parameters

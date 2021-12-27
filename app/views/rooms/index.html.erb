@@ -1,7 +1,7 @@
 <h1>ダイレクトメッセージ</h1>
   <% @rooms.each do |cu| %>
 
-    <% roomusers = RoomUser.where(room_id: cu.room.id) %>
+    <% roomusers = RoomUser.includes(:user).where(room_id: cu.room.id) %>
       <% roomusers.each do |ru| %>
         <% unless ru.user.id == current_user.id %>
         <div class="dm">
