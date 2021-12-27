@@ -26,9 +26,9 @@
 ・レッスンを受けるよりもとにかくたくさん踊りたい時
 
 ## 設計書
-[テーブル定義書](https://docs.google.com/spreadsheets/d/1vOiyZGdU91GZMa8hnebUEmNhbZehqW0WwV57YMhL1yY/edit?usp=sharing)
-[アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1x9Me1DG45LvhVCZdebSQgqGKX6PdVFWRw7MliXzZY5Y/edit?usp=sharing)
-[ER図](https://drive.google.com/file/d/1ifE8v_LZ7XnoLxLtaXzLros6LIqh8gDi/view?usp=sharing)
+[テーブル定義書](https://docs.google.com/spreadsheets/d/1vOiyZGdU91GZMa8hnebUEmNhbZehqW0WwV57YMhL1yY/edit?usp=sharing)　　
+[アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1x9Me1DG45LvhVCZdebSQgqGKX6PdVFWRw7MliXzZY5Y/edit?usp=sharing)　　
+[ER図](https://drive.google.com/file/d/1ifE8v_LZ7XnoLxLtaXzLros6LIqh8gDi/view?usp=sharing)　　
 
 
 
@@ -43,4 +43,6 @@
 - IDE：Cloud9
 -
 ## 使用素材
-未定
+アイコン - [ICOOON MONO](https://icooon-mono.com/)
+写真   - [ぱくたそ](https://www.pakutaso.com/)
+イラスト - [いらすとや](https://www.irasutoya.com/
