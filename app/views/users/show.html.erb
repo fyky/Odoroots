@@ -109,7 +109,7 @@
               <% if Date.current < event.date %>
                 <tr>
                   <td><%= event.date.strftime( "%Y/%m/%d" )  %></td>
-                  <td><%= event.start_time.strftime( "%H:%M" ) %>〜</td>
+                  <td><%= event.start_time.strftime( "%H:%M" ) %></td>
                   <td><%= link_to event_path(event.id) do %><%= event.name %><% end %></td>
                   <td><%= event.address %></td>
                 </tr>
