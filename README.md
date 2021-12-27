@@ -23,7 +23,7 @@
 ・あのアイドルグループの踊りをみんなでカバーしたい時<br>
 ・たくさんの人の踊りを見て刺激を受けたい時<br>
 ・みんなで踊ってみた動画を撮りたい時<br>
-・レッスンを受けるよりもとにかくたくさん踊りたい時<br>
+・レッスンを受けるよりもとにかくたくさん踊りたい時
 
 ## 設計書
 [テーブル定義書](https://docs.google.com/spreadsheets/d/1vOiyZGdU91GZMa8hnebUEmNhbZehqW0WwV57YMhL1yY/edit?usp=sharing)<br>
@@ -39,7 +39,7 @@
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - IDE：Cloud9
--
+
 ## 使用素材
 アイコン [ICOOON MONO](https://icooon-mono.com/)<br>
 写真   [ぱくたそ](https://www.pakutaso.com/)<br>
