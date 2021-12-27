@@ -16,22 +16,24 @@
 そのためにも、私自身が「あったら便利だな」と思う要素を含んだSNSサイトを作る目的で、このテーマを選びました。
 
 ### ターゲットユーザ
-全国各地のダンサー（初心者〜経験者）※20歳以上
+全国各地のダンサー（初心者〜経験者）
 
 ### 主な利用シーン
-・ダンスのコミュニティに属したい時  
-・あのアイドルグループの踊りをみんなでカバーしたい時  
-・たくさんの人の踊りを見て刺激を受けたい時  
-・みんなで踊ってみた動画を撮りたい時  
-・レッスンを受けるよりもとにかくたくさん踊りたい時  
+・ダンスのコミュニティに属したい時
+・あのアイドルグループの踊りをみんなでカバーしたい時
+・たくさんの人の踊りを見て刺激を受けたい時
+・みんなで踊ってみた動画を撮りたい時
+・レッスンを受けるよりもとにかくたくさん踊りたい時
 
 ## 設計書
-[テーブル定義書](https://docs.google.com/spreadsheets/d/1vOiyZGdU91GZMa8hnebUEmNhbZehqW0WwV57YMhL1yY/edit?usp=sharing)  
-[アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1x9Me1DG45LvhVCZdebSQgqGKX6PdVFWRw7MliXzZY5Y/edit?usp=sharing)  
+[テーブル定義書](https://docs.google.com/spreadsheets/d/1vOiyZGdU91GZMa8hnebUEmNhbZehqW0WwV57YMhL1yY/edit?usp=sharing)
+[アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1x9Me1DG45LvhVCZdebSQgqGKX6PdVFWRw7MliXzZY5Y/edit?usp=sharing)
+[ER図](https://drive.google.com/file/d/1ifE8v_LZ7XnoLxLtaXzLros6LIqh8gDi/view?usp=sharing)
+
 
 
 ## チャレンジ要素一覧
-[チャレンジ要素一覧](https://docs.google.com/spreadsheets/d/1WIeQAeyl5jkhoCoYzqTRxXZJZGCk6vdK32oTo65Ns3E/edit#gid=346513538)  
+[チャレンジ要素一覧](https://docs.google.com/spreadsheets/d/1WIeQAeyl5jkhoCoYzqTRxXZJZGCk6vdK32oTo65Ns3E/edit#gid=346513538)
 
 ## 開発環境
 - OS：macOS
@@ -39,6 +41,6 @@
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - IDE：Cloud9
-- 
+-
 ## 使用素材
 未定
