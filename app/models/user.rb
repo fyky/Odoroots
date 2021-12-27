@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   attachment :image
 
+
+
   # アソシエーション
   has_many :events, dependent: :destroy
   has_many :reservations, dependent: :destroy
@@ -34,6 +36,7 @@ class User < ApplicationRecord
   validates :birthday, presence: true
   validates :gender, presence: true
   validates :name, presence: true
+  validates :introduction, length: { maximum: 30 }
 
 
   def date

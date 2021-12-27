@@ -16,7 +16,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Zen+Maru+Gothic:wght@300;400&display=swap');
   @import "simple_calendar";
 
-
 *{
   margin: 0;
   padding: 0;
@@ -64,18 +63,19 @@ header{
 
 /*ヘッダーロゴ*/
 .logo {
-  font-family: monospace;
-  margin-left:20px;
+  font-family: 'Montserrat', sans-serif;
+  // margin-left:20px;
   font-size: 40px;
   display: flex;
   width:200px;
+  height:60px;
 }
 
-.logo a {
-  font-family: monospace;
-  color: #191970;
-  text-decoration: none;
-}
+// .logo a {
+//   font-family: monospace;
+//   color: #191970;
+//   text-decoration: none;
+// }
 
 
 /* 見出し関連 */

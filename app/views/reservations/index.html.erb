@@ -1,20 +1,22 @@
 <h1>申し込みイベント一覧</h1>
-  <table>
-    <tr>
-      <th width="95">開催日</th>
-      <th>イベント名</th>
-      <th>コメント</th>
-      <th>予約日時</th>
-      <th width="150">承認ステータス</th>
-    </tr>
-
-    <% @reservations.each do |reservation| %>
+  <div class="scroll">
+    <table class="tbl">
       <tr>
-        <td><%= reservation.event.date.strftime( "%Y/%m/%d" ) %></td>
-        <td><%= link_to event_path(reservation.event) do %><%= reservation.event.name %><% end %></td>
-        <td><%= reservation.comment %></td>
-        <td><%= reservation.created_at.strftime("%Y/%m/%d %H:%M") %></td>
-        <td><%= reservation.permission_i18n %></td>
+        <th width="95">開催日</th>
+        <th width="200">イベント名</th>
+        <th width="200">コメント</th>
+        <th>予約日時</th>
+        <th width="150">承認ステータス</th>
       </tr>
-    <% end %>
-  </table>
+
+      <% @reservations.each do |reservation| %>
+        <tr>
+          <td><%= reservation.event.date.strftime( "%Y/%m/%d" ) %></td>
+          <td><%= link_to event_path(reservation.event) do %><%= reservation.event.name.truncate(10) %><% end %></td>
+          <td><%= reservation.comment %></td>
+          <td><%= reservation.created_at.strftime("%Y/%m/%d %H:%M") %></td>
+          <td><%= reservation.permission_i18n %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>

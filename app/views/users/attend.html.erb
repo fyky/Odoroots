@@ -1,18 +1,20 @@
 <h1>参加イベント一覧</h1> ※予約順
-  <table>
-    <tr>
-      <th width="95">開催日</th>
-      <th width="90">開始時刻</th>
-      <th>イベント名</th>
-      <th>集合場所</th>
-    </tr>
-    <% @attends.each do |attend| %>
+  <div class="scroll">
+    <table class="tbl">
       <tr>
-        <td><%= attend.event.date.strftime( "%Y/%m/%d" ) %></td>
-        <td><%= attend.event.start_time.strftime( "%H:%M" ) %></td>
-        <td><%= link_to event_path(attend.event.id) do %><%= attend.event.name %><% end %></td>
-        <td><%= attend.event.meeting_place %></td>
+        <th width="95">開催日</th>
+        <th width="90">開始時刻</th>
+        <th>イベント名</th>
+        <th>集合場所</th>
       </tr>
-    <% end %>
-  </table>
+      <% @attends.each do |attend| %>
+        <tr>
+          <td><%= attend.event.date.strftime( "%Y/%m/%d" ) %></td>
+          <td><%= attend.event.start_time.strftime( "%H:%M" ) %></td>
+          <td><%= link_to event_path(attend.event.id) do %><%= attend.event.name %><% end %></td>
+          <td><%= attend.event.meeting_place %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
   <%= paginate @attends %>

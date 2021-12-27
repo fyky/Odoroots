@@ -1,18 +1,20 @@
 <h1>主催イベント一覧</h1> ※作成順
-  <table>
-    <tr>
-      <th width="95">開催日</th>
-      <th width="90">開始時刻</th>
-      <th>イベント名</th>
-      <th>開催場所</th>
-    </tr>
-    <% @events.each do |event| %>
+  <div class="scroll">
+    <table class="tbl">
       <tr>
-        <td><%= event.date.strftime( "%Y/%m/%d" )  %></td>
-        <td><%= event.start_time.strftime( "%H:%M" ) %></td>
-        <td><%= link_to event_path(event.id) do %><%= event.name %><% end %></td>
-        <td><%= event.address %></td>
+        <th width="95">開催日</th>
+        <th width="90">開始時刻</th>
+        <th>イベント名</th>
+        <th>開催場所</th>
       </tr>
-    <% end %>
-  </table>
+      <% @events.each do |event| %>
+        <tr>
+          <td><%= event.date.strftime( "%Y/%m/%d" )  %></td>
+          <td><%= event.start_time.strftime( "%H:%M" ) %></td>
+          <td><%= link_to event_path(event.id) do %><%= event.name %><% end %></td>
+          <td><%= event.address %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
     <%= paginate @events %>
