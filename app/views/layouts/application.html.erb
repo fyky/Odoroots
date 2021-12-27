@@ -48,10 +48,11 @@
               <%= link_to events_path do %><i class="fas fa-search-plus"></i>イベントを検索<% end %>
             </li>
             <li>
-            <% if unchecked_notifications.any? %>
-              <i class="fa fa-circle" style="color: gold;"></i>
-            <% end %>
-              <%= link_to notifications_path do %><i class="fas fa-bell"></i>通知<% end %>
+              <%= link_to notifications_path do %><i class="fas fa-bell"></i>通知
+                <% if unchecked_notifications.any? %>
+                  <i class="fa fa-circle" style="color: gold;"></i>
+                <% end %>
+              <% end %>
             </li>
             <li>
               <%= link_to favorites_path do %><i class="fas fa-heart"></i>いいね <% end %>
@@ -97,10 +98,12 @@
               <%= link_to events_path do %><i class="fas fa-search-plus"></i>イベントを検索<% end %>
             </li>
             <li>
-            <% if unchecked_notifications.any? %>
-              <i class="fa fa-circle" style="color: gold;"></i>
-            <% end %>
-              <%= link_to notifications_path do %><i class="fas fa-bell"></i><% end %>
+              <%= link_to notifications_path do %>
+                <% if unchecked_notifications.any? %>
+                  <i class="fa fa-circle" style="color: gold;"></i>
+                <% end %>
+                <i class="fas fa-bell"></i>
+              <% end %>
             </li>
             <li>
               <%= link_to favorites_path do %><i class="fas fa-heart"></i><% end %>
