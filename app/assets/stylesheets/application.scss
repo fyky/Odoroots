@@ -44,7 +44,7 @@ header {
 }
 
 header a {
-  color: #000;
+  color: black;
   text-decoration: none;
   display: block;
   line-height: 60px;
@@ -864,6 +864,7 @@ a.btn03:hover, .btn03:hover {
     top: 28px;
   }
   .small {
+    text-align: center;
     top: 60px;
     left: 0px;
     position: absolute;
@@ -871,9 +872,22 @@ a.btn03:hover, .btn03:hover {
     width: 100%;
     background-color: #778899;
   }
-  ul {
+  .small li {
+    border:1px solid #b0c4de;
+  }
+
+  .small ul {
     flex-direction: column;
   }
+
+  header a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  line-height: 60px;
+  padding: 0 20px;
+  }
+
 }
 @media screen and (max-width: 640px) {
   .scroll {
