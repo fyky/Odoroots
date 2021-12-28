@@ -20,7 +20,7 @@ ActiveAdmin.register Event do
       :address, :address_detail,
       :date, :start_time, :end_time,
       :introduction, :requirement, :deadline, :belongings, :meeting_place, :attention,
-      :number, :longitude, :latitude
+      :number, :longitude, :latitude, :recruitment
   end
 
 end
