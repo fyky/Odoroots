@@ -88,7 +88,6 @@ class UsersController < ApplicationController
     @events = @allevents.includes(:user, :genre).page(params[:page]).per(9)
   end
 
-
   private
     def user_params
       params.require(:user).permit(:name, :address, :address_detail, :phone_number, :genre, :image, :introduction,

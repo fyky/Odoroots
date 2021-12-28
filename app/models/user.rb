@@ -37,6 +37,7 @@ class User < ApplicationRecord
   validates :introduction, length: { maximum: 30 }
 
 
+
   def date
     Event.date
   end

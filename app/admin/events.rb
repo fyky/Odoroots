@@ -14,5 +14,13 @@ ActiveAdmin.register Event do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  
+
+  ActiveAdmin.register Event do
+    permit_params :name, :image, :genre_id,
+      :address, :address_detail,
+      :date, :start_time, :end_time,
+      :introduction, :requirement, :deadline, :belongings, :meeting_place, :attention,
+      :number, :longitude, :latitude
+  end
+
 end
