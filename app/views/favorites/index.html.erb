@@ -2,7 +2,7 @@
     <div class="event_container">
       <% @favorites.each do |favorite|%>
         <div class="event_index">
-          <%= attachment_image_tag favorite.event, :image, :fill, 400, 300, fallback: "noimage.png", size:'400x300', class:"img-responsive" %>
+          <%= attachment_image_tag favorite.event, :image, :fill, 400, 300, fallback: "noimage_event_index.jpg", size:'400x300', class:"img-responsive" %>
           <div class="event_index_text">
           <span class="event_title"><%= link_to event_path(favorite.event.id) do %><%= favorite.event.name %><% end %></span><br>
           <button class="btn_tag"><%= favorite.event.genre.name %></button><br>
