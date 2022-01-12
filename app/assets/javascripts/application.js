@@ -34,4 +34,7 @@ $(document).on('turbolinks:load', function() {
             $('.tabbox').eq(index).addClass('box-show');
         });
     });
+
 });
+
+

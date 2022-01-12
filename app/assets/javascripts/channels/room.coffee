@@ -1,5 +1,4 @@
 document.addEventListener 'turbolinks:load', ->
-  console.log($('#message').data('room_id'))
   App.room = App.cable.subscriptions.create { channel: "RoomChannel", room: $('#message').data('room_id') },
     connected: ->
 
@@ -16,4 +15,3 @@ document.addEventListener 'turbolinks:load', ->
       App.room.speak event.target.value
       event.target.value = ''
       event.preventDefault()
-
