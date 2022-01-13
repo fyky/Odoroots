@@ -1,38 +1,9 @@
-<script type="text/javascript">
-    function initMap() {
-
-        var test ={lat: <%= @event.latitude %>, lng: <%= @event.longitude %>};
-        var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 15,
-            center: test
-        });
-        var transitLayer = new google.maps.TransitLayer();
-        transitLayer.setMap(map);
-
-        var contentString = '住所：<%= @event.full_address %>';
-        var infowindow = new google.maps.InfoWindow({
-            content: contentString
-        });
-
-        var marker = new google.maps.Marker({
-            position:test,
-            map: map,
-            title: contentString
-        });
-
-        marker.addListener('click', function() {
-            infowindow.open(map, marker);
-        });
-    }
-</script>
-
-
-      <!--<input type="hidden" id="event" value="<%#= @event.id %>">-->
-      <!--<input type="hidden" id="latitude" value="<%#= @event.latitude %>">-->
-      <!--<input type="hidden" id="longitude" value="<%#= @event.longitude %>">-->
-      <!--<input type="hidden" id="full_address" value="<%#= @event.full_address %>">-->
-      <!--<script type="text/javascript" src="event_map.js">-->
-      <!--</script>-->
+<!--  値をjsに渡す -->
+  <input type="hidden" id="latitude" value="<%= @event.latitude %>">
+  <input type="hidden" id="longitude" value="<%= @event.longitude %>">
+  <input type="hidden" id="full_address" value="<%= @event.full_address %>">
+  <script type="text/javascript" src="event_map.js">
+  </script>
 
 
   <!-- イベント名 -->
