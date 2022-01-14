@@ -98,6 +98,7 @@ class EventsController < ApplicationController
 
   def search
     @genres = Genre.all
+    # キーワードを分割
     keywords = params[:keyword].split(/[[:blank:]]+/)
 
     # p '---------'
@@ -106,9 +107,11 @@ class EventsController < ApplicationController
     @allevents = Event.published.order(created_at: :desc)
     # binding.irb
     if params[:type] == 'all'
-      keywords.each do |keyword|
-        @allevents = @allevents.where(["name LIKE ? OR address LIKE ?", "%#{keyword}%", "%#{keyword}%"])
+      keywords.each do |keyword, i|
+        @allevents = @allevents.where(["name LIKE ? OR address LIKE ?", "%#{keyword}%", "%#{keyword}%"]) if i == 0
+        @allevents = @allevents.merge(@allevents.where(["name LIKE ? OR address LIKE ?", "%#{keyword}%", "%#{keyword}%"]))
       end
+
     else
       keywords.each do |keyword|
         @allevents = @allevents.where(["date > ? AND (name LIKE ? OR address LIKE ?)", Date.current, "%#{keyword}%", "%#{keyword}%"])
