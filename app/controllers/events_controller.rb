@@ -53,6 +53,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    gon.event = @event
     @reservations = Reservation.where(event_id: @event)
     @comment = Comment.new
     @user = current_user
