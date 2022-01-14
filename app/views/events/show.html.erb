@@ -1,10 +1,4 @@
-<!--  値をjsに渡す -->
-<!--  <input type="hidden" id="latitude" value="<%#= @event.latitude %>">-->
-<!--  <input type="hidden" id="longitude" value="<%#= @event.longitude %>">-->
-<!--  <input type="hidden" id="full_address" value="<%#= @event.full_address %>">-->
-  <!--<script type="text/javascript" src="../event_map.js"></script>-->
-  <%= javascript_include_tag 'event_map' %>
-
+<%= javascript_include_tag 'event_map' %>
 
   <!-- イベント名 -->
   <h1><%= @event.name %></h1>

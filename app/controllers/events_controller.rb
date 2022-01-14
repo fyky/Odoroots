@@ -57,7 +57,6 @@ class EventsController < ApplicationController
     @reservations = Reservation.where(event_id: @event)
     @comment = Comment.new
     @user = current_user
-    # &.user
 
     @attendreservations = Reservation.where(event_id: @event, permission:"done")
     unless @user == nil

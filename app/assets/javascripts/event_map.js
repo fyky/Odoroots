@@ -1,10 +1,5 @@
 function initMap() {
 
-    // var latitude = document.getElementById('latitude').value
-    // var longitude = document.getElementById('longitude').value
-    // var full_address = document.getElementById('full_address').value
-
-    // var test = new google.maps.LatLng(latitude, longitude)
     var test ={lat: gon.event.latitude, lng: gon.event.longitude};
     var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 15,
