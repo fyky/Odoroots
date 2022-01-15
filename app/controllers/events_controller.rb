@@ -104,7 +104,7 @@ class EventsController < ApplicationController
     # p '---------'
     # p keywords
 
-    @allevents = Event.published.order(created_at: :desc)
+    @allevents = Event.published.includes(:genre).order(created_at: :desc)
     # binding.irb
     if params[:type] == 'all'
       keywords.each do |keyword, i|
