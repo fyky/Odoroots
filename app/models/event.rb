@@ -40,6 +40,7 @@ class Event < ApplicationRecord
   geocoded_by :full_address
   after_validation :geocode, if: :address_changed?&&:address_detail_changed?
 
+
   # イベント一覧（publishがtrueのものを取得するメソッド
   # Event.all -> Event.published
   def self.published
