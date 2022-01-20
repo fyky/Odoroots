@@ -37,6 +37,7 @@ http://odoroots.com/
 [テーブル定義書](https://docs.google.com/spreadsheets/d/1vOiyZGdU91GZMa8hnebUEmNhbZehqW0WwV57YMhL1yY/edit?usp=sharing)<br>
 [アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1x9Me1DG45LvhVCZdebSQgqGKX6PdVFWRw7MliXzZY5Y/edit?usp=sharing)<br>
 [ER図](https://drive.google.com/file/d/1ifE8v_LZ7XnoLxLtaXzLros6LIqh8gDi/view?usp=sharing)<br>
+![ER図 drawio](https://user-images.githubusercontent.com/91657176/150266818-839e8fee-995d-43ea-9905-c17619c7c70c.png)
 
 ## チャレンジ要素一覧
 [チャレンジ要素一覧](https://docs.google.com/spreadsheets/d/1WIeQAeyl5jkhoCoYzqTRxXZJZGCk6vdK32oTo65Ns3E/edit#gid=346513538)
