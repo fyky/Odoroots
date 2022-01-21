@@ -1,5 +1,5 @@
 class Event < ApplicationRecord
-  attachment :image
+  attachment :image, type: :image
 
   # アソシエーション
   belongs_to :user
