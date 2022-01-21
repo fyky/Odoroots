@@ -1,5 +1,3 @@
-<%#= javascript_include_tag 'event_map' %>
-
   <!-- イベント名 -->
   <h1><%= @event.name %></h1>
   <button class="btn_tag"><%= @event.genre.name %></button>
@@ -91,7 +89,6 @@
         <%= @event.address %><%= @event.address_detail %>
         <div id="map"></div>
       </div>
-
 
       <script async defer
         src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
