@@ -472,6 +472,16 @@ main a:hover {
   color: #696969;
 }
 
+details summary{
+  list-style: none;
+}
+
+details {
+  width:100%;
+  background-color:#eee;
+  padding:0 10px 0 10px;
+}
+
 #map{
   height: 300px;
   width:500px;
