@@ -4,9 +4,10 @@
     <% event.comments.reverse.each do |comment| %>
       <div class="comment">
         <div class="comment_image">
-            <%= attachment_image_tag comment.user, :image, :fill, 50, 50, style: "border-radius:20px;", fallback: "/assets/noimage.png", size:'50x50' %><br>
+          <%= attachment_image_tag comment.user, :image, :fill, 50, 50, style: "border-radius:20px;", fallback: "/assets/noimage.png", size:'50x50' %><br>
         </div>
         <div class="comment_text">
+          <span class="reply"><i class="fas fa-reply"></i> 返信する</span>
           <p>
             <%= link_to user_path(comment.user) do %>
             <%= comment.user.name %>
