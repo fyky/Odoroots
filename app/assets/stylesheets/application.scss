@@ -474,12 +474,18 @@ main a:hover {
 
 details summary{
   list-style: none;
+  cursor: pointer;
 }
 
 details {
   width:100%;
-  background-color:#eee;
-  padding:0 10px 0 10px;
+
+
+}
+
+.answer{
+  padding:0 10px 5px 10px;
+    background-color:#eee;
 }
 
 #map{

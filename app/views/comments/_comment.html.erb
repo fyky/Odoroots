@@ -23,6 +23,7 @@
               <h5>返信コメントを投稿する</h5>
               <%= form_with(model:[@event, @comment]) do |f| %>
                   <%= f.text_area :comment, class: "comment_form", class: "comment_form",placeholder: "コメントをここに" %>
+                  <%= f.hidden_field :reply_id, :value => comment.id %>
                   <%= f.submit "送信する", class: "send" %>
               <% end %>
             </div>
