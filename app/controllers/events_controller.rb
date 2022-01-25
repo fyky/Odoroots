@@ -62,6 +62,7 @@ class EventsController < ApplicationController
     unless @user == nil
       @attend = @user.reservations.find_by(event_id: @event, permission:"done")
     end
+    
   end
 
   def edit
