@@ -16,22 +16,22 @@ http://odoroots.com/
 全国各地のダンサー（初心者〜経験者）
 
 ### 主な利用シーン
-・ダンスのコミュニティに属したい時<br>
-・あのアイドルグループの踊りをみんなでカバーしたい時<br>
-・たくさんの人の踊りを見て刺激を受けたい時<br>
-・みんなで踊ってみた動画を撮りたい時<br>
-・レッスンを受けるよりもとにかくたくさん踊りたい時
+- ダンスのコミュニティに属したい時<br>
+- あのアイドルグループの踊りをみんなでカバーしたい時<br>
+- たくさんの人の踊りを見て刺激を受けたい時<br>
+- みんなで踊ってみた動画を撮りたい時<br>
+- レッスンを受けるよりもとにかくたくさん踊りたい時
 
 ## 機能一覧
-・ユーザー認証＊devise<br>
-・管理者機能＊ActiveAdmin<br>
-・非同期通信＊Ajax(いいね機能、フォロー機能、コメント機能）<br>
-・通知機能（イベント参加申込が来た、イベント申込が承認された、いいね、フォロー、コメント、DMトークルームが作成された）<br>
-・定時処理＊whenever<br>
-・DM機能＊ActionCable<br>
-・地図表示＊Google Maps API<br>
-・画像アップロード機能＊refile<br>
-・カレンダー表示＊SimpleCalendar<br>
+- ユーザー認証＊devise<br>
+- 管理者機能＊ActiveAdmin<br>
+- 非同期通信＊Ajax(いいね機能、フォロー機能、コメント機能）<br>
+- 通知機能（イベント参加申込が来た、イベント申込が承認された、いいね、フォロー、コメント、DMトークルームが作成された）<br>
+- 定時処理＊whenever<br>
+- DM機能＊ActionCable<br>
+- 地図表示＊Google Maps API<br>
+- 画像アップロード機能＊refile<br>
+- カレンダー表示＊SimpleCalendar<br>
 
 ## 設計書
 [テーブル定義書](https://docs.google.com/spreadsheets/d/1vOiyZGdU91GZMa8hnebUEmNhbZehqW0WwV57YMhL1yY/edit?usp=sharing)<br>
