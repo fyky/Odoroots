@@ -45,6 +45,7 @@ class EventsController < ApplicationController
       @allevents = @genre.events.published.order(created_at: :desc)
     else
       @allevents = Event.published.includes(:genre).order(created_at: :desc)
+            binding.irb
     end
     #.page(pamars[:page])でページネーションを追加
     @events = @allevents.page(params[:page]).per(9)
@@ -62,7 +63,7 @@ class EventsController < ApplicationController
     unless @user == nil
       @attend = @user.reservations.find_by(event_id: @event, permission:"done")
     end
-    
+
   end
 
   def edit
