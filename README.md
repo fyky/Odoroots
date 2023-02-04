@@ -4,7 +4,6 @@
 
 「この曲を踊りたい人募集！」「みんなで可愛い衣装を着て踊ってみた動画を撮ろう！」など、<br>
 様々な目的の中から、自分に合うコミュニティに参加することができます。<br><br>
-http://odoroots.com/  
 
 ### テーマを選んだ理由
 最近、KPOPの普及を皮切りに、ダンスのレッスンスクールが増えてきましたが、自分の好きな曲が踊れなかったり、敷居が高く「始めにくいしやめにくい」というデメリットもあります。
@@ -39,9 +38,6 @@ http://odoroots.com/
 [アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1x9Me1DG45LvhVCZdebSQgqGKX6PdVFWRw7MliXzZY5Y/edit?usp=sharing)<br>
 [ER図](https://drive.google.com/file/d/1ifE8v_LZ7XnoLxLtaXzLros6LIqh8gDi/view?usp=sharing)<br>
 ![ER図 drawio](https://user-images.githubusercontent.com/91657176/150266818-839e8fee-995d-43ea-9905-c17619c7c70c.png)
-
-## チャレンジ要素一覧
-[チャレンジ要素一覧](https://docs.google.com/spreadsheets/d/1WIeQAeyl5jkhoCoYzqTRxXZJZGCk6vdK32oTo65Ns3E/edit#gid=346513538)
 
 ## 開発環境
 - OS：macOS
